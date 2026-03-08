@@ -3,669 +3,759 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ArcticCool — Jasa Cuci AC Medan</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>FrostPro — Servis AC Medan</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 :root{
-  --b1:#0ea5e9;--b2:#0284c7;--b3:#0369a1;--b4:#075985;
-  --ice:#f0f9ff;--sky:#e0f2fe;--sky2:#bae6fd;
-  --teal:#0d9488;--mint:#ccfbf1;
-  --amber:#f59e0b;--rose:#f43f5e;--green:#10b981;
-  --text:#0c1a2e;--sub:#4a6380;--muted:#94a3b8;
-  --border:#dde8f0;--card:#ffffff;--bg:#f0f6fc;
+  --c1:#1a56db;--c2:#1e40af;--c3:#1d4ed8;
+  --ice:#eff6ff;--frost:#dbeafe;--crystal:#bfdbfe;
+  --cyan:#06b6d4;--cyan2:#0891b2;
+  --warm:#fff7ed;--amber:#f59e0b;
+  --green:#059669;--rose:#f43f5e;
+  --ink:#0d1f3c;--slate:#334155;--gray:#64748b;--light:#f8fafc;
+  --white:#ffffff;--border:#e2e8f0;
+  --r1:20px;--r2:16px;--r3:12px;
 }
-html,body{height:100%;font-family:'DM Sans',sans-serif;background:#e8f2fa;overflow:hidden;color:var(--text);}
+html,body{height:100%;background:#e8eef8;overflow:hidden;color:var(--ink);}
+body{font-family:'Instrument Sans',sans-serif;}
 
-/* APP */
-.app{
-  max-width:420px;margin:0 auto;height:100vh;
+/* ── SHELL ── */
+.shell{
+  max-width:415px;margin:0 auto;height:100vh;
   display:flex;flex-direction:column;
-  background:var(--bg);position:relative;
-  box-shadow:0 0 80px rgba(2,132,199,0.18);
-  overflow:hidden;
+  background:var(--light);
+  box-shadow:0 0 100px rgba(26,86,219,0.15);
+  overflow:hidden;position:relative;
 }
 
-/* STATUS BAR */
-.status-bar{
-  background:var(--b4);
-  padding:10px 20px 6px;
-  display:flex;justify-content:space-between;align-items:center;
+/* ── TOPBAR ── */
+.topbar{
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  padding:12px 18px;
+  display:flex;align-items:center;justify-content:space-between;
   flex-shrink:0;
+  position:relative;z-index:10;
 }
-.status-time{color:rgba(255,255,255,0.9);font-size:13px;font-weight:600;}
-.status-icons{color:rgba(255,255,255,0.8);font-size:12px;display:flex;gap:6px;}
+.tb-logo{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.15rem;font-weight:800;
+  display:flex;align-items:center;gap:8px;color:var(--ink);
+}
+.tb-logo-mark{
+  width:32px;height:32px;border-radius:10px;
+  background:linear-gradient(135deg,var(--c1),var(--cyan));
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;
+}
+.tb-right{display:flex;align-items:center;gap:10px;}
+.tb-icon{
+  width:36px;height:36px;border-radius:10px;background:var(--ice);
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;cursor:pointer;position:relative;transition:all 0.2s;
+}
+.tb-icon:active{transform:scale(0.92);}
+.dot{
+  position:absolute;top:6px;right:6px;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--rose);border:2px solid var(--white);
+}
 
-/* PAGES */
+/* ── PAGES ── */
 .pages{flex:1;overflow:hidden;position:relative;}
 .page{
   position:absolute;inset:0;overflow-y:auto;
   opacity:0;pointer-events:none;
-  transform:translateX(20px);
-  transition:all 0.35s cubic-bezier(.4,0,.2,1);
-  padding-bottom:76px;
-  scrollbar-width:thin;scrollbar-color:var(--sky2) transparent;
+  transition:all 0.3s cubic-bezier(.4,0,.2,1);
+  transform:translateY(10px);
+  padding-bottom:80px;
+  scrollbar-width:none;
 }
-.page::-webkit-scrollbar{width:3px;}
-.page::-webkit-scrollbar-thumb{background:var(--sky2);border-radius:4px;}
-.page.active{opacity:1;pointer-events:all;transform:translateX(0);}
+.page::-webkit-scrollbar{display:none;}
+.page.active{opacity:1;pointer-events:all;transform:translateY(0);}
 
-/* BOTTOM NAV */
+/* ── BOTTOM NAV ── */
 .bnav{
-  height:72px;background:var(--card);
+  height:70px;background:var(--white);
   border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-around;
-  padding:0 4px 4px;flex-shrink:0;
-  box-shadow:0 -4px 20px rgba(2,132,199,0.08);
+  display:flex;align-items:center;
+  padding:0 8px 6px;flex-shrink:0;
+  box-shadow:0 -4px 24px rgba(26,86,219,0.06);
 }
-.ni{
-  display:flex;flex-direction:column;align-items:center;
-  gap:4px;cursor:pointer;padding:8px 14px;border-radius:14px;
-  transition:all 0.2s;flex:1;
+.bni{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;gap:3px;cursor:pointer;
+  padding:7px 6px;border-radius:14px;transition:all 0.2s;
 }
-.ni:active{transform:scale(0.92);}
-.ni.active{background:var(--sky);}
-.ni-icon{font-size:21px;filter:grayscale(0.5);transition:all 0.2s;}
-.ni-label{font-size:10px;color:var(--muted);font-weight:500;transition:color 0.2s;}
-.ni.active .ni-icon{filter:none;}
-.ni.active .ni-label{color:var(--b2);font-weight:700;}
+.bni:active{transform:scale(0.9);}
+.bni.on{background:var(--ice);}
+.bni-ico{font-size:20px;opacity:0.45;transition:all 0.2s;}
+.bni-lbl{font-size:10px;color:var(--gray);font-weight:500;transition:all 0.2s;}
+.bni.on .bni-ico{opacity:1;}
+.bni.on .bni-lbl{color:var(--c1);font-weight:700;}
 
-/* ── HOME ── */
-.home-header{
-  background:linear-gradient(160deg, var(--b4) 0%, var(--b2) 60%, var(--b1) 100%);
-  padding:20px 20px 80px;position:relative;overflow:hidden;
+/* ══════════════════════
+   HOME PAGE
+══════════════════════ */
+/* Hero */
+.hero{
+  background:linear-gradient(145deg,#0d1f3c 0%,#1a3a6e 50%,#1a56db 100%);
+  padding:22px 18px 28px;
+  position:relative;overflow:hidden;
 }
-.home-header::before{
-  content:'';position:absolute;top:-60px;right:-60px;
-  width:220px;height:220px;border-radius:50%;
-  background:rgba(255,255,255,0.06);
+.hero::before{
+  content:'';position:absolute;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(6,182,212,0.15),transparent 70%);
+  top:-100px;right:-80px;
 }
-.home-header::after{
-  content:'';position:absolute;bottom:-40px;left:-40px;
-  width:160px;height:160px;border-radius:50%;
-  background:rgba(255,255,255,0.04);
+.hero::after{
+  content:'❄';position:absolute;
+  font-size:180px;opacity:0.04;
+  bottom:-40px;left:-20px;line-height:1;
 }
-.hh-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;}
-.hh-logo{
-  font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;
-  color:white;display:flex;align-items:center;gap:8px;
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.85);font-size:11px;font-weight:600;
+  padding:5px 12px;border-radius:100px;margin-bottom:14px;
+  backdrop-filter:blur(8px);
 }
-.hh-logo-icon{
-  width:34px;height:34px;border-radius:10px;
-  background:rgba(255,255,255,0.18);
-  display:flex;align-items:center;justify-content:center;font-size:18px;
+.hero h1{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.75rem;font-weight:800;color:white;
+  line-height:1.15;margin-bottom:8px;
 }
-.hh-notif{
-  width:38px;height:38px;border-radius:12px;
-  background:rgba(255,255,255,0.15);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;font-size:18px;position:relative;
+.hero h1 em{
+  background:linear-gradient(90deg,#67e8f9,#a5f3fc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;font-style:normal;
 }
-.notif-dot{
-  position:absolute;top:7px;right:7px;
-  width:8px;height:8px;border-radius:50%;
-  background:#f43f5e;border:2px solid var(--b3);
-}
-.hh-greeting{color:rgba(255,255,255,0.75);font-size:13px;margin-bottom:6px;}
-.hh-title{
-  font-family:'Syne',sans-serif;
-  font-size:1.5rem;font-weight:800;color:white;line-height:1.2;
-}
-.hh-title span{color:var(--sky2);}
+.hero-sub{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.6;margin-bottom:20px;}
 
-/* Hero floating card */
-.hero-float{
-  margin:-50px 16px 0;
-  background:white;border-radius:22px;
-  padding:18px 20px;
-  box-shadow:0 12px 40px rgba(2,132,199,0.18);
-  position:relative;z-index:2;
-  border:1px solid rgba(2,132,199,0.08);
-}
-.hf-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
-.hf-badge{
-  background:var(--mint);color:var(--teal);
-  font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;
-  display:flex;align-items:center;gap:4px;
-}
-.hf-rating{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:700;color:var(--amber);}
-.hf-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.hfb{
-  padding:12px;border-radius:14px;border:none;
+/* Hero CTA */
+.hero-cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.hcta{
+  padding:13px 10px;border-radius:14px;border:none;
   font-family:inherit;font-size:13px;font-weight:700;
   cursor:pointer;transition:all 0.2s;
   display:flex;align-items:center;justify-content:center;gap:6px;
 }
-.hfb:active{transform:scale(0.96);}
-.hfb-primary{background:var(--b2);color:white;box-shadow:0 4px 14px rgba(2,132,199,0.35);}
-.hfb-primary:hover{background:var(--b3);}
-.hfb-secondary{background:var(--sky);color:var(--b2);}
-.hfb-secondary:hover{background:var(--sky2);}
+.hcta:active{transform:scale(0.95);}
+.hcta-p{
+  background:white;color:var(--c1);
+  box-shadow:0 4px 16px rgba(0,0,0,0.2);
+}
+.hcta-s{
+  background:rgba(255,255,255,0.12);color:white;
+  border:1px solid rgba(255,255,255,0.2);
+  backdrop-filter:blur(8px);
+}
 
-/* Stats */
-.stats-strip{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:10px;padding:16px 16px 0;
+/* Trust bar */
+.trust{
+  display:flex;gap:0;
+  background:white;
+  border-bottom:1px solid var(--border);
 }
-.ss-item{
-  background:white;border-radius:16px;padding:14px 10px;
-  text-align:center;border:1px solid var(--border);
-  transition:all 0.2s;
+.tr-item{
+  flex:1;padding:12px 8px;text-align:center;
+  border-right:1px solid var(--border);
 }
-.ss-item:active{transform:scale(0.97);}
-.ss-num{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:var(--b2);}
-.ss-lbl{font-size:11px;color:var(--muted);margin-top:2px;font-weight:500;}
+.tr-item:last-child{border-right:none;}
+.tr-num{font-family:'Bricolage Grotesque',sans-serif;font-size:1.1rem;font-weight:800;color:var(--c1);}
+.tr-lbl{font-size:10px;color:var(--gray);margin-top:1px;font-weight:500;}
 
-/* Quick menu */
-.section{padding:14px 16px 0;}
-.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-.sec-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;}
-.sec-more{font-size:12px;color:var(--b2);font-weight:600;cursor:pointer;}
-.qmenu{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-.qm{
-  background:white;border-radius:16px;padding:14px 8px;
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  border:1px solid var(--border);cursor:pointer;transition:all 0.2s;
+/* Quick services */
+.qs-wrap{padding:16px 18px 0;}
+.sec-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.sec-t{font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;color:var(--ink);}
+.sec-a{font-size:12px;color:var(--c1);font-weight:600;cursor:pointer;}
+.qs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.qs{
+  background:white;border-radius:16px;padding:12px 6px;
+  display:flex;flex-direction:column;align-items:center;gap:7px;
+  border:1.5px solid var(--border);cursor:pointer;transition:all 0.2s;
 }
-.qm:hover{border-color:var(--sky2);background:var(--sky);}
-.qm:active{transform:scale(0.94);}
-.qm-ico{
-  width:46px;height:46px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;font-size:22px;
+.qs:active{transform:scale(0.93);}
+.qs:hover{border-color:var(--crystal);background:var(--ice);}
+.qs-ico{
+  width:44px;height:44px;border-radius:13px;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
 }
-.qm-lbl{font-size:11px;font-weight:600;text-align:center;color:var(--text);line-height:1.3;}
+.qs-lbl{font-size:10px;font-weight:700;color:var(--ink);text-align:center;line-height:1.3;}
 
-/* Promo */
+/* Promo card */
+.promo-wrap{padding:12px 18px 0;}
 .promo{
-  background:linear-gradient(135deg,var(--teal),#0f766e);
-  border-radius:18px;padding:18px;
-  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(130deg,#0d1f3c,#1a56db);
+  border-radius:18px;padding:16px 18px;
+  display:flex;justify-content:space-between;align-items:center;
   overflow:hidden;position:relative;
 }
-.promo::after{
-  content:'❄️';position:absolute;right:60px;font-size:60px;opacity:0.15;
+.promo::after{content:'🎁';position:absolute;font-size:64px;opacity:0.1;right:55px;bottom:-12px;}
+.promo-l h4{
+  font-family:'Bricolage Grotesque',sans-serif;
+  color:white;font-size:14px;font-weight:800;margin-bottom:3px;
 }
-.promo-txt h4{color:white;font-size:14px;font-weight:700;margin-bottom:3px;}
-.promo-txt p{color:rgba(255,255,255,0.75);font-size:12px;}
-.promo-cta{
-  background:white;color:var(--teal);
-  border:none;padding:9px 14px;border-radius:10px;
-  font-size:12px;font-weight:700;font-family:inherit;
-  cursor:pointer;flex-shrink:0;transition:all 0.2s;z-index:1;
+.promo-l p{color:rgba(255,255,255,0.65);font-size:12px;}
+.promo-btn{
+  background:white;color:var(--c1);border:none;
+  padding:9px 14px;border-radius:10px;
+  font-size:12px;font-weight:800;font-family:inherit;
+  cursor:pointer;flex-shrink:0;z-index:1;transition:all 0.2s;
 }
-.promo-cta:active{transform:scale(0.95);}
+.promo-btn:active{transform:scale(0.95);}
 
-/* Layanan scroll */
-.lscroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
-.lscroll::-webkit-scrollbar{display:none;}
-.lcard{
+/* Service cards horizontal */
+.sc-wrap{padding:12px 18px 0;}
+.sc-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
+.sc-scroll::-webkit-scrollbar{display:none;}
+.sc{
   background:white;border-radius:18px;padding:16px;
-  min-width:140px;flex-shrink:0;border:1px solid var(--border);
+  min-width:145px;flex-shrink:0;border:1.5px solid var(--border);
   cursor:pointer;transition:all 0.2s;
 }
-.lcard:hover{border-color:var(--b1);transform:translateY(-2px);box-shadow:0 6px 20px rgba(2,132,199,0.12);}
-.lcard:active{transform:scale(0.97);}
-.lcard-ico{font-size:30px;margin-bottom:10px;}
-.lcard-name{font-size:13px;font-weight:700;margin-bottom:4px;}
-.lcard-price{font-size:12px;font-weight:700;color:var(--b2);}
+.sc:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,86,219,0.1);border-color:var(--crystal);}
+.sc:active{transform:scale(0.96);}
+.sc-ico{font-size:28px;margin-bottom:10px;}
+.sc-name{font-size:13px;font-weight:700;margin-bottom:4px;color:var(--ink);}
+.sc-price{font-size:12px;font-weight:700;color:var(--c1);}
 
-/* Testi */
-.testi-card{
-  background:white;border-radius:18px;padding:18px;
-  border:1px solid var(--border);
-}
-.tc-stars{color:var(--amber);font-size:14px;letter-spacing:2px;margin-bottom:10px;}
-.tc-text{font-size:13px;color:var(--sub);line-height:1.65;margin-bottom:14px;font-style:italic;}
-.tc-author{display:flex;align-items:center;gap:10px;}
-.tc-av{
-  width:38px;height:38px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--b2),var(--teal));
-  color:white;font-weight:700;font-size:15px;
-  display:flex;align-items:center;justify-content:center;
-}
-.tc-name{font-size:13px;font-weight:700;}
-.tc-loc{font-size:11px;color:var(--muted);}
-
-/* ── LAYANAN PAGE ── */
-.ph{
-  background:linear-gradient(160deg,var(--b4),var(--b2));
-  padding:20px 20px 24px;
-}
-.ph h1{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:white;margin-bottom:4px;}
-.ph p{color:rgba(255,255,255,0.7);font-size:13px;}
-
-/* Search bar */
-.search-bar{
-  margin:14px 16px 0;position:relative;
-}
-.search-bar input{
-  width:100%;padding:13px 16px 13px 44px;
-  border:1.5px solid var(--border);border-radius:14px;
-  font-family:inherit;font-size:14px;background:white;
-  outline:none;transition:border-color 0.2s;color:var(--text);
-}
-.search-bar input:focus{border-color:var(--b1);}
-.search-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:18px;}
-
-/* Layanan list */
-.llist{padding:14px 16px;display:flex;flex-direction:column;gap:12px;}
-.llcard{
+/* Review */
+.rv-wrap{padding:12px 18px 0;}
+.rv{
   background:white;border-radius:18px;padding:16px;
-  border:1.5px solid var(--border);display:flex;gap:14px;
-  transition:all 0.2s;cursor:pointer;position:relative;overflow:hidden;
+  border:1.5px solid var(--border);
 }
-.llcard::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
-  background:linear-gradient(var(--b1),var(--teal));
-  transform:scaleY(0);transition:transform 0.2s;transform-origin:bottom;
+.rv-stars{color:var(--amber);font-size:13px;letter-spacing:2px;margin-bottom:8px;}
+.rv-text{font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:12px;font-style:italic;}
+.rv-author{display:flex;align-items:center;gap:10px;}
+.rv-av{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--c1),var(--cyan));
+  color:white;font-weight:800;font-size:13px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-.llcard:hover::before{transform:scaleY(1);}
-.llcard:hover{border-color:var(--sky2);box-shadow:0 4px 20px rgba(2,132,199,0.10);}
-.llcard:active{transform:scale(0.98);}
-.ll-ico{
-  width:54px;height:54px;border-radius:16px;background:var(--sky);
-  display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;
+.rv-name{font-size:13px;font-weight:700;color:var(--ink);}
+.rv-loc{font-size:11px;color:var(--gray);}
+
+/* ══════════════════════
+   LAYANAN PAGE
+══════════════════════ */
+.lp-header{
+  background:linear-gradient(145deg,#0d1f3c,#1a56db);
+  padding:20px 18px 20px;
 }
-.ll-info{flex:1;}
-.ll-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;margin-bottom:4px;}
-.ll-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:10px;}
-.ll-bottom{display:flex;align-items:center;justify-content:space-between;}
-.ll-price{font-size:15px;font-weight:700;color:var(--b2);}
-.ll-price span{font-size:11px;font-weight:400;color:var(--muted);}
-.ll-btn{
-  background:var(--b2);color:white;border:none;
-  padding:8px 14px;border-radius:10px;font-size:12px;
-  font-weight:700;font-family:inherit;cursor:pointer;transition:all 0.2s;
+.lp-header h1{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.3rem;font-weight:800;color:white;margin-bottom:4px;
 }
-.ll-btn:hover{background:var(--b3);}
-.ll-btn:active{transform:scale(0.95);}
-.badge-hot{
+.lp-header p{color:rgba(255,255,255,0.65);font-size:13px;}
+
+/* Filter tabs */
+.ftabs{
+  display:flex;gap:8px;padding:14px 18px 0;
+  overflow-x:auto;scrollbar-width:none;
+}
+.ftabs::-webkit-scrollbar{display:none;}
+.ftab{
+  padding:7px 14px;border-radius:100px;
+  font-size:12px;font-weight:700;white-space:nowrap;
+  border:1.5px solid var(--border);background:white;
+  color:var(--gray);cursor:pointer;transition:all 0.2s;flex-shrink:0;
+}
+.ftab.on{background:var(--c1);color:white;border-color:var(--c1);}
+.ftab:active{transform:scale(0.95);}
+
+.lp-list{padding:12px 18px;display:flex;flex-direction:column;gap:10px;}
+.lp-card{
+  background:white;border-radius:18px;padding:16px;
+  border:1.5px solid var(--border);
+  display:flex;gap:14px;align-items:flex-start;
+  cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;
+}
+.lp-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(26,86,219,0.03),transparent);
+  opacity:0;transition:opacity 0.2s;
+}
+.lp-card:hover{border-color:var(--crystal);box-shadow:0 4px 20px rgba(26,86,219,0.08);}
+.lp-card:hover::after{opacity:1;}
+.lp-card:active{transform:scale(0.98);}
+.lp-ico{
+  width:52px;height:52px;border-radius:15px;
+  background:var(--ice);display:flex;align-items:center;
+  justify-content:center;font-size:24px;flex-shrink:0;
+}
+.lp-info{flex:1;}
+.lp-name{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px;
+}
+.lp-desc{font-size:12px;color:var(--gray);line-height:1.55;margin-bottom:10px;}
+.lp-foot{display:flex;align-items:center;justify-content:space-between;}
+.lp-price{font-size:15px;font-weight:800;color:var(--c1);}
+.lp-price small{font-size:11px;font-weight:400;color:var(--gray);}
+.lp-btn{
+  background:var(--ice);color:var(--c1);border:1.5px solid var(--crystal);
+  padding:8px 14px;border-radius:10px;font-size:12px;font-weight:700;
+  font-family:inherit;cursor:pointer;transition:all 0.2s;
+}
+.lp-btn:hover{background:var(--c1);color:white;border-color:var(--c1);}
+.lp-btn:active{transform:scale(0.94);}
+.lp-hot{
   position:absolute;top:12px;right:12px;
-  background:linear-gradient(135deg,var(--rose),#e11d48);
+  background:linear-gradient(135deg,var(--rose),#be123c);
   color:white;font-size:10px;font-weight:700;
   padding:3px 9px;border-radius:100px;
 }
 
-/* ── FORM PAGE ── */
-.fscroll{padding:14px 16px;}
-.fcard{
+/* ══════════════════════
+   PESAN PAGE
+══════════════════════ */
+.pp-header{
+  background:linear-gradient(145deg,#0d1f3c,#1a56db);
+  padding:20px 18px 20px;
+}
+.pp-header h1{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.3rem;font-weight:800;color:white;margin-bottom:4px;
+}
+.pp-header p{color:rgba(255,255,255,0.65);font-size:13px;}
+
+/* Steps indicator */
+.steps-bar{
+  display:flex;align-items:center;padding:16px 18px 0;gap:0;
+}
+.step-dot{
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;transition:all 0.3s;flex-shrink:0;
+}
+.step-dot.done{background:var(--c1);color:white;}
+.step-dot.cur{background:var(--c1);color:white;box-shadow:0 0 0 4px var(--crystal);}
+.step-dot.todo{background:var(--border);color:var(--gray);}
+.step-line{flex:1;height:2px;background:var(--border);transition:background 0.3s;}
+.step-line.done{background:var(--c1);}
+
+.fp-wrap{padding:14px 18px;}
+.fp-card{
   background:white;border-radius:20px;padding:18px;
-  border:1px solid var(--border);margin-bottom:12px;
+  border:1.5px solid var(--border);margin-bottom:12px;
 }
-.fcard-title{
-  font-family:'Syne',sans-serif;font-size:14px;font-weight:800;
-  margin-bottom:16px;display:flex;align-items:center;gap:8px;color:var(--text);
+.fp-title{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:14px;font-weight:800;color:var(--ink);
+  margin-bottom:16px;display:flex;align-items:center;gap:8px;
 }
-.fcard-title span{
-  width:28px;height:28px;border-radius:8px;background:var(--sky);
-  display:flex;align-items:center;justify-content:center;font-size:14px;
+.fp-title-ico{
+  width:30px;height:30px;border-radius:9px;
+  background:var(--ice);display:flex;align-items:center;justify-content:center;font-size:15px;
 }
 .fg{margin-bottom:13px;}
 .fg:last-child{margin-bottom:0;}
-.fg label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;display:block;margin-bottom:6px;}
+.fg label{
+  font-size:11px;font-weight:700;color:var(--gray);
+  letter-spacing:0.4px;text-transform:uppercase;display:block;margin-bottom:6px;
+}
 .fg input,.fg select,.fg textarea{
   width:100%;padding:12px 14px;
   border:1.5px solid var(--border);border-radius:12px;
-  font-family:inherit;font-size:14px;color:var(--text);
-  background:var(--bg);outline:none;transition:all 0.2s;
+  font-family:inherit;font-size:14px;color:var(--ink);
+  background:var(--light);outline:none;transition:all 0.2s;
 }
 .fg input:focus,.fg select:focus,.fg textarea:focus{
-  border-color:var(--b1);background:white;
-  box-shadow:0 0 0 3px rgba(14,165,233,0.08);
+  border-color:var(--c1);background:white;
+  box-shadow:0 0 0 3px rgba(26,86,219,0.07);
 }
-.fg textarea{resize:none;height:78px;}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.fg textarea{resize:none;height:76px;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 
-.submit-btn{
-  width:100%;padding:16px;
-  background:linear-gradient(135deg,var(--b2),var(--b1));
+.sub-btn{
+  width:100%;padding:15px;
+  background:linear-gradient(135deg,#1a56db,#06b6d4);
   color:white;border:none;border-radius:16px;
-  font-family:'Syne',sans-serif;font-size:16px;font-weight:800;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:16px;font-weight:800;
   cursor:pointer;transition:all 0.2s;
-  box-shadow:0 6px 20px rgba(2,132,199,0.35);
+  box-shadow:0 6px 24px rgba(26,86,219,0.3);
   display:flex;align-items:center;justify-content:center;gap:8px;
 }
-.submit-btn:hover{box-shadow:0 8px 28px rgba(2,132,199,0.45);transform:translateY(-1px);}
-.submit-btn:active{transform:scale(0.98);}
+.sub-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(26,86,219,0.4);}
+.sub-btn:active{transform:scale(0.97);}
+.sub-btn:disabled{background:linear-gradient(135deg,#94a3b8,#94a3b8);box-shadow:none;cursor:not-allowed;}
 
-.notif-ok{
-  display:none;margin-top:12px;
-  background:linear-gradient(135deg,#dcfce7,#bbf7d0);
-  border:1.5px solid #86efac;border-radius:16px;
-  padding:18px;text-align:center;
+.ok-box{
+  display:none;background:white;border-radius:20px;
+  padding:28px 20px;text-align:center;
+  border:1.5px solid #bbf7d0;margin-top:12px;
 }
-.notif-ok .nok-icon{font-size:32px;margin-bottom:8px;}
-.notif-ok h4{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#15803d;margin-bottom:4px;}
-.notif-ok p{font-size:13px;color:#16a34a;line-height:1.5;}
+.ok-ico{font-size:48px;margin-bottom:12px;}
+.ok-title{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:18px;font-weight:800;color:var(--green);margin-bottom:6px;
+}
+.ok-text{font-size:13px;color:var(--gray);line-height:1.6;}
 
-/* ── SOSMED PAGE ── */
-.sm-header{
-  background:linear-gradient(160deg,var(--b4),var(--b2));
-  padding:20px 20px 30px;text-align:center;
+/* ══════════════════════
+   SOSMED PAGE
+══════════════════════ */
+.sm-h{
+  background:linear-gradient(145deg,#0d1f3c,#1a56db);
+  padding:28px 18px 32px;text-align:center;
 }
 .sm-av{
-  width:76px;height:76px;border-radius:50%;
-  background:rgba(255,255,255,0.18);margin:0 auto 12px;
-  display:flex;align-items:center;justify-content:center;font-size:34px;
-  border:3px solid rgba(255,255,255,0.3);
+  width:80px;height:80px;border-radius:50%;margin:0 auto 14px;
+  background:linear-gradient(135deg,rgba(255,255,255,0.2),rgba(255,255,255,0.1));
+  border:3px solid rgba(255,255,255,0.25);
+  display:flex;align-items:center;justify-content:center;font-size:36px;
 }
-.sm-header h2{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:white;}
-.sm-header p{color:rgba(255,255,255,0.7);font-size:13px;margin-top:6px;line-height:1.5;}
-.sm-verified{
-  display:inline-flex;align-items:center;gap:4px;
-  background:rgba(255,255,255,0.15);color:white;
-  font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;margin-top:10px;
+.sm-h h2{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.2rem;font-weight:800;color:white;margin-bottom:6px;
+}
+.sm-h p{color:rgba(255,255,255,0.65);font-size:13px;line-height:1.5;}
+.sm-chips{display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.sm-chip{
+  background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.85);
+  font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;
+  border:1px solid rgba(255,255,255,0.2);
 }
 
-.sm-list{padding:14px 16px;display:flex;flex-direction:column;gap:10px;}
-.sm-item{
-  background:white;border-radius:16px;padding:15px 16px;
-  border:1px solid var(--border);display:flex;align-items:center;
-  gap:14px;cursor:pointer;transition:all 0.2s;text-decoration:none;
+.sm-list{padding:14px 18px;display:flex;flex-direction:column;gap:10px;}
+.sm-row{
+  background:white;border-radius:16px;padding:14px 16px;
+  border:1.5px solid var(--border);
+  display:flex;align-items:center;gap:14px;
+  cursor:pointer;transition:all 0.2s;text-decoration:none;
 }
-.sm-item:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(0,0,0,0.06);border-color:var(--sky2);}
-.sm-item:active{transform:scale(0.98);}
+.sm-row:hover{transform:translateX(5px);border-color:var(--crystal);box-shadow:0 4px 16px rgba(26,86,219,0.07);}
+.sm-row:active{transform:scale(0.97);}
 .sm-ico{
   width:46px;height:46px;border-radius:14px;
   display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
 }
 .sm-info{flex:1;}
-.sm-name{font-size:14px;font-weight:700;color:var(--text);}
-.sm-handle{font-size:12px;color:var(--muted);margin-top:2px;}
-.sm-arr{color:var(--muted);font-size:18px;font-weight:300;}
-
-/* ── TENTANG PAGE ── */
-.ta-header{
-  background:linear-gradient(160deg,var(--b4),var(--b2));
-  padding:20px 20px 28px;text-align:center;
+.sm-name{font-size:14px;font-weight:700;color:var(--ink);}
+.sm-sub{font-size:12px;color:var(--gray);margin-top:2px;}
+.sm-arr{
+  width:28px;height:28px;border-radius:8px;background:var(--ice);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--c1);font-size:14px;font-weight:700;flex-shrink:0;
 }
-.ta-logo{font-size:52px;margin-bottom:12px;}
-.ta-header h2{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:white;}
-.ta-header p{color:rgba(255,255,255,0.7);font-size:13px;margin-top:6px;line-height:1.5;}
 
-.ta-body{padding:14px 16px;}
+/* ══════════════════════
+   TENTANG PAGE
+══════════════════════ */
+.ta-h{
+  background:linear-gradient(145deg,#0d1f3c,#1a56db);
+  padding:28px 18px 32px;text-align:center;
+}
+.ta-logo{
+  width:72px;height:72px;border-radius:22px;margin:0 auto 14px;
+  background:linear-gradient(135deg,rgba(255,255,255,0.2),rgba(255,255,255,0.08));
+  border:2px solid rgba(255,255,255,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:32px;
+}
+.ta-h h2{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.2rem;font-weight:800;color:white;margin-bottom:6px;
+}
+.ta-h p{color:rgba(255,255,255,0.65);font-size:13px;line-height:1.6;}
+
+.ta-body{padding:14px 18px;}
 .ta-card{
   background:white;border-radius:20px;padding:18px;
-  border:1px solid var(--border);margin-bottom:12px;
+  border:1.5px solid var(--border);margin-bottom:12px;
 }
-.ta-card-title{
-  font-family:'Syne',sans-serif;font-size:14px;font-weight:800;
-  color:var(--b2);margin-bottom:14px;display:flex;align-items:center;gap:6px;
+.ta-card-t{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:14px;font-weight:800;color:var(--c1);
+  margin-bottom:14px;display:flex;align-items:center;gap:7px;
 }
 .ta-row{
-  display:flex;align-items:flex-start;gap:12px;
-  padding:11px 0;border-bottom:1px solid var(--border);
+  display:flex;gap:12px;padding:10px 0;
+  border-bottom:1px solid var(--border);
 }
 .ta-row:last-child{border-bottom:none;padding-bottom:0;}
-.ta-ico{font-size:20px;flex-shrink:0;margin-top:1px;}
-.ta-lbl{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
-.ta-val{font-size:14px;font-weight:600;color:var(--text);margin-top:2px;}
-
-.nilai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.nv{
-  background:var(--sky);border-radius:14px;padding:14px 8px;
-  text-align:center;border:1px solid var(--sky2);transition:all 0.2s;
+.ta-ico-wrap{
+  width:36px;height:36px;border-radius:10px;background:var(--ice);
+  display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;
 }
-.nv:active{transform:scale(0.97);}
-.nv-ico{font-size:24px;margin-bottom:6px;}
-.nv-txt{font-size:11px;font-weight:700;color:var(--b3);line-height:1.3;}
+.ta-label{font-size:11px;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:0.4px;}
+.ta-val{font-size:14px;font-weight:600;color:var(--ink);margin-top:2px;}
 
-.ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.ach-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
 .ach{
-  background:linear-gradient(135deg,var(--sky),white);
+  background:linear-gradient(135deg,var(--ice),white);
   border-radius:14px;padding:14px 8px;text-align:center;
-  border:1px solid var(--sky2);
+  border:1.5px solid var(--crystal);
 }
-.ach-num{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--b2);}
-.ach-lbl{font-size:11px;color:var(--sub);margin-top:2px;font-weight:500;}
+.ach-n{font-family:'Bricolage Grotesque',sans-serif;font-size:1.25rem;font-weight:800;color:var(--c1);}
+.ach-l{font-size:10px;color:var(--gray);margin-top:2px;font-weight:500;}
 
-/* Animations */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.page.active .hero-float{animation:fadeUp 0.4s ease 0.1s both;}
-.page.active .stats-strip{animation:fadeUp 0.4s ease 0.2s both;}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.feat{
+  background:var(--ice);border-radius:14px;padding:14px;
+  border:1.5px solid var(--crystal);display:flex;gap:10px;align-items:flex-start;
+}
+.feat-ico{font-size:20px;flex-shrink:0;}
+.feat-txt{font-size:12px;font-weight:700;color:var(--ink);line-height:1.4;}
 </style>
 </head>
 <body>
-<div class="app">
+<div class="shell">
 
-  <!-- Status Bar -->
-  <div class="status-bar">
-    <div class="status-time" id="clock">09:41</div>
-    <div class="status-icons">
-      <span>📶</span><span>🔋</span>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="tb-logo">
+      <div class="tb-logo-mark">❄️</div>
+      FrostPro
+    </div>
+    <div class="tb-right">
+      <div class="tb-icon">🔍</div>
+      <div class="tb-icon">🔔<div class="dot"></div></div>
     </div>
   </div>
 
   <div class="pages">
 
-    <!-- ════════ HOME ════════ -->
+    <!-- ══════ HOME ══════ -->
     <div class="page active" id="page-home">
-      <div class="home-header">
-        <div class="hh-top">
-          <div class="hh-logo">
-            <div class="hh-logo-icon">❄️</div>
-            ArcticCool
-          </div>
-          <div class="hh-notif">🔔<div class="notif-dot"></div></div>
-        </div>
-        <div class="hh-greeting">Selamat datang!</div>
-        <div class="hh-title">AC Bersih &<br><span>Dingin Kembali</span> ❄️</div>
-      </div>
 
-      <div class="hero-float">
-        <div class="hf-top">
-          <div class="hf-badge">✅ Garansi 30 Hari</div>
-          <div class="hf-rating">★ 5.0 <span style="color:var(--muted);font-weight:400;font-size:11px;">(500+ ulasan)</span></div>
-        </div>
-        <div class="hf-btns">
-          <button class="hfb hfb-primary" onclick="goPage('pesan')">📋 Pesan Sekarang</button>
-          <button class="hfb hfb-secondary" onclick="goPage('layanan')">🧹 Lihat Layanan</button>
+      <div class="hero">
+        <div class="hero-tag">📍 Melayani Seluruh Kota Medan</div>
+        <h1>Servis AC <em>Cepat</em><br>& Profesional</h1>
+        <div class="hero-sub">Teknisi bersertifikat datang ke rumah kamu. Harga transparan, garansi 30 hari.</div>
+        <div class="hero-cta">
+          <button class="hcta hcta-p" onclick="goPage('pesan')">📋 Pesan Sekarang</button>
+          <button class="hcta hcta-s" onclick="goPage('layanan')">🧹 Lihat Layanan</button>
         </div>
       </div>
 
-      <div class="stats-strip">
-        <div class="ss-item">
-          <div class="ss-num">500+</div>
-          <div class="ss-lbl">Pelanggan</div>
+      <div class="trust">
+        <div class="tr-item">
+          <div class="tr-num">500+</div>
+          <div class="tr-lbl">Pelanggan</div>
         </div>
-        <div class="ss-item">
-          <div class="ss-num">5★</div>
-          <div class="ss-lbl">Rating</div>
+        <div class="tr-item">
+          <div class="tr-num">5.0★</div>
+          <div class="tr-lbl">Rating</div>
         </div>
-        <div class="ss-item">
-          <div class="ss-num">3 Thn</div>
-          <div class="ss-lbl">Pengalaman</div>
+        <div class="tr-item">
+          <div class="tr-num">30hr</div>
+          <div class="tr-lbl">Garansi</div>
+        </div>
+        <div class="tr-item">
+          <div class="tr-num">3Thn</div>
+          <div class="tr-lbl">Pengalaman</div>
         </div>
       </div>
 
-      <div class="section">
-        <div class="sec-head">
-          <div class="sec-title">Menu Cepat</div>
+      <div class="qs-wrap">
+        <div class="sec-hd">
+          <div class="sec-t">Layanan Cepat</div>
         </div>
-        <div class="qmenu">
-          <div class="qm" onclick="goPage('layanan')">
-            <div class="qm-ico" style="background:#e0f2fe;">🧹</div>
-            <div class="qm-lbl">Cuci AC</div>
+        <div class="qs-grid">
+          <div class="qs" onclick="pesanLayanan('Cuci AC Standard (Rp 75.000/unit)')">
+            <div class="qs-ico" style="background:#eff6ff;">🧹</div>
+            <div class="qs-lbl">Cuci AC</div>
           </div>
-          <div class="qm" onclick="goPage('layanan')">
-            <div class="qm-ico" style="background:#ccfbf1;">❄️</div>
-            <div class="qm-lbl">Isi Freon</div>
+          <div class="qs" onclick="pesanLayanan('Cuci AC + Isi Freon (Rp 200.000/unit)')">
+            <div class="qs-ico" style="background:#ecfeff;">❄️</div>
+            <div class="qs-lbl">Isi Freon</div>
           </div>
-          <div class="qm" onclick="goPage('layanan')">
-            <div class="qm-ico" style="background:#fef3c7;">🔧</div>
-            <div class="qm-lbl">Servis</div>
+          <div class="qs" onclick="pesanLayanan('Servis & Perbaikan (Rp 150.000+)')">
+            <div class="qs-ico" style="background:#fefce8;">🔧</div>
+            <div class="qs-lbl">Servis</div>
           </div>
-          <div class="qm" onclick="goPage('pesan')">
-            <div class="qm-ico" style="background:#fce7f3;">📋</div>
-            <div class="qm-lbl">Pesan</div>
+          <div class="qs" onclick="pesanLayanan('Servis Darurat (Rp 100.000)')">
+            <div class="qs-ico" style="background:#fff1f2;">🚨</div>
+            <div class="qs-lbl">Darurat</div>
           </div>
         </div>
       </div>
 
-      <div class="section">
+      <div class="promo-wrap">
         <div class="promo">
-          <div class="promo-txt">
-            <h4>🎁 Promo Paket Hemat!</h4>
-            <p>Cuci 3 unit AC hanya Rp 195.000</p>
+          <div class="promo-l">
+            <h4>🎁 Promo Hemat Hari Ini!</h4>
+            <p>3 unit AC hanya Rp 195.000</p>
           </div>
-          <button class="promo-cta" onclick="goPage('pesan')">Pesan</button>
+          <button class="promo-btn" onclick="pesanLayanan('Paket Rumah 3 Unit (Rp 195.000)')">Ambil</button>
         </div>
       </div>
 
-      <div class="section">
-        <div class="sec-head">
-          <div class="sec-title">Layanan Populer</div>
-          <div class="sec-more" onclick="goPage('layanan')">Semua →</div>
+      <div class="sc-wrap">
+        <div class="sec-hd">
+          <div class="sec-t">Semua Layanan</div>
+          <div class="sec-a" onclick="goPage('layanan')">Lihat semua →</div>
         </div>
-        <div class="lscroll">
-          <div class="lcard" onclick="pesanLayanan('Cuci AC Standard (Rp 75.000/unit)')">
-            <div class="lcard-ico">🧹</div>
-            <div class="lcard-name">Cuci Standard</div>
-            <div class="lcard-price">Rp 75.000</div>
+        <div class="sc-scroll">
+          <div class="sc" onclick="pesanLayanan('Cuci AC Standard (Rp 75.000/unit)')">
+            <div class="sc-ico">🧹</div>
+            <div class="sc-name">Cuci Standard</div>
+            <div class="sc-price">Rp 75.000</div>
           </div>
-          <div class="lcard" onclick="pesanLayanan('Cuci AC + Isi Freon (Rp 200.000/unit)')">
-            <div class="lcard-ico">❄️</div>
-            <div class="lcard-name">Cuci + Freon</div>
-            <div class="lcard-price">Rp 200.000</div>
+          <div class="sc" onclick="pesanLayanan('Cuci AC + Isi Freon (Rp 200.000/unit)')">
+            <div class="sc-ico">❄️</div>
+            <div class="sc-name">Cuci + Freon</div>
+            <div class="sc-price">Rp 200.000</div>
           </div>
-          <div class="lcard" onclick="pesanLayanan('Servis & Perbaikan (Rp 150.000+)')">
-            <div class="lcard-ico">🔧</div>
-            <div class="lcard-name">Servis AC</div>
-            <div class="lcard-price">Rp 150.000</div>
+          <div class="sc" onclick="pesanLayanan('Servis & Perbaikan (Rp 150.000+)')">
+            <div class="sc-ico">🔧</div>
+            <div class="sc-name">Servis AC</div>
+            <div class="sc-price">Rp 150.000</div>
           </div>
-          <div class="lcard" onclick="pesanLayanan('Paket Rumah 3 Unit (Rp 195.000)')">
-            <div class="lcard-ico">🏠</div>
-            <div class="lcard-name">Paket Rumah</div>
-            <div class="lcard-price">Rp 195.000</div>
+          <div class="sc" onclick="pesanLayanan('Paket Rumah 3 Unit (Rp 195.000)')">
+            <div class="sc-ico">🏠</div>
+            <div class="sc-name">Paket Rumah</div>
+            <div class="sc-price">Rp 195.000</div>
           </div>
         </div>
       </div>
 
-      <div class="section" style="padding-bottom:8px;">
-        <div class="sec-head"><div class="sec-title">Testimoni</div></div>
-        <div class="testi-card">
-          <div class="tc-stars">★★★★★</div>
-          <div class="tc-text">"Teknisinya datang tepat waktu dan bersih kerjanya. AC saya yang sudah tidak dingin sekarang kembali seperti baru. Sangat recommended!"</div>
-          <div class="tc-author">
-            <div class="tc-av">R</div>
+      <div class="rv-wrap">
+        <div class="sec-hd"><div class="sec-t">Ulasan Pelanggan</div></div>
+        <div class="rv">
+          <div class="rv-stars">★★★★★</div>
+          <div class="rv-text">"Teknisinya datang tepat waktu, sopan, dan kerjanya bersih. AC saya yang tidak dingin sekarang seperti baru lagi. Pasti bakal order lagi!"</div>
+          <div class="rv-author">
+            <div class="rv-av">D</div>
             <div>
-              <div class="tc-name">Rina Susanti</div>
-              <div class="tc-loc">📍 Medan Sunggal</div>
+              <div class="rv-name">Dewi Rahayu</div>
+              <div class="rv-loc">📍 Medan Helvetia</div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
 
-    <!-- ════════ LAYANAN ════════ -->
+    <!-- ══════ LAYANAN ══════ -->
     <div class="page" id="page-layanan">
-      <div class="ph">
+      <div class="lp-header">
         <h1>Layanan Kami</h1>
-        <p>Pilih layanan yang kamu butuhkan</p>
+        <p>Pilih layanan yang sesuai kebutuhanmu</p>
       </div>
-      <div class="search-bar">
-        <span class="search-ico">🔍</span>
-        <input type="text" placeholder="Cari layanan..." oninput="filterLayanan(this.value)">
+      <div class="ftabs">
+        <div class="ftab on" onclick="filterTab(this,'semua')">Semua</div>
+        <div class="ftab" onclick="filterTab(this,'cuci')">Cuci AC</div>
+        <div class="ftab" onclick="filterTab(this,'servis')">Servis</div>
+        <div class="ftab" onclick="filterTab(this,'paket')">Paket</div>
+        <div class="ftab" onclick="filterTab(this,'darurat')">Darurat</div>
       </div>
-      <div class="llist" id="layanan-list">
-        <div class="llcard" data-name="cuci ac standard">
-          <div class="badge-hot">⭐ Terlaris</div>
-          <div class="ll-ico">🧹</div>
-          <div class="ll-info">
-            <div class="ll-name">Cuci AC Standard</div>
-            <div class="ll-desc">Bersihkan filter, evaporator & kipas. Cocok untuk perawatan rutin 3 bulan sekali.</div>
-            <div class="ll-bottom">
-              <div class="ll-price">Rp 75.000 <span>/ unit</span></div>
-              <button class="ll-btn" onclick="pesanLayanan('Cuci AC Standard (Rp 75.000/unit)')">Pesan</button>
+      <div class="lp-list" id="lp-list">
+        <div class="lp-card" data-cat="cuci">
+          <div class="lp-hot">⭐ Terlaris</div>
+          <div class="lp-ico">🧹</div>
+          <div class="lp-info">
+            <div class="lp-name">Cuci AC Standard</div>
+            <div class="lp-desc">Bersihkan filter, evaporator & kipas. Cocok untuk perawatan rutin 3 bulan sekali.</div>
+            <div class="lp-foot">
+              <div class="lp-price">Rp 75.000 <small>/ unit</small></div>
+              <button class="lp-btn" onclick="pesanLayanan('Cuci AC Standard (Rp 75.000/unit)')">Pesan</button>
             </div>
           </div>
         </div>
-        <div class="llcard" data-name="cuci freon">
-          <div class="ll-ico">❄️</div>
-          <div class="ll-info">
-            <div class="ll-name">Cuci AC + Isi Freon</div>
-            <div class="ll-desc">Cuci menyeluruh ditambah pengisian freon agar AC kembali dingin maksimal.</div>
-            <div class="ll-bottom">
-              <div class="ll-price">Rp 200.000 <span>/ unit</span></div>
-              <button class="ll-btn" onclick="pesanLayanan('Cuci AC + Isi Freon (Rp 200.000/unit)')">Pesan</button>
+        <div class="lp-card" data-cat="cuci">
+          <div class="lp-ico">❄️</div>
+          <div class="lp-info">
+            <div class="lp-name">Cuci AC + Isi Freon</div>
+            <div class="lp-desc">Cuci menyeluruh ditambah pengisian freon agar AC kembali dingin maksimal.</div>
+            <div class="lp-foot">
+              <div class="lp-price">Rp 200.000 <small>/ unit</small></div>
+              <button class="lp-btn" onclick="pesanLayanan('Cuci AC + Isi Freon (Rp 200.000/unit)')">Pesan</button>
             </div>
           </div>
         </div>
-        <div class="llcard" data-name="servis perbaikan">
-          <div class="ll-ico">🔧</div>
-          <div class="ll-info">
-            <div class="ll-name">Servis & Perbaikan</div>
-            <div class="ll-desc">Diagnosa dan perbaikan kerusakan AC — tidak dingin, bocor, berbunyi, atau mati total.</div>
-            <div class="ll-bottom">
-              <div class="ll-price">Rp 150.000 <span>+ spare part</span></div>
-              <button class="ll-btn" onclick="pesanLayanan('Servis & Perbaikan (Rp 150.000+)')">Pesan</button>
+        <div class="lp-card" data-cat="servis">
+          <div class="lp-ico">🔧</div>
+          <div class="lp-info">
+            <div class="lp-name">Servis & Perbaikan</div>
+            <div class="lp-desc">Diagnosa dan perbaikan kerusakan — tidak dingin, bocor, berbunyi, atau mati total.</div>
+            <div class="lp-foot">
+              <div class="lp-price">Rp 150.000 <small>+ spare part</small></div>
+              <button class="lp-btn" onclick="pesanLayanan('Servis & Perbaikan (Rp 150.000+)')">Pesan</button>
             </div>
           </div>
         </div>
-        <div class="llcard" data-name="paket rumah">
-          <div class="ll-ico">🏠</div>
-          <div class="ll-info">
-            <div class="ll-name">Paket Rumah (3 Unit)</div>
-            <div class="ll-desc">Cuci 3 unit AC sekaligus dengan harga spesial. Hemat lebih banyak!</div>
-            <div class="ll-bottom">
-              <div class="ll-price">Rp 195.000 <span>/ paket</span></div>
-              <button class="ll-btn" onclick="pesanLayanan('Paket Rumah 3 Unit (Rp 195.000)')">Pesan</button>
+        <div class="lp-card" data-cat="paket">
+          <div class="lp-ico">🏠</div>
+          <div class="lp-info">
+            <div class="lp-name">Paket Rumah (3 Unit)</div>
+            <div class="lp-desc">Cuci 3 unit AC sekaligus dengan harga spesial. Lebih hemat untuk seluruh rumah.</div>
+            <div class="lp-foot">
+              <div class="lp-price">Rp 195.000 <small>/ paket</small></div>
+              <button class="lp-btn" onclick="pesanLayanan('Paket Rumah 3 Unit (Rp 195.000)')">Pesan</button>
             </div>
           </div>
         </div>
-        <div class="llcard" data-name="kantor gedung">
-          <div class="ll-ico">🏢</div>
-          <div class="ll-info">
-            <div class="ll-name">AC Kantor & Gedung</div>
-            <div class="ll-desc">Layanan khusus AC central, cassette & standing unit untuk perkantoran.</div>
-            <div class="ll-bottom">
-              <div class="ll-price">Hubungi Kami</div>
-              <button class="ll-btn" onclick="pesanLayanan('AC Kantor & Gedung')">Tanya</button>
+        <div class="lp-card" data-cat="paket">
+          <div class="lp-ico">🏢</div>
+          <div class="lp-info">
+            <div class="lp-name">AC Kantor & Gedung</div>
+            <div class="lp-desc">Layanan khusus AC central, cassette & standing unit untuk perkantoran komersial.</div>
+            <div class="lp-foot">
+              <div class="lp-price">Hubungi Kami</div>
+              <button class="lp-btn" onclick="pesanLayanan('AC Kantor & Gedung')">Tanya</button>
             </div>
           </div>
         </div>
-        <div class="llcard" data-name="darurat emergency">
-          <div class="ll-ico">🚨</div>
-          <div class="ll-info">
-            <div class="ll-name">Servis Darurat</div>
-            <div class="ll-desc">AC rusak mendadak? Kami siap datang hari yang sama termasuk akhir pekan.</div>
-            <div class="ll-bottom">
-              <div class="ll-price">Rp 100.000 <span>biaya panggil</span></div>
-              <button class="ll-btn" onclick="pesanLayanan('Servis Darurat (Rp 100.000)')">Pesan</button>
+        <div class="lp-card" data-cat="darurat">
+          <div class="lp-ico">🚨</div>
+          <div class="lp-info">
+            <div class="lp-name">Servis Darurat</div>
+            <div class="lp-desc">AC rusak mendadak? Kami siap datang hari yang sama termasuk Sabtu & Minggu.</div>
+            <div class="lp-foot">
+              <div class="lp-price">Rp 100.000 <small>biaya panggil</small></div>
+              <button class="lp-btn" onclick="pesanLayanan('Servis Darurat (Rp 100.000)')">Pesan</button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ════════ FORM PESAN ════════ -->
+    <!-- ══════ PESAN ══════ -->
     <div class="page" id="page-pesan">
-      <div class="ph">
-        <h1>Pesan Jasa</h1>
-        <p>Kami hubungi kamu dalam 30 menit</p>
+      <div class="pp-header">
+        <h1>Buat Pesanan</h1>
+        <p>Isi data dan kami hubungi dalam 30 menit</p>
       </div>
-      <div class="fscroll">
-        <div class="fcard">
-          <div class="fcard-title"><span>👤</span> Data Diri</div>
+
+      <div class="steps-bar">
+        <div class="step-dot cur" id="sd1">1</div>
+        <div class="step-line" id="sl1"></div>
+        <div class="step-dot todo" id="sd2">2</div>
+        <div class="step-line" id="sl2"></div>
+        <div class="step-dot todo" id="sd3">3</div>
+      </div>
+
+      <div class="fp-wrap">
+        <div class="fp-card">
+          <div class="fp-title"><div class="fp-title-ico">👤</div> Data Diri</div>
           <div class="fg">
             <label>Nama Lengkap</label>
-            <input type="text" id="f-nama" placeholder="Contoh: Budi Santoso">
+            <input type="text" id="f-nama" placeholder="Contoh: Budi Santoso" oninput="updateSteps()">
           </div>
           <div class="fg">
             <label>Nomor WhatsApp</label>
-            <input type="tel" id="f-hp" placeholder="08xxxxxxxxxx">
+            <input type="tel" id="f-hp" placeholder="08xxxxxxxxxx" oninput="updateSteps()">
           </div>
           <div class="fg">
             <label>Alamat Lengkap</label>
-            <input type="text" id="f-alamat" placeholder="Jalan, nomor, kecamatan, Medan">
+            <input type="text" id="f-alamat" placeholder="Jalan, nomor, kecamatan, Medan" oninput="updateSteps()">
           </div>
         </div>
 
-        <div class="fcard">
-          <div class="fcard-title"><span>🧹</span> Detail Layanan</div>
+        <div class="fp-card">
+          <div class="fp-title"><div class="fp-title-ico">🧹</div> Detail Layanan</div>
           <div class="fg">
             <label>Jenis Layanan</label>
-            <select id="f-layanan">
+            <select id="f-layanan" onchange="updateSteps()">
               <option value="">-- Pilih Layanan --</option>
               <option>Cuci AC Standard (Rp 75.000/unit)</option>
               <option>Cuci AC + Isi Freon (Rp 200.000/unit)</option>
@@ -675,7 +765,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:#e8f2fa;overfl
               <option>Servis Darurat (Rp 100.000)</option>
             </select>
           </div>
-          <div class="frow">
+          <div class="fg-row">
             <div class="fg">
               <label>Jumlah Unit</label>
               <select id="f-unit">
@@ -694,12 +784,12 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:#e8f2fa;overfl
           </div>
         </div>
 
-        <div class="fcard">
-          <div class="fcard-title"><span>📅</span> Jadwal Kunjungan</div>
-          <div class="frow">
+        <div class="fp-card">
+          <div class="fp-title"><div class="fp-title-ico">📅</div> Jadwal Kunjungan</div>
+          <div class="fg-row">
             <div class="fg">
               <label>Tanggal</label>
-              <input type="date" id="f-tanggal">
+              <input type="date" id="f-tanggal" oninput="updateSteps()">
             </div>
             <div class="fg">
               <label>Waktu</label>
@@ -716,225 +806,251 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:#e8f2fa;overfl
           </div>
         </div>
 
-        <button class="submit-btn" id="submit-btn" onclick="kirimPesanan()">
+        <button class="sub-btn" id="sub-btn" onclick="kirimPesanan()">
           ❄️ Kirim Pesanan Sekarang
         </button>
-        <div class="notif-ok" id="notif-ok">
-          <div class="nok-icon">🎉</div>
-          <h4>Pesanan Berhasil Dikirim!</h4>
-          <p>Tim kami akan menghubungi kamu via WhatsApp dalam 30 menit. Terima kasih sudah mempercayai ArcticCool!</p>
+
+        <div class="ok-box" id="ok-box">
+          <div class="ok-ico">🎉</div>
+          <div class="ok-title">Pesanan Berhasil!</div>
+          <div class="ok-text">Tim kami akan menghubungi kamu via WhatsApp dalam 30 menit. Terima kasih sudah mempercayai FrostPro!</div>
         </div>
       </div>
     </div>
 
-    <!-- ════════ SOSMED ════════ -->
+    <!-- ══════ SOSMED ══════ -->
     <div class="page" id="page-sosmed">
-      <div class="sm-header">
+      <div class="sm-h">
         <div class="sm-av">❄️</div>
-        <h2>ArcticCool Medan</h2>
-        <p>Ikuti kami untuk promo terbaru<br>dan tips perawatan AC</p>
-        <div class="sm-verified">✅ Bisnis Terverifikasi</div>
+        <h2>FrostPro Medan</h2>
+        <p>Ikuti kami di media sosial untuk<br>promo eksklusif & tips AC</p>
+        <div class="sm-chips">
+          <div class="sm-chip">✅ Terverifikasi</div>
+          <div class="sm-chip">⭐ 5.0 Rating</div>
+          <div class="sm-chip">📍 Medan</div>
+        </div>
       </div>
       <div class="sm-list">
-        <a class="sm-item" href="https://wa.me/6281234567890" target="_blank">
+        <a class="sm-row" href="https://wa.me/6281234567890" target="_blank">
           <div class="sm-ico" style="background:#dcfce7;">💬</div>
           <div class="sm-info">
             <div class="sm-name">WhatsApp</div>
-            <div class="sm-handle">+62 812-3456-7890 · Chat langsung</div>
+            <div class="sm-sub">+62 812-3456-7890 · Chat langsung</div>
           </div>
           <div class="sm-arr">›</div>
         </a>
-        <a class="sm-item" href="#" target="_blank">
-          <div class="sm-ico" style="background:#dbeafe;">👤</div>
+        <a class="sm-row" href="#" target="_blank">
+          <div class="sm-ico" style="background:#dbeafe;">📘</div>
           <div class="sm-info">
             <div class="sm-name">Facebook</div>
-            <div class="sm-handle">@ArcticCool Medan</div>
+            <div class="sm-sub">@FrostPro Medan</div>
           </div>
           <div class="sm-arr">›</div>
         </a>
-        <a class="sm-item" href="#" target="_blank">
+        <a class="sm-row" href="#" target="_blank">
           <div class="sm-ico" style="background:#fce7f3;">📸</div>
           <div class="sm-info">
             <div class="sm-name">Instagram</div>
-            <div class="sm-handle">@arcticcool.medan</div>
+            <div class="sm-sub">@frostpro.medan</div>
           </div>
           <div class="sm-arr">›</div>
         </a>
-        <a class="sm-item" href="#" target="_blank">
+        <a class="sm-row" href="#" target="_blank">
           <div class="sm-ico" style="background:#e0f2fe;">✈️</div>
           <div class="sm-info">
             <div class="sm-name">Telegram</div>
-            <div class="sm-handle">@arcticcoolmedan</div>
+            <div class="sm-sub">@frostpromedan</div>
           </div>
           <div class="sm-arr">›</div>
         </a>
-        <a class="sm-item" href="#" target="_blank">
+        <a class="sm-row" href="#" target="_blank">
           <div class="sm-ico" style="background:#f1f5f9;">🎵</div>
           <div class="sm-info">
             <div class="sm-name">TikTok</div>
-            <div class="sm-handle">@arcticcool.medan</div>
+            <div class="sm-sub">@frostpro.medan</div>
           </div>
           <div class="sm-arr">›</div>
         </a>
-        <a class="sm-item" href="#" target="_blank">
+        <a class="sm-row" href="#" target="_blank">
           <div class="sm-ico" style="background:#fef9c3;">📍</div>
           <div class="sm-info">
             <div class="sm-name">Google Maps</div>
-            <div class="sm-handle">Temukan & beri ulasan</div>
+            <div class="sm-sub">Temukan lokasi & beri ulasan</div>
           </div>
           <div class="sm-arr">›</div>
         </a>
-        <a class="sm-item" href="mailto:info@arcticcool.id">
+        <a class="sm-row" href="mailto:info@frostpro.id">
           <div class="sm-ico" style="background:#ede9fe;">📧</div>
           <div class="sm-info">
             <div class="sm-name">Email</div>
-            <div class="sm-handle">info@arcticcool.id</div>
+            <div class="sm-sub">info@frostpro.id</div>
           </div>
           <div class="sm-arr">›</div>
         </a>
       </div>
     </div>
 
-    <!-- ════════ TENTANG ════════ -->
+    <!-- ══════ TENTANG ══════ -->
     <div class="page" id="page-tentang">
-      <div class="ta-header">
+      <div class="ta-h">
         <div class="ta-logo">❄️</div>
-        <h2>ArcticCool Medan</h2>
-        <p>Jasa cuci & servis AC profesional<br>terpercaya di Kota Medan sejak 2022</p>
+        <h2>FrostPro Medan</h2>
+        <p>Jasa servis AC profesional terpercaya<br>di Kota Medan sejak 2022</p>
       </div>
       <div class="ta-body">
 
         <div class="ta-card">
-          <div class="ta-card-title">📊 Pencapaian</div>
-          <div class="ach-grid">
-            <div class="ach"><div class="ach-num">500+</div><div class="ach-lbl">Pelanggan</div></div>
-            <div class="ach"><div class="ach-num">5★</div><div class="ach-lbl">Rating</div></div>
-            <div class="ach"><div class="ach-num">3 Thn</div><div class="ach-lbl">Pengalaman</div></div>
+          <div class="ta-card-t">📊 Pencapaian Kami</div>
+          <div class="ach-row">
+            <div class="ach"><div class="ach-n">500+</div><div class="ach-l">Pelanggan</div></div>
+            <div class="ach"><div class="ach-n">5.0★</div><div class="ach-l">Rating</div></div>
+            <div class="ach"><div class="ach-n">3 Thn</div><div class="ach-l">Berdiri</div></div>
           </div>
         </div>
 
         <div class="ta-card">
-          <div class="ta-card-title">📞 Kontak</div>
+          <div class="ta-card-t">📞 Informasi Kontak</div>
           <div class="ta-row">
-            <div class="ta-ico">📱</div>
-            <div><div class="ta-lbl">WhatsApp / Telepon</div><div class="ta-val">0812-3456-7890</div></div>
+            <div class="ta-ico-wrap">📱</div>
+            <div><div class="ta-label">WhatsApp / Telepon</div><div class="ta-val">0812-3456-7890</div></div>
           </div>
           <div class="ta-row">
-            <div class="ta-ico">📧</div>
-            <div><div class="ta-lbl">Email</div><div class="ta-val">info@arcticcool.id</div></div>
+            <div class="ta-ico-wrap">📧</div>
+            <div><div class="ta-label">Email</div><div class="ta-val">info@frostpro.id</div></div>
           </div>
           <div class="ta-row">
-            <div class="ta-ico">📍</div>
-            <div><div class="ta-lbl">Area Layanan</div><div class="ta-val">Seluruh wilayah Kota Medan</div></div>
+            <div class="ta-ico-wrap">📍</div>
+            <div><div class="ta-label">Area Layanan</div><div class="ta-val">Seluruh wilayah Kota Medan</div></div>
           </div>
           <div class="ta-row">
-            <div class="ta-ico">⏰</div>
-            <div><div class="ta-lbl">Jam Operasional</div><div class="ta-val">Senin–Minggu, 07.00–20.00 WIB</div></div>
+            <div class="ta-ico-wrap">⏰</div>
+            <div><div class="ta-label">Jam Operasional</div><div class="ta-val">Senin–Minggu, 07.00–20.00 WIB</div></div>
           </div>
         </div>
 
         <div class="ta-card">
-          <div class="ta-card-title">⭐ Keunggulan</div>
-          <div class="nilai-grid">
-            <div class="nv"><div class="nv-ico">🎓</div><div class="nv-txt">Teknisi Bersertifikat</div></div>
-            <div class="nv"><div class="nv-ico">🛡️</div><div class="nv-txt">Garansi 30 Hari</div></div>
-            <div class="nv"><div class="nv-ico">💰</div><div class="nv-txt">Harga Transparan</div></div>
-            <div class="nv"><div class="nv-ico">⚡</div><div class="nv-txt">Respon Cepat</div></div>
-            <div class="nv"><div class="nv-ico">🧴</div><div class="nv-txt">Ramah Lingkungan</div></div>
-            <div class="nv"><div class="nv-ico">🚗</div><div class="nv-txt">Gratis Ongkir</div></div>
+          <div class="ta-card-t">⭐ Keunggulan Kami</div>
+          <div class="feat-grid">
+            <div class="feat"><div class="feat-ico">🎓</div><div class="feat-txt">Teknisi Bersertifikat</div></div>
+            <div class="feat"><div class="feat-ico">🛡️</div><div class="feat-txt">Garansi 30 Hari</div></div>
+            <div class="feat"><div class="feat-ico">💰</div><div class="feat-txt">Harga Transparan</div></div>
+            <div class="feat"><div class="feat-ico">⚡</div><div class="feat-txt">Respon Cepat</div></div>
+            <div class="feat"><div class="feat-ico">🧴</div><div class="feat-txt">Cairan Ramah Lingkungan</div></div>
+            <div class="feat"><div class="feat-ico">🚗</div><div class="feat-txt">Gratis Ongkos Datang</div></div>
           </div>
         </div>
 
       </div>
     </div>
 
-  </div><!-- end pages -->
+  </div><!-- pages -->
 
   <!-- BOTTOM NAV -->
   <nav class="bnav">
-    <div class="ni active" id="nav-home" onclick="goPage('home')">
-      <div class="ni-icon">🏠</div>
-      <div class="ni-label">Beranda</div>
+    <div class="bni on" id="nav-home" onclick="goPage('home')">
+      <div class="bni-ico">🏠</div>
+      <div class="bni-lbl">Beranda</div>
     </div>
-    <div class="ni" id="nav-layanan" onclick="goPage('layanan')">
-      <div class="ni-icon">🧹</div>
-      <div class="ni-label">Layanan</div>
+    <div class="bni" id="nav-layanan" onclick="goPage('layanan')">
+      <div class="bni-ico">🧹</div>
+      <div class="bni-lbl">Layanan</div>
     </div>
-    <div class="ni" id="nav-pesan" onclick="goPage('pesan')">
-      <div class="ni-icon">📋</div>
-      <div class="ni-label">Pesan</div>
+    <div class="bni" id="nav-pesan" onclick="goPage('pesan')">
+      <div class="bni-ico">📋</div>
+      <div class="bni-lbl">Pesan</div>
     </div>
-    <div class="ni" id="nav-sosmed" onclick="goPage('sosmed')">
-      <div class="ni-icon">💬</div>
-      <div class="ni-label">Sosmed</div>
+    <div class="bni" id="nav-sosmed" onclick="goPage('sosmed')">
+      <div class="bni-ico">💬</div>
+      <div class="bni-lbl">Sosmed</div>
     </div>
-    <div class="ni" id="nav-tentang" onclick="goPage('tentang')">
-      <div class="ni-icon">ℹ️</div>
-      <div class="ni-label">Tentang</div>
+    <div class="bni" id="nav-tentang" onclick="goPage('tentang')">
+      <div class="bni-ico">ℹ️</div>
+      <div class="bni-lbl">Tentang</div>
     </div>
   </nav>
 
 </div>
 
 <script>
-// Clock
-function updateClock(){
-  const now=new Date();
-  const h=String(now.getHours()).padStart(2,'0');
-  const m=String(now.getMinutes()).padStart(2,'0');
-  document.getElementById('clock').textContent=h+':'+m;
-}
-updateClock();setInterval(updateClock,1000);
-
 // Navigation
 function goPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  document.querySelectorAll('.bni').forEach(n=>n.classList.remove('on'));
   document.getElementById('page-'+name).classList.add('active');
-  document.getElementById('nav-'+name).classList.add('active');
+  document.getElementById('nav-'+name).classList.add('on');
   document.getElementById('page-'+name).scrollTop=0;
 }
 
-// Select layanan from card
+// Pesan from card
 function pesanLayanan(val){
   goPage('pesan');
   setTimeout(()=>{
     const s=document.getElementById('f-layanan');
-    for(let o of s.options){if(o.value===val||o.text===val){s.value=o.value;break;}}
-  },150);
+    for(let o of s.options){
+      if(o.value===val||o.text===val){s.value=o.value;break;}
+    }
+    updateSteps();
+  },200);
 }
 
-// Filter layanan
-function filterLayanan(q){
-  const cards=document.querySelectorAll('#layanan-list .llcard');
-  cards.forEach(c=>{
-    const name=c.dataset.name||'';
-    c.style.display=name.includes(q.toLowerCase())||q===''?'flex':'none';
+// Filter tabs
+function filterTab(el,cat){
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  document.querySelectorAll('#lp-list .lp-card').forEach(c=>{
+    c.style.display=(cat==='semua'||c.dataset.cat===cat)?'flex':'none';
   });
 }
 
-// Submit form
+// Steps indicator
+function updateSteps(){
+  const nama=document.getElementById('f-nama').value.trim();
+  const hp=document.getElementById('f-hp').value.trim();
+  const alamat=document.getElementById('f-alamat').value.trim();
+  const layanan=document.getElementById('f-layanan').value;
+  const tanggal=document.getElementById('f-tanggal').value;
+  const s1=nama&&hp&&alamat;
+  const s2=s1&&layanan;
+  const s3=s2&&tanggal;
+  const sd1=document.getElementById('sd1');
+  const sd2=document.getElementById('sd2');
+  const sd3=document.getElementById('sd3');
+  const sl1=document.getElementById('sl1');
+  const sl2=document.getElementById('sl2');
+  sd1.className='step-dot '+(s1?'done':'cur');
+  sl1.className='step-line '+(s1?'done':'');
+  sd2.className='step-dot '+(s2?'done':s1?'cur':'todo');
+  sl2.className='step-line '+(s2?'done':'');
+  sd3.className='step-dot '+(s3?'done':s2?'cur':'todo');
+}
+
+// Submit
 function kirimPesanan(){
   const nama=document.getElementById('f-nama').value.trim();
   const hp=document.getElementById('f-hp').value.trim();
   const alamat=document.getElementById('f-alamat').value.trim();
   const layanan=document.getElementById('f-layanan').value;
   if(!nama||!hp||!alamat||!layanan){
-    alert('⚠️ Mohon isi semua kolom yang wajib!');return;
+    alert('⚠️ Mohon lengkapi semua kolom yang wajib diisi!');return;
   }
-  const btn=document.getElementById('submit-btn');
+  const btn=document.getElementById('sub-btn');
   btn.innerHTML='⏳ Mengirim pesanan...';
   btn.disabled=true;
-  btn.style.background='linear-gradient(135deg,#94a3b8,#94a3b8)';
-  btn.style.boxShadow='none';
   setTimeout(()=>{
-    document.getElementById('notif-ok').style.display='block';
+    const ok=document.getElementById('ok-box');
+    ok.style.display='block';
     btn.innerHTML='✅ Pesanan Terkirim!';
-    btn.style.background='linear-gradient(135deg,#10b981,#059669)';
-    btn.style.boxShadow='0 6px 20px rgba(16,185,129,0.35)';
-    document.getElementById('notif-ok').scrollIntoView({behavior:'smooth',block:'center'});
+    btn.style.background='linear-gradient(135deg,#059669,#10b981)';
+    btn.style.boxShadow='0 6px 24px rgba(5,150,105,0.35)';
+    ok.scrollIntoView({behavior:'smooth',block:'center'});
     ['f-nama','f-hp','f-alamat','f-catatan'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('f-layanan').value='';
+    // reset steps
+    document.getElementById('sd1').className='step-dot cur';
+    document.getElementById('sd2').className='step-dot todo';
+    document.getElementById('sd3').className='step-dot todo';
+    document.getElementById('sl1').className='step-line';
+    document.getElementById('sl2').className='step-line';
   },1800);
 }
 </script>
