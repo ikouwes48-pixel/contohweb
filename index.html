@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prediksi Bola Pro</title>
+    <title>Prediksi Bola Pro - Live Update</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
@@ -16,7 +16,7 @@
             <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2">
                 FOOTBALL PREDICTION
             </h1>
-            <p class="text-slate-400">Jadwal Pertandingan & Analisis Skor Terkini</p>
+            <p class="text-slate-400 font-medium">Jadwal & Analisis Skor Terkini (Real-Time)</p>
         </header>
 
         <div id="match-list" class="grid gap-6">
@@ -33,16 +33,21 @@
             if (error) return console.error(error);
 
             const container = document.getElementById('match-list');
+            if (data.length === 0) {
+                container.innerHTML = '<div class="text-center p-10 bg-slate-800/30 rounded-2xl border border-dashed border-slate-700 text-slate-500">Belum ada jadwal pertandingan saat ini.</div>';
+                return;
+            }
+
             container.innerHTML = data.map(item => `
                 <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-2xl backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300">
                     <div class="flex justify-between items-center mb-4">
                         <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-xs font-bold rounded-full uppercase tracking-wider">${item.liga}</span>
                         <span class="text-slate-500 text-sm italic">🕒 ${item.jam}</span>
                     </div>
-                    <div class="flex items-center justify-around text-center">
-                        <div class="flex-1 font-bold text-lg">${item.tim_a}</div>
+                    <div class="flex items-center justify-around text-center gap-2">
+                        <div class="flex-1 font-bold text-lg md:text-xl">${item.tim_a}</div>
                         <div class="px-4 font-black text-2xl text-cyan-500 italic">VS</div>
-                        <div class="flex-1 font-bold text-lg">${item.tim_b}</div>
+                        <div class="flex-1 font-bold text-lg md:text-xl">${item.tim_b}</div>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-700/50 flex justify-between items-center">
                         <span class="text-slate-400 text-sm">Prediksi Skor:</span>
@@ -53,7 +58,14 @@
         }
 
         tampilkanData();
-        _supabase.channel('public:jadwal_bola').on('postgres_changes', { event: '*', schema: 'public', table: 'jadwal_bola' }, () => tampilkanData()).subscribe();
+
+        // FITUR REALTIME
+        _supabase
+            .channel('public:jadwal_bola')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'jadwal_bola' }, () => {
+                tampilkanData();
+            })
+            .subscribe();
     </script>
 </body>
 </html>
