@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Prediksi Bola</title>
+    <meta charset="UTF-8">
+    <title>Prediksi Bola Hari Ini</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <style>
+        body { font-family: Arial; background: #1a1a1a; color: white; text-align: center; }
+        .match-card { background: #333; margin: 10px auto; padding: 20px; width: 80%; border-radius: 8px; border-left: 5px solid #ffd700; }
+        .vs { font-weight: bold; color: #ffd700; }
+    </style>
 </head>
 <body>
+    <h1>Jadwal & Prediksi Pertandingan</h1>
+    <div id="match-container">Memuat jadwal...</div>
 
-<h1>Prediksi Skor Hari Ini</h1>
+    <script>
+        const firebaseConfig = {
+            // PASTE KONFIGURASI FIREBASE ANDA DI SINI
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database().ref('matches');
 
-<div id="match-list"></div>
-
-<script type="module">
-  // Import Firebase
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "ISI_API_KEY_KAMU",
-    authDomain: "ISI_DOMAIN_KAMU",
-    projectId: "ISI_PROJECT_ID_KAMU"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  const matchList = document.getElementById("match-list");
-
-  async function loadMatches() {
-    const querySnapshot = await getDocs(collection(db, "matches"));
-    
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-
-      const div = document.createElement("div");
-      div.innerHTML = `
-        <h3>${data.match}</h3>
-        <p>Jam: ${data.time}</p>
-        <p>Prediksi: ${data.prediction}</p>
-        <hr>
-      `;
-      matchList.appendChild(div);
-    });
-  }
-
-  loadMatches();
-</script>
-
+        db.on('value', (snapshot) => {
+            const container = document.getElementById('match-container');
+            container.innerHTML = '';
+            snapshot.forEach((childSnapshot) => {
+                const data = childSnapshot.val();
+                container.innerHTML += `
+                    <div class="match-card">
+                        <h3>${data.liga}</h3>
+                        <p>${data.timA} <span class="vs">VS</span> ${data.timB}</p>
+                        <p>Waktu: ${data.jam}</p>
+                        <p>Prediksi Skor: <strong>${data.prediksi}</strong></p>
+                    </div>
+                `;
+            });
+        });
+    </script>
 </body>
 </html>
