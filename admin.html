@@ -2,73 +2,95 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Super Dashboard - Prediksi Bola</title>
+    <title>Super Admin - Manage Schedule</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body class="bg-slate-100 min-h-screen font-sans">
+<body class="bg-slate-50 min-h-screen font-sans text-slate-800">
 
     <div id="login-section" class="flex items-center justify-center min-h-screen p-4">
-        <div class="bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md border-t-8 border-blue-600">
-            <h2 class="text-3xl font-black mb-8 text-center text-slate-800 italic">ADMIN LOGIN</h2>
-            <div class="space-y-4">
-                <input type="text" id="userid" placeholder="User ID" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-blue-500">
-                <input type="password" id="password" placeholder="Password" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-blue-500">
-                <button id="btnLogin" class="w-full py-4 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-2xl transition-all shadow-lg active:scale-95">MASUK DASHBOARD</button>
-            </div>
+        <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl w-full max-w-md border border-slate-100 text-center">
+            <div class="w-16 h-16 bg-blue-600 rounded-2xl mx-auto mb-6 flex items-center justify-center text-white text-3xl shadow-lg shadow-blue-200">⚽</div>
+            <h2 class="text-2xl font-black mb-8 italic tracking-tight">ADMIN PANEL</h2>
+            <input type="text" id="userid" placeholder="User ID" class="w-full p-4 mb-3 bg-slate-50 border-0 rounded-2xl outline-none ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500 transition-all">
+            <input type="password" id="password" placeholder="Password" class="w-full p-4 mb-6 bg-slate-50 border-0 rounded-2xl outline-none ring-1 ring-slate-200 focus:ring-2 focus:ring-blue-500 transition-all">
+            <button id="btnLogin" class="w-full py-4 bg-slate-900 text-white font-bold rounded-2xl shadow-xl hover:bg-black transition-all active:scale-95">LOGIN SYSTEM</button>
         </div>
     </div>
 
-    <div id="admin-section" class="hidden p-4 md:p-8">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-            <h1 class="text-2xl font-black text-slate-800 italic">⚽ PENGELOLA PREDIKSI</h1>
-            <button onclick="logout()" class="px-6 py-2 bg-red-100 text-red-600 rounded-xl font-bold hover:bg-red-200 transition-all">KELUAR</button>
+    <div id="admin-section" class="hidden p-4 md:p-10">
+        <div class="max-w-6xl mx-auto flex justify-between items-center mb-10">
+            <div>
+                <h1 class="text-3xl font-black text-slate-900 italic tracking-tighter">DASHBOARD</h1>
+                <p class="text-slate-400 text-sm font-bold uppercase tracking-widest">Football Prediction Manager</p>
+            </div>
+            <button onclick="logout()" class="px-6 py-2 bg-white text-red-500 border border-red-100 rounded-xl font-bold shadow-sm hover:bg-red-50 transition-all">LOGOUT</button>
         </div>
 
-        <div class="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-12 gap-10">
             
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 h-fit">
-                <h2 id="form-title" class="text-xl font-bold mb-6 text-blue-600">Tambah Jadwal</h2>
+            <div class="lg:col-span-4 bg-white p-8 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100">
+                <h2 id="form-title" class="text-xl font-black mb-8 text-slate-800 border-l-4 border-blue-600 pl-4 uppercase tracking-tight">Add Schedule</h2>
                 <input type="hidden" id="edit-id">
-                <div class="space-y-4">
-                    <input type="text" id="liga" placeholder="Nama Liga" class="w-full p-3 bg-slate-50 border rounded-xl outline-none">
+                <div class="space-y-4 text-xs font-bold text-slate-500">
+                    <div>
+                        <label class="mb-1 block">TOURNAMENT / LIGA</label>
+                        <input type="text" id="liga" placeholder="E.g. Premier League" class="w-full p-4 bg-slate-50 rounded-2xl outline-none ring-1 ring-slate-100 focus:ring-2 focus:ring-blue-500">
+                    </div>
                     
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="text" id="logo_a" placeholder="Link Logo Tim A" class="p-3 bg-slate-50 border rounded-xl text-xs">
-                        <input type="text" id="logo_b" placeholder="Link Logo Tim B" class="p-3 bg-slate-50 border rounded-xl text-xs">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="mb-1 block text-blue-600 uppercase">Team A (Home)</label>
+                            <input type="text" id="timA" placeholder="Team Name" class="w-full p-4 bg-slate-50 rounded-2xl outline-none ring-1 ring-slate-100 focus:ring-2 focus:ring-blue-500">
+                            <input type="text" id="logo_a" placeholder="Logo URL" class="w-full p-3 mt-2 bg-slate-50 rounded-xl text-[9px] outline-none border border-slate-100">
+                        </div>
+                        <div>
+                            <label class="mb-1 block text-red-600 uppercase">Team B (Away)</label>
+                            <input type="text" id="timB" placeholder="Team Name" class="w-full p-4 bg-slate-50 rounded-2xl outline-none ring-1 ring-slate-100 focus:ring-2 focus:ring-blue-500">
+                            <input type="text" id="logo_b" placeholder="Logo URL" class="w-full p-3 mt-2 bg-slate-50 rounded-xl text-[9px] outline-none border border-slate-100">
+                        </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="text" id="timA" placeholder="Tim A" class="p-3 bg-slate-50 border rounded-xl outline-none">
-                        <input type="text" id="timB" placeholder="Tim B" class="p-3 bg-slate-50 border rounded-xl outline-none">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="mb-1 block">MATCH DATE</label>
+                            <input type="text" id="tanggal" placeholder="E.g. 08 April" class="w-full p-4 bg-slate-50 rounded-2xl outline-none ring-1 ring-slate-100 focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="mb-1 block">MATCH TIME</label>
+                            <input type="text" id="jam" placeholder="E.g. 21:00 WIB" class="w-full p-4 bg-slate-50 rounded-2xl outline-none ring-1 ring-slate-100 focus:ring-2 focus:ring-blue-500">
+                        </div>
                     </div>
 
-                    <select id="status" class="w-full p-3 bg-slate-50 border rounded-xl outline-none font-bold text-blue-600">
-                        <option value="UPCOMING">UPCOMING</option>
-                        <option value="LIVE">LIVE (BERKEDIP)</option>
-                        <option value="FINISHED">FINISHED</option>
-                    </select>
+                    <div>
+                        <label class="mb-1 block">MATCH STATUS</label>
+                        <select id="status" class="w-full p-4 bg-blue-50 text-blue-700 rounded-2xl outline-none font-black appearance-none cursor-pointer">
+                            <option value="UPCOMING">UPCOMING</option>
+                            <option value="LIVE">🔴 LIVE NOW</option>
+                            <option value="FINISHED">🏁 FINISHED</option>
+                        </select>
+                    </div>
 
-                    <input type="text" id="jam" placeholder="Jam (Contoh: 23:00 WIB)" class="w-full p-3 bg-slate-50 border rounded-xl outline-none">
-                    <input type="text" id="prediksi" placeholder="Prediksi (Contoh: 2 - 1)" class="w-full p-3 bg-slate-50 border rounded-xl outline-none font-mono">
+                    <div>
+                        <label class="mb-1 block">PREDICTION SCORE</label>
+                        <input type="text" id="prediksi" placeholder="E.g. 1 - 1" class="w-full p-4 bg-slate-900 text-green-400 font-mono text-lg text-center rounded-2xl outline-none">
+                    </div>
                     
-                    <button id="btnSimpan" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg transition-all active:scale-95">SIMPAN DATA</button>
-                    <button id="btnBatal" onclick="resetForm()" class="hidden w-full py-2 bg-slate-200 text-slate-600 rounded-xl mt-2 font-bold">BATAL EDIT</button>
+                    <button id="btnSimpan" class="w-full py-5 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl shadow-lg shadow-blue-200 transition-all active:scale-95">PUBLISH SCHEDULE</button>
+                    <button id="btnBatal" onclick="resetForm()" class="hidden w-full py-3 bg-slate-100 text-slate-500 rounded-2xl mt-2 font-bold uppercase tracking-widest text-[10px]">Cancel Edit</button>
                 </div>
             </div>
 
-            <div class="lg:col-span-2 overflow-hidden rounded-3xl border border-slate-200 shadow-sm bg-white">
-                <div class="p-5 bg-slate-50 border-b font-bold text-slate-500 uppercase text-xs tracking-widest">Daftar Pertandingan</div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left">
-                        <thead class="bg-slate-50 text-slate-400 text-[10px] uppercase font-black">
+            <div class="lg:col-span-8">
+                <div class="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-slate-50 border-b border-slate-100">
                             <tr>
-                                <th class="p-4">Pertandingan</th>
-                                <th class="p-4 text-center">Aksi</th>
+                                <th class="p-6 text-[10px] font-black uppercase text-slate-400 tracking-widest">Match Information</th>
+                                <th class="p-6 text-[10px] font-black uppercase text-slate-400 tracking-widest text-center">Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="table-body" class="divide-y divide-slate-100">
-                            </tbody>
+                        <tbody id="table-body" class="divide-y divide-slate-50"></tbody>
                     </table>
                 </div>
             </div>
@@ -80,15 +102,12 @@
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYmNhbG15b3RjYnhpb2NvcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDgyNTksImV4cCI6MjA5MTEyNDI1OX0.IzEWTUcPCr4t-ZTqvPCqShE2BwRxvBFW1grJvggMhJM';
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // --- LOGIN ---
-        const ADMIN_USER = "dimas_admin"; 
-        const ADMIN_PASS = "bola123"; 
-
+        // LOGIN
         document.getElementById('btnLogin').addEventListener('click', () => {
-            if (document.getElementById('userid').value === ADMIN_USER && document.getElementById('password').value === ADMIN_PASS) {
+            if (document.getElementById('userid').value === "dimas_admin" && document.getElementById('password').value === "bola123") {
                 sessionStorage.setItem("isLoggedIn", "true");
                 checkSession();
-            } else { alert("Login Salah!"); }
+            } else { alert("Login Denied!"); }
         });
 
         function checkSession() {
@@ -101,24 +120,23 @@
 
         function logout() { sessionStorage.removeItem("isLoggedIn"); location.reload(); }
 
-        // --- DATA ---
+        // DATA
         async function loadAdminData() {
             const { data } = await _supabase.from('jadwal_bola').select('*').order('id', { ascending: false });
-            const tbody = document.getElementById('table-body');
-            tbody.innerHTML = data.map(item => `
-                <tr class="hover:bg-slate-50">
-                    <td class="p-4">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[8px] font-bold px-2 py-0.5 rounded ${item.status === 'LIVE' ? 'bg-red-500 text-white' : 'bg-slate-200'}">${item.status}</span>
-                            <span class="text-blue-600 text-[9px] font-bold">${item.liga}</span>
+            document.getElementById('table-body').innerHTML = data.map(item => `
+                <tr class="hover:bg-slate-50 transition-all">
+                    <td class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-[8px] font-black px-2 py-0.5 rounded-full ${item.status === 'LIVE' ? 'bg-red-500 text-white' : 'bg-slate-200 text-slate-600'}">${item.status}</span>
+                            <span class="text-blue-600 text-[9px] font-black uppercase tracking-widest">${item.liga}</span>
                         </div>
-                        <div class="font-bold text-slate-800 text-sm">${item.tim_a} vs ${item.tim_b}</div>
-                        <div class="text-[10px] text-slate-400">${item.jam} | Prediksi: ${item.prediksi}</div>
+                        <div class="font-black text-slate-800 text-lg uppercase tracking-tighter">${item.tim_a} vs ${item.tim_b}</div>
+                        <div class="text-[11px] text-slate-400 font-bold mt-1">📅 ${item.tanggal} | 🕒 ${item.jam} | 🎯 Prediksi: <span class="text-green-600">${item.prediksi}</span></div>
                     </td>
-                    <td class="p-4 text-center">
+                    <td class="p-6">
                         <div class="flex justify-center gap-2">
-                            <button onclick='isiFormEdit(${JSON.stringify(item)})' class="bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1.5 rounded-lg border border-blue-100 hover:bg-blue-100 transition-all">EDIT</button>
-                            <button onclick="hapusData(${item.id})" class="bg-red-50 text-red-600 text-[10px] font-bold px-3 py-1.5 rounded-lg border border-red-100 hover:bg-red-100 transition-all">HAPUS</button>
+                            <button onclick='isiFormEdit(${JSON.stringify(item)})' class="p-3 bg-blue-50 text-blue-600 rounded-2xl hover:bg-blue-100 transition-all">✏️</button>
+                            <button onclick="hapusData(${item.id})" class="p-3 bg-red-50 text-red-500 rounded-2xl hover:bg-red-100 transition-all">🗑️</button>
                         </div>
                     </td>
                 </tr>`).join('');
@@ -131,54 +149,42 @@
                 tim_b: document.getElementById('timB').value,
                 logo_a: document.getElementById('logo_a').value,
                 logo_b: document.getElementById('logo_b').value,
+                tanggal: document.getElementById('tanggal').value, // Input Baru
                 jam: document.getElementById('jam').value,
                 prediksi: document.getElementById('prediksi').value,
                 status: document.getElementById('status').value
             };
             
             const editId = document.getElementById('edit-id').value;
-            let result;
+            const res = editId ? await _supabase.from('jadwal_bola').update(payload).eq('id', editId) : await _supabase.from('jadwal_bola').insert([payload]);
 
-            if (editId) {
-                result = await _supabase.from('jadwal_bola').update(payload).eq('id', editId);
-            } else {
-                result = await _supabase.from('jadwal_bola').insert([payload]);
-            }
-
-            if (result.error) alert(result.error.message);
+            if (res.error) alert(res.error.message);
             else { resetForm(); loadAdminData(); }
         });
 
         function isiFormEdit(item) {
             document.getElementById('edit-id').value = item.id;
             document.getElementById('liga').value = item.liga;
-            document.getElementById('logo_a').value = item.logo_a || '';
-            document.getElementById('logo_b').value = item.logo_b || '';
+            document.getElementById('logo_a').value = item.logo_a;
+            document.getElementById('logo_b').value = item.logo_b;
             document.getElementById('timA').value = item.tim_a;
             document.getElementById('timB').value = item.tim_b;
+            document.getElementById('tanggal').value = item.tanggal;
             document.getElementById('jam').value = item.jam;
             document.getElementById('prediksi').value = item.prediksi;
             document.getElementById('status').value = item.status;
-            
-            document.getElementById('form-title').innerText = "Edit Jadwal ✏️";
+            document.getElementById('form-title').innerText = "Edit Schedule";
             document.getElementById('btnBatal').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function resetForm() {
             document.getElementById('edit-id').value = '';
             document.querySelectorAll('input').forEach(i => i.value = '');
-            document.getElementById('form-title').innerText = "Tambah Jadwal";
+            document.getElementById('form-title').innerText = "Add Schedule";
             document.getElementById('btnBatal').classList.add('hidden');
         }
 
-        async function hapusData(id) {
-            if (confirm('Yakin ingin menghapus jadwal ini?')) {
-                const { error } = await _supabase.from('jadwal_bola').delete().eq('id', id);
-                if (error) alert(error.message);
-                else loadAdminData();
-            }
-        }
+        async function hapusData(id) { if (confirm('Delete Match?')) { await _supabase.from('jadwal_bola').delete().eq('id', id); loadAdminData(); } }
 
         checkSession();
     </script>
