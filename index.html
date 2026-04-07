@@ -1,87 +1,1163 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIMASTORE — Premium Store Medan</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; }
-        .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .product-card:hover { transform: translateY(-10px); shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="ev5YEJHD-9UJ5aAb-rCIRBsvWkuvACoYC5MYxTtIwDw">
+<meta name="theme-color" content="#0a7c5c">
+<meta name="msapplication-TileColor" content="#0a7c5c">
+<meta name="geo.position" content="3.5952;98.6722">
+<meta name="ICBM" content="3.5952, 98.6722">
+<title>DIMERLA | Toko Online Fashion, Aksesoris, Elektronik & Kuliner Medan</title>
+<meta name="description" content="DIMERLA — Toko online terpercaya di Medan. Jual fashion terkini, aksesoris premium, elektronik murah, dan kuliner khas Medan. Pengiriman ke seluruh Medan dan Sumatera Utara. Hubungi Dimas Erlangga sekarang!">
+<meta name="keywords" content="toko online Medan, fashion Medan, beli baju Medan, aksesoris Medan, elektronik murah Medan, kuliner Medan, sambal Medan, jaket Medan, sneaker Medan, jam tangan Medan, earphone Medan, DIMERLA, Dimas Erlangga, belanja online Medan, toko Medan terpercaya">
+<meta name="author" content="Dimas Erlangga">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Indonesian">
+<meta name="geo.region" content="ID-SU">
+<meta name="geo.placename" content="Medan, Sumatera Utara, Indonesia">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dimastoremedan.com/">
+<meta property="og:title" content="DIMERLA | Fashion, Aksesoris, Elektronik & Kuliner Medan">
+<meta property="og:description" content="Toko online terpercaya di Medan. Fashion terkini, aksesoris premium, elektronik murah, kuliner khas Medan. COD & Gratis Ongkir!">
+<meta property="og:locale" content="id_ID">
+<meta property="og:site_name" content="DIMERLA">
+<meta property="og:image" content="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DIMERLA — Toko Online Terpercaya di Medan">
+<meta property="article:publisher" content="https://www.facebook.com/dimas.enel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@dimas0001">
+<meta name="twitter:creator" content="@dimas0001">
+<meta name="twitter:title" content="DIMERLA | Toko Online Fashion, Aksesoris, Elektronik & Kuliner Medan">
+<meta name="twitter:description" content="Toko online terpercaya di Medan. Fashion terkini, aksesoris premium, elektronik murah, kuliner khas Medan. COD & Gratis Ongkir!">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80">
+<meta name="twitter:image:alt" content="DIMERLA Store Medan">
+<link rel="canonical" href="https://www.dimastoremedan.com/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Store","name":"DIMERLA","description":"Toko online terpercaya di Medan","url":"https://www.dimastoremedan.com/","telephone":"+6281334331776","priceRange":"Rp 45.000 - Rp 500.000","currenciesAccepted":"IDR","paymentAccepted":"Transfer Bank, COD, QRIS","openingHours":"Mo-Su 08:00-22:00","owner":{"@type":"Person","name":"Dimas Erlangga"},"address":{"@type":"PostalAddress","addressLocality":"Medan","addressRegion":"Sumatera Utara","addressCountry":"ID"},"geo":{"@type":"GeoCoordinates","latitude":3.5952,"longitude":98.6722},"sameAs":["https://www.instagram.com/dimasenerlangga/","https://www.facebook.com/dimas.enel","https://www.tiktok.com/@dimas0001","https://t.me/erlanggakuat"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"DIMERLA","url":"https://www.dimastoremedan.com/","inLanguage":"id-ID","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.dimastoremedan.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Beranda","item":"https://www.dimastoremedan.com/"},{"@type":"ListItem","position":2,"name":"Produk","item":"https://www.dimastoremedan.com/#products"},{"@type":"ListItem","position":3,"name":"Kontak","item":"https://www.dimastoremedan.com/#contact"}]}
+</script>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="//images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:#f8f9fa;color:#0d1b2a;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+:root{
+  --ink:#0d1b2a;--ink2:#2d3e50;--muted:#7a8b9a;
+  --border:#e8edf2;--bg:#f8f9fa;--white:#fff;
+  --g1:#0a7c5c;--g2:#0fa876;--g3:#12c98e;--g4:#6efcd2;
+  --g-bg:#edfaf5;--g-mid:#c5f5e5;
+  --amber:#f59e0b;--red:#e53e3e;
+  --r-sm:8px;--r-md:14px;--r-lg:20px;--r-xl:28px;
+}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-thumb{background:var(--g3);border-radius:5px;}
+
+/* TOPBAR */
+.topbar{background:var(--ink);padding:8px 0;overflow:hidden;}
+.topbar-track{display:flex;width:max-content;animation:marquee 32s linear infinite;}
+.topbar-item{display:flex;align-items:center;gap:8px;padding:0 32px;white-space:nowrap;font-size:11px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,.6);}
+.topbar-item b{color:var(--g4);}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* NAV */
+.nav-outer{position:sticky;top:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 2px 16px rgba(0,0,0,.06);}
+nav{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:14px;}
+.nav-logo{flex-shrink:0;}
+.logo-text{font-size:1.55rem;font-weight:900;letter-spacing:-.5px;color:var(--ink);}
+.logo-text span{color:var(--g1);}
+.logo-sub{font-size:8.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+.nav-search{flex:1;max-width:560px;display:flex;align-items:center;background:var(--bg);border:1.5px solid var(--border);border-radius:99px;overflow:hidden;transition:border-color .2s,box-shadow .2s;}
+.nav-search:focus-within{border-color:var(--g2);box-shadow:0 0 0 3px rgba(18,201,142,.1);}
+.nav-search-icon{padding:0 14px;font-size:15px;color:var(--muted);pointer-events:none;}
+.nav-search input{flex:1;padding:10px 0;border:none;outline:none;font-family:'Outfit',sans-serif;font-size:14px;color:var(--ink);background:transparent;}
+.nav-search input::placeholder{color:#b5bec7;}
+.nav-search-clear{background:none;border:none;color:var(--muted);padding:8px 10px;cursor:pointer;font-size:13px;display:none;}
+.nav-search-btn{background:var(--g1);border:none;padding:10px 20px;cursor:pointer;color:white;font-size:13px;font-weight:700;font-family:'Outfit',sans-serif;border-radius:0 99px 99px 0;}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.nav-icon-btn{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:8px 16px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;}
+.nav-icon-btn:hover{border-color:var(--g2);background:var(--g-bg);}
+.nav-icon-btn .ico{font-size:18px;}
+.nav-icon-btn .lbl{font-size:10px;font-weight:700;color:var(--muted);}
+.nav-badge{position:absolute;top:-6px;right:-6px;background:var(--red);color:white;font-size:9px;font-weight:900;min-width:18px;height:18px;border-radius:99px;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0);transition:all .2s;padding:0 4px;border:2px solid white;}
+.nav-badge.show{opacity:1;transform:scale(1);}
+.nav-wa-btn{background:var(--g1);color:white;border:none;border-radius:var(--r-sm);padding:10px 18px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none;transition:all .2s;}
+.nav-wa-btn:hover{background:var(--g2);}
+.nav-ham{display:none;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:10px 13px;cursor:pointer;flex-direction:column;gap:4px;}
+.nav-ham span{width:18px;height:2px;background:var(--ink);border-radius:2px;display:block;transition:all .3s;}
+.nav-ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.nav-ham.open span:nth-child(2){opacity:0;}
+.nav-ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.mobile-search{display:none;background:var(--white);padding:0 16px 12px;border-bottom:1px solid var(--border);}
+.mobile-search .nav-search{max-width:100%;}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;inset:0;background:white;z-index:2000;display:flex;flex-direction:column;transform:translateX(-110%);transition:transform .4s cubic-bezier(.23,1,.32,1);pointer-events:none;overflow-y:auto;}
+.mobile-menu.open{transform:translateX(0);pointer-events:all;}
+.mm-head{background:var(--ink);padding:22px 24px;display:flex;align-items:center;justify-content:space-between;}
+.mm-logo{font-size:1.3rem;font-weight:900;color:white;}
+.mm-logo span{color:var(--g4);}
+.mm-close{background:rgba(255,255,255,.15);border:none;color:white;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.mm-links{padding:16px;}
+.mm-link{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:var(--r-md);font-size:15px;font-weight:700;color:var(--ink);transition:all .2s;margin-bottom:4px;}
+.mm-link:hover{background:var(--g-bg);color:var(--g1);}
+.mm-link .mm-ico{width:42px;height:42px;border-radius:var(--r-sm);background:var(--g-bg);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.mm-wa{background:var(--g1);color:white;border-radius:var(--r-md);padding:16px 20px;margin:16px;text-align:center;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;}
+
+/* CAT STRIP */
+.cat-strip{background:var(--white);border-bottom:1px solid var(--border);}
+.cat-strip-inner{max-width:1280px;margin:0 auto;padding:10px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;}
+.cat-strip-inner::-webkit-scrollbar{display:none;}
+.cat-chip{flex-shrink:0;display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:99px;border:1.5px solid var(--border);background:white;color:var(--muted);font-size:12.5px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.cat-chip:hover,.cat-chip.active{background:var(--g-bg);border-color:var(--g2);color:var(--g1);}
+
+/* SEARCH INFO */
+.search-result-info{text-align:center;padding:10px 24px;font-size:12.5px;color:var(--g1);display:none;background:var(--g-bg);border-bottom:1px solid var(--g-mid);font-weight:600;}
+
+/* MAIN */
+.main-content{max-width:1280px;margin:0 auto;padding:20px 16px;}
+
+/* HERO */
+.hero{border-radius:var(--r-xl);overflow:hidden;margin-bottom:20px;background:var(--ink);padding:48px 52px;display:grid;grid-template-columns:1fr 420px;align-items:center;gap:32px;position:relative;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(18,201,142,.18) 0%,transparent 65%),radial-gradient(ellipse at 10% 80%,rgba(10,124,92,.25) 0%,transparent 60%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(110,252,210,.12);border:1px solid rgba(110,252,210,.3);color:var(--g4);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:99px;margin-bottom:20px;}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--g4);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero-title{font-size:clamp(1.8rem,4vw,3.2rem);font-weight:900;color:white;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;}
+.hero-title em{font-style:normal;color:var(--g4);}
+.hero-desc{font-size:15px;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:28px;max-width:420px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{background:var(--g3);color:var(--ink);padding:14px 28px;border-radius:var(--r-sm);font-size:14px;font-weight:800;display:inline-flex;align-items:center;gap:8px;transition:all .25s;border:none;cursor:pointer;font-family:'Outfit',sans-serif;}
+.btn-primary:hover{background:var(--g4);transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,201,142,.4);}
+.btn-outline-w{background:transparent;color:white;border:1.5px solid rgba(255,255,255,.3);padding:14px 22px;border-radius:var(--r-sm);font-size:14px;font-weight:700;display:inline-flex;align-items:center;gap:8px;transition:all .25s;text-decoration:none;}
+.btn-outline-w:hover{background:rgba(255,255,255,.08);}
+.hero-stats{display:flex;gap:28px;margin-top:24px;}
+.hero-stat-val{font-size:1.3rem;font-weight:900;color:white;}
+.hero-stat-lbl{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.hero-right{position:relative;}
+.hero-img{width:100%;height:260px;border-radius:var(--r-lg);object-fit:cover;box-shadow:0 24px 60px rgba(0,0,0,.4);}
+.hero-float{position:absolute;bottom:-10px;left:-12px;background:white;border-radius:var(--r-md);padding:12px 16px;box-shadow:0 8px 28px rgba(0,0,0,.15);animation:floatY 3s ease-in-out infinite;}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+.hf-price{font-size:1rem;font-weight:900;color:var(--g1);}
+.hf-lbl{font-size:9.5px;color:var(--muted);margin-top:1px;}
+
+/* PROMO CARDS */
+.promo-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
+.promo-card{background:white;border-radius:var(--r-md);padding:16px 18px;display:flex;align-items:center;gap:13px;border:1.5px solid var(--border);cursor:pointer;transition:all .25s;}
+.promo-card:hover{border-color:var(--g2);box-shadow:0 6px 24px rgba(18,201,142,.12);transform:translateY(-3px);}
+.promo-ico{width:44px;height:44px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.p-green{background:#d1fae5;}.p-blue{background:#dbeafe;}.p-yellow{background:#fef9c3;}.p-pink{background:#fce7f3;}
+.promo-title{font-size:12.5px;font-weight:800;color:var(--ink);}
+.promo-sub{font-size:10.5px;color:var(--muted);margin-top:1px;}
+
+/* SECTION */
+.section{background:white;border-radius:var(--r-lg);padding:20px 24px;margin-bottom:20px;border:1.5px solid var(--border);}
+.sec-eyebrow{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--g1);}
+.sec-title{font-size:17px;font-weight:900;color:var(--ink);margin-top:2px;letter-spacing:-.3px;}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
+
+/* CARA PESAN */
+.cara-grid{display:flex;align-items:center;gap:10px;margin-top:18px;}
+.cara-card{flex:1;background:var(--g-bg);border-radius:var(--r-md);padding:24px 18px;text-align:center;border:1.5px solid var(--g-mid);transition:all .25s;position:relative;}
+.cara-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(18,201,142,.15);}
+.cara-num{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--g1);color:white;width:26px;height:26px;border-radius:50%;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+.cara-ico{font-size:30px;margin-bottom:10px;}
+.cara-title{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+.cara-desc{font-size:11.5px;color:var(--muted);line-height:1.65;}
+.cara-arrow{font-size:18px;color:var(--g-mid);flex-shrink:0;font-weight:900;}
+
+/* FILTER */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.ftab{padding:8px 18px;border-radius:99px;font-size:12.5px;font-weight:700;cursor:pointer;border:1.5px solid var(--border);color:var(--muted);background:white;font-family:'Outfit',sans-serif;transition:all .18s;}
+.ftab:hover{border-color:var(--g2);color:var(--g1);}
+.ftab.active{background:var(--g1);color:white;border-color:var(--g1);}
+
+/* PRODUCT GRID */
+.prod-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border-radius:var(--r-md);overflow:hidden;}
+.prod-card{background:white;cursor:pointer;transition:all .2s;position:relative;}
+.prod-card.hidden{display:none;}
+.prod-card:hover{z-index:1;box-shadow:0 8px 32px rgba(10,124,92,.15);}
+.prod-card.sold-out{opacity:.55;cursor:default;}
+.prod-card.sold-out:hover{box-shadow:none;}
+.prod-img{aspect-ratio:1;overflow:hidden;position:relative;background:#f0f4f3;}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease;}
+.prod-card:not(.sold-out):hover .prod-img img{transform:scale(1.07);}
+.prod-tag{position:absolute;top:0;left:0;padding:4px 10px;font-size:9.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;}
+.tag-hot{background:var(--red);color:white;}
+.tag-new{background:var(--g1);color:white;}
+.tag-sold{background:#64748b;color:white;}
+.tag-sale{background:var(--amber);color:var(--ink);}
+.prod-info{padding:12px;}
+.prod-name{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:7px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.prod-price-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.prod-price{font-size:14.5px;font-weight:900;color:var(--red);}
+.prod-old{font-size:10px;color:#bbb;text-decoration:line-through;}
+.prod-disc{background:#fef2f2;color:var(--red);font-size:9px;font-weight:800;padding:2px 6px;border-radius:4px;}
+.prod-meta{display:flex;align-items:center;justify-content:space-between;}
+.prod-stok{font-size:10px;font-weight:700;}
+.prod-stok.ok{color:var(--g1);}
+.prod-stok.low{color:var(--amber);}
+.prod-stok.out{color:#94a3b8;}
+.prod-bar-wrap{width:56px;height:3px;background:#eee;border-radius:3px;overflow:hidden;margin-top:3px;}
+.prod-bar{height:100%;background:linear-gradient(90deg,var(--g2),var(--g1));border-radius:3px;}
+.prod-add-btn{width:30px;height:30px;border-radius:8px;background:var(--g1);color:white;border:none;font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;}
+.prod-add-btn:hover{background:var(--g2);transform:scale(1.1);}
+.prod-add-btn:disabled{background:#e2e8f0;color:#94a3b8;cursor:not-allowed;transform:none;}
+.no-result{grid-column:1/-1;text-align:center;padding:56px 20px;color:var(--muted);font-size:15px;display:none;}
+.no-result.show{display:block;}
+
+/* TESTIMONIALS */
+.testi-empty{display:flex;flex-direction:column;align-items:center;padding:40px 20px;text-align:center;gap:12px;}
+.testi-empty-ico{font-size:52px;opacity:.25;}
+.testi-empty-title{font-size:16px;font-weight:800;color:var(--ink);}
+.testi-empty-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:320px;}
+.testi-empty-btn{margin-top:4px;background:var(--g1);color:white;padding:11px 24px;border-radius:var(--r-sm);font-size:13px;font-weight:800;display:inline-flex;align-items:center;gap:8px;transition:all .2s;}
+.testi-empty-btn:hover{background:var(--g2);}
+
+/* CONTACT */
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:18px;}
+.contact-title{font-size:1.4rem;font-weight:900;color:var(--ink);margin-bottom:10px;letter-spacing:-.5px;line-height:1.2;}
+.contact-title em{font-style:normal;color:var(--g1);}
+.contact-desc{font-size:13.5px;color:var(--muted);line-height:1.8;margin-bottom:20px;}
+.sosmed-grid{display:flex;flex-direction:column;gap:8px;}
+.sosmed-card{display:flex;align-items:center;gap:12px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-md);padding:12px 16px;transition:all .25s;cursor:pointer;text-decoration:none;}
+.sosmed-card:hover{border-color:var(--g2);background:var(--g-bg);transform:translateX(4px);}
+.sosmed-ico{width:40px;height:40px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.s-wa{background:#d1fae5;}.s-tg{background:#dbeafe;}.s-tt{background:#fce7f3;}.s-fb{background:#eff6ff;}.s-ig{background:#fef3c7;}
+.sosmed-lbl{font-size:9.5px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+.sosmed-val{font-size:13px;font-weight:700;color:var(--ink);}
+.sosmed-arr{margin-left:auto;color:var(--g2);font-size:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+.form-label{font-size:11px;font-weight:800;color:var(--ink2);letter-spacing:.5px;text-transform:uppercase;}
+.form-input{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:11px 14px;font-family:'Outfit',sans-serif;font-size:13.5px;color:var(--ink);outline:none;transition:border-color .2s;width:100%;}
+.form-input:focus{border-color:var(--g2);box-shadow:0 0 0 3px rgba(18,201,142,.1);background:white;}
+.form-input::placeholder{color:#c2ccd6;}
+textarea.form-input{resize:none;height:100px;}
+.form-error{font-size:10px;color:var(--red);display:none;margin-top:2px;}
+.form-error.show{display:block;}
+.btn-send{background:var(--g1);color:white;border:none;padding:13px 26px;border-radius:var(--r-sm);font-family:'Outfit',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:8px;}
+.btn-send:hover{background:var(--g2);transform:translateY(-1px);}
+
+/* CART OVERLAY */
+.cart-overlay{position:fixed;inset:0;background:rgba(13,27,42,.45);backdrop-filter:blur(4px);z-index:3000;opacity:0;pointer-events:none;transition:opacity .3s;}
+.cart-overlay.open{opacity:1;pointer-events:all;}
+
+/* CART SIDEBAR */
+.cart-sidebar{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100vw;background:white;z-index:3001;transform:translateX(100%);transition:transform .4s cubic-bezier(.23,1,.32,1);display:flex;flex-direction:column;box-shadow:-6px 0 40px rgba(0,0,0,.14);}
+.cart-sidebar.open{transform:translateX(0);}
+.cart-head{background:var(--ink);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.cart-head-title{color:white;font-size:1.05rem;font-weight:900;display:flex;align-items:center;gap:10px;}
+.cart-count-label{background:var(--g3);color:var(--ink);font-size:11px;font-weight:900;padding:2px 10px;border-radius:99px;}
+.cart-close{background:rgba(255,255,255,.12);border:none;color:white;font-size:16px;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.cart-close:hover{background:rgba(255,255,255,.25);}
+.cart-body{flex:1;overflow-y:auto;padding:0;}
+.cart-body::-webkit-scrollbar{width:3px;}
+.cart-body::-webkit-scrollbar-thumb{background:var(--g-mid);}
+.cart-empty-state{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--muted);text-align:center;padding:32px;}
+.cart-empty-ico{font-size:56px;opacity:.2;}
+.cart-empty-text{font-size:14px;line-height:1.6;}
+
+/* CART ITEM — setiap item tampil terpisah */
+.cart-item{display:flex;gap:13px;padding:14px 20px;border-bottom:1px solid var(--border);transition:background .15s;}
+.cart-item:hover{background:var(--g-bg);}
+.cart-item-img{width:68px;height:68px;border-radius:var(--r-sm);object-fit:cover;flex-shrink:0;background:var(--bg);border:1px solid var(--border);}
+.cart-item-info{flex:1;min-width:0;}
+.cart-item-cat{font-size:9.5px;color:var(--g1);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
+.cart-item-name{font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.4;}
+.cart-item-price-unit{font-size:10.5px;color:var(--muted);margin-bottom:8px;}
+.cart-item-bottom{display:flex;align-items:center;justify-content:space-between;}
+.cart-item-total{font-size:14px;font-weight:900;color:var(--red);}
+.cart-qty{display:flex;align-items:center;gap:6px;}
+.qty-btn{width:28px;height:28px;border-radius:7px;border:1.5px solid var(--border);background:white;color:var(--ink);font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.qty-btn:hover{border-color:var(--g2);color:var(--g1);}
+.qty-num{font-size:14px;font-weight:800;color:var(--ink);min-width:24px;text-align:center;}
+.cart-item-del{background:none;border:none;color:#d1d5db;cursor:pointer;font-size:15px;padding:4px;transition:color .2s;flex-shrink:0;align-self:flex-start;margin-top:2px;}
+.cart-item-del:hover{color:var(--red);}
+
+/* CART FOOTER */
+.cart-foot{padding:16px 20px;border-top:2px solid var(--border);flex-shrink:0;background:white;}
+.cart-summary{background:var(--g-bg);border:1.5px solid var(--g-mid);border-radius:var(--r-md);padding:14px;margin-bottom:12px;}
+.cart-sum-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:13px;}
+.cart-sum-row:last-child{margin-bottom:0;padding-top:8px;border-top:1px solid var(--g-mid);}
+.cart-sum-label{color:var(--muted);}
+.cart-sum-val{font-weight:700;color:var(--ink);}
+.cart-sum-total{font-size:1.2rem;font-weight:900;color:var(--red);}
+.cart-checkout-btn{width:100%;background:var(--g1);color:white;border:none;padding:14px;border-radius:var(--r-sm);font-family:'Outfit',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.cart-checkout-btn:hover{background:var(--g2);transform:translateY(-1px);}
+.cart-clear-btn{width:100%;background:none;border:1.5px solid var(--border);color:var(--muted);padding:10px;border-radius:var(--r-sm);font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;margin-top:8px;transition:all .2s;}
+.cart-clear-btn:hover{border-color:var(--red);color:var(--red);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(13,27,42,.55);backdrop-filter:blur(6px);z-index:4000;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{background:white;border-radius:var(--r-xl);width:100%;max-width:640px;max-height:90vh;overflow-y:auto;transform:scale(.94) translateY(16px);transition:transform .35s cubic-bezier(.23,1,.32,1);box-shadow:0 24px 64px rgba(0,0,0,.2);}
+.modal-overlay.open .modal-box{transform:scale(1) translateY(0);}
+.modal-img-wrap{width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:var(--r-xl) var(--r-xl) 0 0;position:relative;}
+.modal-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.modal-close-btn{position:absolute;top:14px;right:14px;background:white;border:none;color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.15);z-index:1;transition:all .2s;}
+.modal-close-btn:hover{background:var(--g1);color:white;}
+.modal-body{padding:22px 26px 26px;}
+.modal-cat{font-size:10px;font-weight:800;color:var(--g1);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.modal-name{font-size:1.5rem;font-weight:900;color:var(--ink);margin-bottom:12px;line-height:1.2;letter-spacing:-.5px;}
+.modal-price-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.modal-price{font-size:1.7rem;font-weight:900;color:var(--red);}
+.modal-old{font-size:13px;color:#bbb;text-decoration:line-through;}
+.modal-disc{background:#fef2f2;color:var(--red);font-size:11px;font-weight:800;padding:3px 10px;border-radius:6px;}
+.modal-stock{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:99px;font-size:11px;font-weight:700;margin-bottom:18px;}
+.modal-stock.ok{background:var(--g-bg);color:var(--g1);}
+.modal-stock.low{background:#fffbeb;color:#d97706;}
+.modal-stock.out{background:#fef2f2;color:var(--red);}
+.modal-stock .dot{width:6px;height:6px;border-radius:50%;}
+.modal-stock.ok .dot{background:var(--g1);}
+.modal-stock.low .dot{background:var(--amber);}
+.modal-stock.out .dot{background:var(--red);}
+.modal-desc{font-size:13.5px;color:var(--muted);line-height:1.8;margin-bottom:22px;}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.modal-add-btn{flex:1;background:var(--g1);color:white;border:none;padding:14px 20px;border-radius:var(--r-sm);font-family:'Outfit',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.modal-add-btn:hover{background:var(--g2);transform:translateY(-1px);}
+.modal-add-btn:disabled{background:#e2e8f0;color:#94a3b8;cursor:not-allowed;transform:none;}
+.modal-wa-btn{background:#25d366;color:white;border:none;padding:14px 20px;border-radius:var(--r-sm);font-family:'Outfit',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all .25s;display:flex;align-items:center;gap:8px;}
+.modal-wa-btn:hover{background:#22c55e;transform:translateY(-1px);}
+
+/* FOOTER */
+footer{background:var(--ink);padding:44px 0 0;}
+.footer-inner{max-width:1280px;margin:0 auto;padding:0 24px 36px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;}
+.footer-logo{font-size:1.6rem;font-weight:900;color:white;margin-bottom:12px;letter-spacing:-.5px;}
+.footer-logo span{color:var(--g4);}
+.footer-desc{font-size:12.5px;color:rgba(255,255,255,.35);line-height:1.85;max-width:240px;}
+.footer-col-title{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;}
+.footer-links{display:flex;flex-direction:column;gap:9px;}
+.footer-links a{font-size:12.5px;color:rgba(255,255,255,.45);transition:color .2s;cursor:pointer;}
+.footer-links a:hover{color:var(--g4);}
+.footer-bottom{max-width:1280px;margin:0 auto;padding:20px 24px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.2);}
+.footer-owner{font-size:11px;color:rgba(255,255,255,.35);}
+.footer-owner span{color:var(--g4);}
+
+/* FLOATING */
+.wa-float{position:fixed;bottom:76px;right:20px;z-index:2000;background:#25d366;color:white;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 6px 24px rgba(37,211,102,.5);transition:all .3s;text-decoration:none;}
+.wa-float:hover{transform:scale(1.1);}
+.wa-tip{position:absolute;right:64px;top:50%;transform:translateY(-50%);background:var(--ink);color:white;font-size:11px;font-weight:700;padding:6px 14px;border-radius:99px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;}
+.wa-float:hover .wa-tip{opacity:1;}
+.back-top{position:fixed;bottom:16px;right:20px;z-index:2000;background:white;border:1.5px solid var(--border);color:var(--g1);width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;cursor:pointer;transition:all .3s;opacity:0;pointer-events:none;transform:translateY(12px);}
+.back-top.show{opacity:1;pointer-events:all;transform:translateY(0);}
+.back-top:hover{background:var(--g1);color:white;}
+
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--ink);color:white;padding:13px 24px;border-radius:99px;font-size:13.5px;font-weight:700;z-index:9999;opacity:0;transition:all .35s;white-space:nowrap;pointer-events:none;display:flex;align-items:center;gap:9px;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:.1s;}
+.reveal-delay-2{transition-delay:.2s;}
+.reveal-delay-3{transition-delay:.3s;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:12px 16px;}
+  .nav-search{display:none;}
+  .nav-ham{display:flex;}
+  .nav-wa-btn{display:none;}
+  .hero{grid-template-columns:1fr;padding:32px 28px;}
+  .hero-right{display:none;}
+  .promo-row{grid-template-columns:repeat(2,1fr);}
+  .prod-grid{grid-template-columns:repeat(3,1fr);}
+  .contact-inner{grid-template-columns:1fr;gap:28px;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:28px;padding:0 16px 28px;}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center;padding:16px;}
+  .cart-sidebar{width:100vw;}
+  .mobile-search{display:flex!important;}
+}
+@media(max-width:768px){
+  .cara-grid{flex-direction:column;}
+  .cara-arrow{transform:rotate(90deg);}
+}
+@media(max-width:600px){
+  .hero{padding:24px 20px;border-radius:var(--r-lg);}
+  .hero-title{font-size:1.7rem;}
+  .hero-btns{flex-direction:column;gap:8px;}
+  .btn-primary,.btn-outline-w{justify-content:center;}
+  .promo-row{grid-template-columns:repeat(2,1fr);gap:8px;}
+  .section{padding:16px 14px;border-radius:var(--r-md);}
+  .prod-grid{grid-template-columns:repeat(2,1fr);}
+  .prod-info{padding:9px;}
+  .prod-name{font-size:12px;}
+  .prod-price{font-size:13px;}
+  .filter-row{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
+  .filter-row::-webkit-scrollbar{display:none;}
+  .ftab{flex-shrink:0;padding:7px 14px;font-size:11.5px;}
+  .form-row{grid-template-columns:1fr;}
+  .modal-actions{flex-direction:column;}
+  .footer-inner{grid-template-columns:1fr;gap:20px;}
+  .sec-head{flex-direction:column;align-items:flex-start;}
+}
+</style>
 </head>
 <body>
 
-<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-black tracking-tighter text-sky-600">DIMASTORE<span class="text-slate-900">.</span></div>
-        <div class="flex gap-6 text-sm font-bold text-slate-600">
-            <a href="#" class="hover:text-sky-600">Home</a>
-            <a href="#" class="hover:text-sky-600">Catalog</a>
-            <a href="https://wa.me/628xxxxxxxxxx" class="bg-sky-600 text-white px-5 py-2 rounded-full text-xs hover:bg-sky-500 transition">Contact Us</a>
+<div class="toast" id="toast"></div>
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <div class="modal-img-wrap">
+      <img id="modalImg" src="" alt="">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-cat" id="modalCat"></div>
+      <div class="modal-name" id="modalName"></div>
+      <div class="modal-price-row">
+        <span class="modal-price" id="modalPrice"></span>
+        <span class="modal-old" id="modalOld"></span>
+        <span class="modal-disc" id="modalDisc"></span>
+      </div>
+      <div class="modal-stock" id="modalStock"><span class="dot"></span><span id="modalStockText"></span></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-actions">
+        <button class="modal-add-btn" id="modalAddBtn" onclick="modalAddToCart()">🛒 Tambah ke Keranjang</button>
+        <button class="modal-wa-btn" id="modalWaBtn" onclick="modalOrderWA()">💬 Pesan via WA</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-head">
+    <div class="cart-head-title">🛒 Keranjang Belanja <span class="cart-count-label" id="cartCountLabel">0</span></div>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot" id="cartFoot" style="display:none;">
+    <div class="cart-summary">
+      <div class="cart-sum-row"><span class="cart-sum-label">Jumlah Item</span><span class="cart-sum-val" id="cartQtyLabel">0 item</span></div>
+      <div class="cart-sum-row"><span class="cart-sum-label">Produk</span><span class="cart-sum-val" id="cartProdLabel">0 jenis</span></div>
+      <div class="cart-sum-row"><span class="cart-sum-label" style="font-weight:800;color:var(--ink);">Total Belanja</span><span class="cart-sum-total" id="cartTotal">Rp 0</span></div>
+    </div>
+    <button class="cart-checkout-btn" onclick="checkoutWA()">💬 Checkout via WhatsApp →</button>
+    <button class="cart-clear-btn" onclick="clearCart()">🗑 Kosongkan Keranjang</button>
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mm-head">
+    <div class="mm-logo">DIM<span>ERLA</span></div>
+    <button class="mm-close" onclick="closeMenu()">✕</button>
+  </div>
+  <div class="mm-links">
+    <a class="mm-link" href="#products" onclick="closeMenu()"><div class="mm-ico">🛍️</div>Semua Produk</a>
+    <a class="mm-link" href="#" onclick="filterCategory('fashion');closeMenu()"><div class="mm-ico">👕</div>Fashion</a>
+    <a class="mm-link" href="#" onclick="filterCategory('aksesoris');closeMenu()"><div class="mm-ico">💎</div>Aksesoris</a>
+    <a class="mm-link" href="#" onclick="filterCategory('elektronik');closeMenu()"><div class="mm-ico">📱</div>Elektronik</a>
+    <a class="mm-link" href="#" onclick="filterCategory('kuliner');closeMenu()"><div class="mm-ico">🍜</div>Kuliner</a>
+    <a class="mm-link" href="#contact" onclick="closeMenu()"><div class="mm-ico">📞</div>Kontak</a>
+  </div>
+  <a href="https://wa.me/6281334331776" class="mm-wa" target="_blank">💬 Chat via WhatsApp</a>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-track">
+    <div class="topbar-item"><b>✦</b>Gratis Ongkir Medan</div>
+    <div class="topbar-item"><b>✦</b>COD Tersedia</div>
+    <div class="topbar-item"><b>✦</b>Garansi Kepuasan 100%</div>
+    <div class="topbar-item"><b>✦</b>Produk Premium Original</div>
+    <div class="topbar-item"><b>✦</b>Respon Cepat via WA</div>
+    <div class="topbar-item"><b>✦</b>Pengiriman Seluruh Indonesia</div>
+    <div class="topbar-item"><b>✦</b>Gratis Ongkir Medan</div>
+    <div class="topbar-item"><b>✦</b>COD Tersedia</div>
+    <div class="topbar-item"><b>✦</b>Garansi Kepuasan 100%</div>
+    <div class="topbar-item"><b>✦</b>Produk Premium Original</div>
+    <div class="topbar-item"><b>✦</b>Respon Cepat via WA</div>
+    <div class="topbar-item"><b>✦</b>Pengiriman Seluruh Indonesia</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-outer">
+  <nav>
+    <div class="nav-logo">
+      <div class="logo-text">DIM<span>ERLA</span></div>
+      <div class="logo-sub">Premium Store · Medan</div>
+    </div>
+    <div class="nav-search">
+      <span class="nav-search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Cari produk di DIMERLA..." oninput="handleSearch(this.value)" autocomplete="off">
+      <button class="nav-search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+      <button class="nav-search-btn">Cari</button>
+    </div>
+    <div class="nav-right">
+      <button class="nav-icon-btn" onclick="openCart()">
+        <span class="ico">🛒</span>
+        <span class="lbl">Keranjang</span>
+        <span class="nav-badge" id="cartBadge">0</span>
+      </button>
+      <a href="https://wa.me/6281334331776" class="nav-wa-btn" target="_blank">💬 WhatsApp</a>
+      <button class="nav-ham" id="hamBtn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-search">
+    <div class="nav-search">
+      <span class="nav-search-icon">🔍</span>
+      <input type="text" id="searchInputMob" placeholder="Cari produk..." oninput="handleSearch(this.value)" autocomplete="off">
+      <button class="nav-search-btn">Cari</button>
+    </div>
+  </div>
+</div>
+
+<!-- CAT STRIP -->
+<div class="cat-strip">
+  <div class="cat-strip-inner">
+    <div class="cat-chip active" id="chip-all" onclick="filterCategory('all')">🏪 Semua</div>
+    <div class="cat-chip" id="chip-fashion" onclick="filterCategory('fashion')">👕 Fashion</div>
+    <div class="cat-chip" id="chip-aksesoris" onclick="filterCategory('aksesoris')">💎 Aksesoris</div>
+    <div class="cat-chip" id="chip-elektronik" onclick="filterCategory('elektronik')">📱 Elektronik</div>
+    <div class="cat-chip" id="chip-kuliner" onclick="filterCategory('kuliner')">🍜 Kuliner</div>
+    <div class="cat-chip" onclick="window.open('https://wa.me/6281334331776','_blank')">💬 Chat WA</div>
+    <div class="cat-chip" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">📞 Kontak</div>
+  </div>
+</div>
+
+<div class="search-result-info" id="searchInfo"></div>
+
+<!-- MAIN -->
+<div class="main-content">
+
+  <!-- HERO -->
+  <div class="hero reveal">
+    <div>
+      <div class="hero-badge"><span class="hero-badge-dot"></span>Premium Store · Medan 🇮🇩</div>
+      <h1 class="hero-title">Produk <em>Terbaik</em><br>untuk Gaya<br>Hidup Kamu</h1>
+      <p class="hero-desc">Fashion terkini, aksesoris premium, elektronik terpercaya & kuliner khas Medan — semua ada di DIMERLA.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">🛍️ Belanja Sekarang</a>
+        <a href="https://wa.me/6281334331776" class="btn-outline-w" target="_blank">💬 Tanya via WA</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-val">2.4K+</div><div class="hero-stat-lbl">Pelanggan</div></div>
+        <div><div class="hero-stat-val">⭐ 4.9</div><div class="hero-stat-lbl">Rating</div></div>
+        <div><div class="hero-stat-val">100%</div><div class="hero-stat-lbl">Terpercaya</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700&q=80" alt="DIMERLA Store">
+      <div class="hero-float">
+        <div class="hf-price">Mulai 45K</div>
+        <div class="hf-lbl">Koleksi Terbaru ✨</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMO -->
+  <div class="promo-row reveal">
+    <div class="promo-card" onclick="filterCategory('fashion')"><div class="promo-ico p-green">🚚</div><div><div class="promo-title">Gratis Ongkir</div><div class="promo-sub">Khusus Medan</div></div></div>
+    <div class="promo-card" onclick="filterCategory('all')"><div class="promo-ico p-yellow">⚡</div><div><div class="promo-title">Diskon s.d 40%</div><div class="promo-sub">Produk pilihan</div></div></div>
+    <div class="promo-card" onclick="filterCategory('elektronik')"><div class="promo-ico p-blue">🔒</div><div><div class="promo-title">Garansi Resmi</div><div class="promo-sub">Semua produk</div></div></div>
+    <div class="promo-card" onclick="window.open('https://wa.me/6281334331776','_blank')"><div class="promo-ico p-pink">💬</div><div><div class="promo-title">CS 24/7 WA</div><div class="promo-sub">Respon cepat</div></div></div>
+  </div>
+
+  <!-- CARA PESAN -->
+  <div class="section reveal">
+    <div class="sec-head">
+      <div><div class="sec-eyebrow">Cara Pesan</div><div class="sec-title">Mudah & Cepat 🛒</div></div>
+    </div>
+    <div class="cara-grid">
+      <div class="cara-card"><div class="cara-num">1</div><div class="cara-ico">🛍️</div><div class="cara-title">Pilih Produk</div><div class="cara-desc">Browsing produk pilihan kami, klik untuk lihat detail dan harga.</div></div>
+      <div class="cara-arrow">→</div>
+      <div class="cara-card"><div class="cara-num">2</div><div class="cara-ico">💬</div><div class="cara-title">Chat via WA</div><div class="cara-desc">Klik tombol WhatsApp, pesanan langsung terkirim otomatis.</div></div>
+      <div class="cara-arrow">→</div>
+      <div class="cara-card"><div class="cara-num">3</div><div class="cara-ico">💳</div><div class="cara-title">Bayar & Terima</div><div class="cara-desc">Transfer / COD / QRIS. Barang langsung diproses dan dikirim!</div></div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="section" id="products">
+    <div class="sec-head">
+      <div><div class="sec-eyebrow">Koleksi</div><div class="sec-title" id="produk-judul">Semua Produk</div></div>
+    </div>
+    <div class="filter-row">
+      <div class="ftab active" onclick="filterTab(this,'all')">Semua</div>
+      <div class="ftab" onclick="filterTab(this,'fashion')">👕 Fashion</div>
+      <div class="ftab" onclick="filterTab(this,'aksesoris')">💎 Aksesoris</div>
+      <div class="ftab" onclick="filterTab(this,'elektronik')">📱 Elektronik</div>
+      <div class="ftab" onclick="filterTab(this,'kuliner')">🍜 Kuliner</div>
+    </div>
+    <div class="prod-grid" id="productGrid">
+
+      <div class="prod-card" data-cat="fashion" data-name="Sneaker Premium Limited Edition" data-price="450000" data-old="650000" data-disc="31" data-stock="ok" data-stok="12 pcs" data-img="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Sneaker"><span class="prod-tag tag-hot">🔥 Hot</span></div>
+        <div class="prod-info"><div class="prod-name">Sneaker Premium Limited Edition</div><div class="prod-price-row"><span class="prod-price">Rp 450K</span><span class="prod-old">Rp 650K</span><span class="prod-disc">-31%</span></div><div class="prod-meta"><div><div class="prod-stok ok">✓ 12 pcs</div><div class="prod-bar-wrap"><div class="prod-bar" style="width:70%"></div></div></div><button class="prod-add-btn" onclick="event.stopPropagation();addToCart(this)">+</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="fashion" data-name="Jaket Bomber Oversize Premium" data-price="395000" data-old="550000" data-disc="28" data-stock="low" data-stok="3 pcs" data-img="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Jaket"><span class="prod-tag tag-sale">💥 Sale</span></div>
+        <div class="prod-info"><div class="prod-name">Jaket Bomber Oversize Premium</div><div class="prod-price-row"><span class="prod-price">Rp 395K</span><span class="prod-old">Rp 550K</span><span class="prod-disc">-28%</span></div><div class="prod-meta"><div><div class="prod-stok low">⚠ 3 pcs</div><div class="prod-bar-wrap"><div class="prod-bar" style="width:92%"></div></div></div><button class="prod-add-btn" onclick="event.stopPropagation();addToCart(this)">+</button></div></div>
+      </div>
+
+      <div class="prod-card sold-out" data-cat="fashion" data-name="Kaos Oversized Polos Premium" data-price="120000" data-stock="out" data-stok="Habis" data-img="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80" alt="Kaos"><span class="prod-tag tag-sold">📦 Habis</span></div>
+        <div class="prod-info"><div class="prod-name">Kaos Oversized Polos Premium</div><div class="prod-price-row"><span class="prod-price">Rp 120K</span></div><div class="prod-meta"><div class="prod-stok out">Stok habis</div><button class="prod-add-btn" disabled onclick="event.stopPropagation()">✕</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="aksesoris" data-name="Jam Tangan Analog Klasik" data-price="320000" data-stock="ok" data-stok="8 pcs" data-img="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Jam"><span class="prod-tag tag-new">✨ Baru</span></div>
+        <div class="prod-info"><div class="prod-name">Jam Tangan Analog Klasik</div><div class="prod-price-row"><span class="prod-price">Rp 320K</span></div><div class="prod-meta"><div><div class="prod-stok ok">✓ 8 pcs</div><div class="prod-bar-wrap"><div class="prod-bar" style="width:45%"></div></div></div><button class="prod-add-btn" onclick="event.stopPropagation();addToCart(this)">+</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="aksesoris" data-name="Tas Ransel Anti Air Multifungsi" data-price="220000" data-stock="ok" data-stok="15 pcs" data-img="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&q=80" alt="Tas"><span class="prod-tag tag-new">✨ Baru</span></div>
+        <div class="prod-info"><div class="prod-name">Tas Ransel Anti Air Multifungsi</div><div class="prod-price-row"><span class="prod-price">Rp 220K</span></div><div class="prod-meta"><div><div class="prod-stok ok">✓ 15 pcs</div><div class="prod-bar-wrap"><div class="prod-bar" style="width:35%"></div></div></div><button class="prod-add-btn" onclick="event.stopPropagation();addToCart(this)">+</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="aksesoris" data-name="Kacamata Retro Anti UV" data-price="95000" data-old="150000" data-disc="37" data-stock="low" data-stok="4 pcs" data-img="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=400&q=80" alt="Kacamata"><span class="prod-tag tag-hot">🔥 Hot</span></div>
+        <div class="prod-info"><div class="prod-name">Kacamata Retro Anti UV</div><div class="prod-price-row"><span class="prod-price">Rp 95K</span><span class="prod-old">Rp 150K</span><span class="prod-disc">-37%</span></div><div class="prod-meta"><div><div class="prod-stok low">⚠ 4 pcs</div><div class="prod-bar-wrap"><div class="prod-bar" style="width:88%"></div></div></div><button class="prod-add-btn" onclick="event.stopPropagation();addToCart(this)">+</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="elektronik" data-name="Wireless Earphone Pro Max" data-price="280000" data-old="400000" data-disc="30" data-stock="ok" data-stok="20 pcs" data-img="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80" alt="Earphone"><span class="prod-tag tag-hot">🔥 Hot</span></div>
+        <div class="prod-info"><div class="prod-name">Wireless Earphone Pro Max</div><div class="prod-price-row"><span class="prod-price">Rp 280K</span><span class="prod-old">Rp 400K</span><span class="prod-disc">-30%</span></div><div class="prod-meta"><div><div class="prod-stok ok">✓ 20 pcs</div><div class="prod-bar-wrap"><div class="prod-bar" style="width:60%"></div></div></div><button class="prod-add-btn" onclick="event.stopPropagation();addToCart(this)">+</button></div></div>
+      </div>
+
+      <div class="prod-card sold-out" data-cat="elektronik" data-name="Powerbank 20.000mAh Fast Charging" data-price="185000" data-old="250000" data-stock="out" data-stok="Habis" data-img="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?w=400&q=80" alt="Powerbank"><span class="prod-tag tag-sold">📦 Habis</span></div>
+        <div class="prod-info"><div class="prod-name">Powerbank 20.000mAh Fast Charging</div><div class="prod-price-row"><span class="prod-price">Rp 185K</span><span class="prod-old">Rp 250K</span></div><div class="prod-meta"><div class="prod-stok out">Stok habis</div><button class="prod-add-btn" disabled onclick="event.stopPropagation()">✕</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="elektronik" data-name="Smartwatch Sport Series 5" data-price="350000" data-stock="ok" data-stok="7 pcs" data-img="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&q=80" alt="Smartwatch"><span class="prod-tag tag-new">✨ Baru</span></div>
+        <div class="prod-info"><div class="prod-name">Smartwatch Sport Series 5</div><div class="prod-price-row"><span class="prod-price">Rp 350K</span></div><div class="prod-meta"><div><div class="prod-stok ok">✓ 7 pcs</div><div class="prod-bar-wrap"><div class="prod-bar" style="width:50%"></div></div></div><button class="prod-add-btn" onclick="event.stopPropagation();addToCart(this)">+</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="kuliner" data-name="Sambal Medan Spesial Homemade" data-price="75000" data-stock="ok" data-stok="30 pcs" data-img="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80" alt="Kuliner"><span class="prod-tag tag-new">✨ Baru</span></div>
+        <div class="prod-info"><div class="prod-name">Sambal Medan Spesial Homemade</div><div class="prod-price-row"><span class="prod-price">Rp 75K</span></div><div class="prod-meta"><div><div class="prod-stok ok">✓ 30 pcs</div><div class="prod-bar-wrap"><div class="prod-bar" style="width:25%"></div></div></div><button class="prod-add-btn" onclick="event.stopPropagation();addToCart(this)">+</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="kuliner" data-name="Kue Bolu Medan Tradisional" data-price="65000" data-stock="low" data-stok="5 pcs" data-img="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&q=80" alt="Kue"><span class="prod-tag tag-hot">🔥 Hot</span></div>
+        <div class="prod-info"><div class="prod-name">Kue Bolu Medan Tradisional</div><div class="prod-price-row"><span class="prod-price">Rp 65K</span></div><div class="prod-meta"><div><div class="prod-stok low">⚠ 5 pcs</div><div class="prod-bar-wrap"><div class="prod-bar" style="width:82%"></div></div></div><button class="prod-add-btn" onclick="event.stopPropagation();addToCart(this)">+</button></div></div>
+      </div>
+
+      <div class="prod-card" data-cat="kuliner" data-name="Minuman Herbal Segar Nusantara" data-price="45000" data-stock="ok" data-stok="25 pcs" data-img="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=600&q=80">
+        <div class="prod-img"><img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&q=80" alt="Minuman"><span class="prod-tag tag-new">✨ Baru</span></div>
+        <div class="prod-info"><div class="prod-name">Minuman Herbal Segar Nusantara</div><div class="prod-price-row"><span class="prod-price">Rp 45K</span></div><div class="prod-meta"><div><div class="prod-stok ok">✓ 25 pcs</div><div class="prod-bar-wrap"><div class="prod-bar" style="width:20%"></div></div></div><button class="prod-add-btn" onclick="event.stopPropagation();addToCart(this)">+</button></div></div>
+      </div>
+
+      <div class="no-result" id="noResult">Tidak ada produk 😔<br><small>Coba kata kunci lain</small></div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="section reveal">
+    <div class="sec-head">
+      <div><div class="sec-eyebrow">Ulasan</div><div class="sec-title">Kata Pelanggan ⭐</div></div>
+    </div>
+    <div class="testi-empty">
+      <div class="testi-empty-ico">💬</div>
+      <div class="testi-empty-title">Jadilah Pembeli Pertama!</div>
+      <div class="testi-empty-desc">Belum ada ulasan untuk saat ini. Pesan produk dan bagikan pengalamanmu — ulasan kamu akan tampil di sini!</div>
+      <a href="https://wa.me/6281334331776" target="_blank" class="testi-empty-btn">💬 Pesan Sekarang via WA</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section reveal" id="contact">
+    <div class="sec-head">
+      <div><div class="sec-eyebrow">Kontak</div><div class="sec-title">Hubungi Kami 📞</div></div>
+    </div>
+    <div class="contact-inner">
+      <div>
+        <h2 class="contact-title">Siap <em>Membantu</em> Kamu!</h2>
+        <p class="contact-desc">Punya pertanyaan? Hubungi kami langsung via WhatsApp, Telegram, atau media sosial!</p>
+        <div class="sosmed-grid">
+          <a href="https://wa.me/6281334331776" target="_blank" class="sosmed-card"><div class="sosmed-ico s-wa">💬</div><div><div class="sosmed-lbl">WhatsApp</div><div class="sosmed-val">081334331776</div></div><div class="sosmed-arr">→</div></a>
+          <a href="https://t.me/erlanggakuat" target="_blank" class="sosmed-card"><div class="sosmed-ico s-tg">✈️</div><div><div class="sosmed-lbl">Telegram</div><div class="sosmed-val">@erlanggakuat</div></div><div class="sosmed-arr">→</div></a>
+          <a href="https://www.tiktok.com/@dimas0001" target="_blank" class="sosmed-card"><div class="sosmed-ico s-tt">🎵</div><div><div class="sosmed-lbl">TikTok</div><div class="sosmed-val">@dimas0001</div></div><div class="sosmed-arr">→</div></a>
+          <a href="https://www.facebook.com/dimas.enel" target="_blank" class="sosmed-card"><div class="sosmed-ico s-fb">👤</div><div><div class="sosmed-lbl">Facebook</div><div class="sosmed-val">dimas.enel</div></div><div class="sosmed-arr">→</div></a>
+          <a href="https://www.instagram.com/dimasenerlangga/" target="_blank" class="sosmed-card"><div class="sosmed-ico s-ig">📸</div><div><div class="sosmed-lbl">Instagram</div><div class="sosmed-val">@dimasenerlangga</div></div><div class="sosmed-arr">→</div></a>
         </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:800;color:var(--g1);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">Pesan Langsung</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Nama *</label><input type="text" class="form-input" id="f-nama" placeholder="Nama kamu"><span class="form-error" id="err-nama">Wajib diisi</span></div>
+          <div class="form-group"><label class="form-label">No. WhatsApp *</label><input type="text" class="form-input" id="f-wa" placeholder="08xx"><span class="form-error" id="err-wa">Wajib diisi</span></div>
+        </div>
+        <div class="form-group"><label class="form-label">Produk yang Diminati</label><input type="text" class="form-input" id="f-produk" placeholder="Contoh: Sneaker, Earphone..."></div>
+        <div class="form-group"><label class="form-label">Pesan *</label><textarea class="form-input" id="f-pesan" placeholder="Tuliskan pertanyaan atau pesananmu..."></textarea><span class="form-error" id="err-pesan">Wajib diisi</span></div>
+        <button class="btn-send" onclick="kirimPesan()">💬 Kirim via WhatsApp →</button>
+      </div>
     </div>
-</nav>
+  </div>
 
-<header class="bg-slate-900 py-20 px-6 text-center text-white relative overflow-hidden">
-    <div class="relative z-10">
-        <h1 class="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tight">Eksklusif & <span class="text-sky-400">Premium.</span></h1>
-        <p class="text-slate-400 max-w-xl mx-auto font-medium">Temukan koleksi perlengkapan olahraga dan lifestyle terbaik hanya di DIMASTORE MEDAN.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">DIM<span>ERLA</span></div>
+      <p class="footer-desc">Toko premium milik Dimas Erlangga — produk berkualitas tinggi untuk kehidupan yang lebih baik di Medan dan seluruh Indonesia.</p>
     </div>
-    <div class="absolute top-0 left-0 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-</header>
-
-<main class="max-w-7xl mx-auto px-6 py-16">
-    <div class="flex items-center justify-between mb-12">
-        <h2 class="text-2xl font-black uppercase tracking-tight italic border-l-4 border-sky-600 pl-4">New Arrivals</h2>
-        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Showing all products</span>
+    <div>
+      <div class="footer-col-title">Produk</div>
+      <div class="footer-links">
+        <a onclick="filterCategory('fashion')">👕 Fashion</a>
+        <a onclick="filterCategory('aksesoris')">💎 Aksesoris</a>
+        <a onclick="filterCategory('elektronik')">📱 Elektronik</a>
+        <a onclick="filterCategory('kuliner')">🍜 Kuliner</a>
+      </div>
     </div>
-
-    <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="col-span-full text-center py-20 text-slate-400 font-bold animate-pulse">MEMUAT KATALOG...</div>
+    <div>
+      <div class="footer-col-title">Info</div>
+      <div class="footer-links">
+        <a href="#products">Semua Produk</a>
+        <a href="#contact">Kontak</a>
+        <a href="https://dimastoremedan.com/" target="_blank">Website</a>
+      </div>
     </div>
-</main>
-
-<footer class="bg-white border-t border-slate-200 py-12 text-center">
-    <div class="text-xl font-black text-slate-900 mb-2">DIMASTORE<span class="text-sky-600">.</span></div>
-    <p class="text-slate-500 text-xs font-medium uppercase tracking-widest">© 2026 Dimastore Medan - Kualitas Premium Harga Terbaik</p>
+    <div>
+      <div class="footer-col-title">Sosial Media</div>
+      <div class="footer-links">
+        <a href="https://wa.me/6281334331776" target="_blank">💬 WhatsApp</a>
+        <a href="https://t.me/erlanggakuat" target="_blank">✈️ Telegram</a>
+        <a href="https://www.tiktok.com/@dimas0001" target="_blank">🎵 TikTok</a>
+        <a href="https://www.facebook.com/dimas.enel" target="_blank">👤 Facebook</a>
+        <a href="https://www.instagram.com/dimasenerlangga/" target="_blank">📸 Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 DIMERLA. All rights reserved.</div>
+    <div class="footer-owner">Dibuat dengan ❤️ oleh <span>Dimas Erlangga</span></div>
+  </div>
 </footer>
 
+<a class="wa-float" href="https://wa.me/6281334331776" target="_blank">💬<span class="wa-tip">Chat via WhatsApp</span></a>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
 <script>
+// ─── MENU ───
+var menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  document.getElementById('hamBtn').classList.toggle('open', menuOpen);
+  document.getElementById('mobileMenu').classList.toggle('open', menuOpen);
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
+}
+function closeMenu() {
+  menuOpen = false;
+  document.getElementById('hamBtn').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── TOAST ───
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.innerHTML = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2800);
+}
+
+// ─── CART STATE ───
+// cart = { 'Nama Produk': { name, price, img, cat, qty } }
+var cart = {};
+
+// ─── CART OPEN/CLOSE ───
+function openCart() {
+  document.getElementById('cartSidebar').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── ADD TO CART ───
+function addToCart(btn) {
+  var card = btn.closest('.prod-card');
+  var name = card.getAttribute('data-name');
+  var price = parseInt(card.getAttribute('data-price'));
+  var img = card.getAttribute('data-img');
+  var cat = card.getAttribute('data-cat');
+  if (cart[name]) {
+    cart[name].qty += 1;
+  } else {
+    cart[name] = { name: name, price: price, img: img, cat: cat, qty: 1 };
+  }
+  renderCart();
+  showToast('✅ ' + name.substring(0, 28) + '...');
+  btn.textContent = '✓';
+  btn.style.background = 'var(--g2)';
+  setTimeout(function() { btn.textContent = '+'; btn.style.background = ''; }, 1200);
+}
+
+// ─── CHANGE QTY ───
+function changeQty(name, delta) {
+  if (!cart[name]) return;
+  cart[name].qty += delta;
+  if (cart[name].qty <= 0) delete cart[name];
+  renderCart();
+}
+
+// ─── REMOVE ITEM ───
+function removeItem(name) {
+  delete cart[name];
+  renderCart();
+}
+
+// ─── CLEAR CART ───
+function clearCart() {
+  if (!confirm('Yakin kosongkan semua keranjang?')) return;
+  cart = {};
+  renderCart();
+}
+
+// ─── RENDER CART ───
+// Setiap produk ditampilkan sebagai baris terpisah
+function renderCart() {
+  var keys = Object.keys(cart);
+  var totalQty = 0;
+  var totalPrice = 0;
+  keys.forEach(function(k) {
+    totalQty += cart[k].qty;
+    totalPrice += cart[k].price * cart[k].qty;
+  });
+
+  // Update badge nav
+  var badge = document.getElementById('cartBadge');
+  badge.textContent = totalQty;
+  badge.classList.toggle('show', totalQty > 0);
+  document.getElementById('cartCountLabel').textContent = totalQty;
+
+  var body = document.getElementById('cartBody');
+  var foot = document.getElementById('cartFoot');
+  body.innerHTML = '';
+
+  // Kosong
+  if (keys.length === 0) {
+    body.innerHTML =
+      '<div class="cart-empty-state">' +
+        '<div class="cart-empty-ico">🛒</div>' +
+        '<p class="cart-empty-text">Keranjang masih kosong.<br>Yuk mulai belanja!</p>' +
+      '</div>';
+    foot.style.display = 'none';
+    return;
+  }
+
+  // Render setiap item sebagai baris terpisah
+  keys.forEach(function(k) {
+    var item = cart[k];
+    // Escape nama untuk onclick
+    var safeName = k.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+
+    var row = document.createElement('div');
+    row.className = 'cart-item';
+    row.innerHTML =
+      '<img class="cart-item-img" src="' + item.img + '" alt="' + item.name + '" ' +
+        'onerror="this.style.background=\'var(--g-bg)\'">' +
+      '<div class="cart-item-info">' +
+        '<div class="cart-item-cat">' + item.cat.toUpperCase() + '</div>' +
+        '<div class="cart-item-name">' + item.name + '</div>' +
+        '<div class="cart-item-price-unit">Rp ' + item.price.toLocaleString('id-ID') + ' / pcs</div>' +
+        '<div class="cart-item-bottom">' +
+          '<span class="cart-item-total">Rp ' + (item.price * item.qty).toLocaleString('id-ID') + '</span>' +
+          '<div class="cart-qty">' +
+            '<button class="qty-btn" onclick="changeQty(\'' + safeName + '\',-1)">−</button>' +
+            '<span class="qty-num">' + item.qty + '</span>' +
+            '<button class="qty-btn" onclick="changeQty(\'' + safeName + '\',1)">+</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<button class="cart-item-del" onclick="removeItem(\'' + safeName + '\')" title="Hapus item">🗑</button>';
+    body.appendChild(row);
+  });
+
+  // Footer summary
+  foot.style.display = 'block';
+  document.getElementById('cartQtyLabel').textContent = totalQty + ' item';
+  document.getElementById('cartProdLabel').textContent = keys.length + ' jenis produk';
+  document.getElementById('cartTotal').textContent = 'Rp ' + totalPrice.toLocaleString('id-ID');
+}
+
+// ─── CHECKOUT WA ───
+function checkoutWA() {
+  var keys = Object.keys(cart);
+  if (!keys.length) return;
+  var lines = ['Halo Dimas! Saya mau pesan:\n'];
+  var total = 0;
+  keys.forEach(function(k) {
+    var item = cart[k];
+    var sub = item.price * item.qty;
+    total += sub;
+    lines.push('• ' + item.name + ' × ' + item.qty + ' = Rp ' + sub.toLocaleString('id-ID'));
+  });
+  lines.push('\nTotal: Rp ' + total.toLocaleString('id-ID'));
+  lines.push('\nApakah semua tersedia? Terima kasih! 🙏');
+  window.open('https://wa.me/6281334331776?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+}
+
+// ─── MODAL ───
+var currentModalCard = null;
+var descs = {
+  fashion: 'Produk fashion pilihan berkualitas premium. Bahan nyaman dipakai seharian, desain modern dan stylish.',
+  aksesoris: 'Aksesoris premium yang melengkapi penampilan kamu. Dibuat dari bahan berkualitas tinggi dengan desain elegan.',
+  elektronik: 'Gadget dan elektronik pilihan dengan teknologi terkini. Performa handal, desain modern, garansi terpercaya.',
+  kuliner: 'Kuliner khas Medan yang autentik dan lezat. Dibuat dari bahan-bahan segar pilihan dengan resep turun-temurun.'
+};
+
+function openModal(card) {
+  if (card.classList.contains('hidden') || card.classList.contains('sold-out')) return;
+  currentModalCard = card;
+  var name = card.getAttribute('data-name');
+  var price = parseInt(card.getAttribute('data-price'));
+  var oldPrice = card.getAttribute('data-old');
+  var disc = card.getAttribute('data-disc');
+  var img = card.getAttribute('data-img');
+  var cat = card.getAttribute('data-cat');
+  var stock = card.getAttribute('data-stock') || 'ok';
+  var stokText = card.getAttribute('data-stok') || '';
+  document.getElementById('modalImg').src = img;
+  document.getElementById('modalCat').textContent = cat.toUpperCase();
+  document.getElementById('modalName').textContent = name;
+  document.getElementById('modalPrice').textContent = 'Rp ' + price.toLocaleString('id-ID');
+  document.getElementById('modalOld').textContent = oldPrice ? 'Rp ' + parseInt(oldPrice).toLocaleString('id-ID') : '';
+  document.getElementById('modalDisc').textContent = disc ? '-' + disc + '%' : '';
+  document.getElementById('modalDisc').style.display = disc ? 'inline' : 'none';
+  document.getElementById('modalDesc').textContent = descs[cat] || '';
+  var stockEl = document.getElementById('modalStock');
+  stockEl.className = 'modal-stock ' + stock;
+  document.getElementById('modalStockText').textContent =
+    stock === 'ok' ? 'Stok Tersedia · ' + stokText :
+    stock === 'low' ? 'Stok Terbatas · ' + stokText : 'Stok Habis';
+  document.getElementById('modalAddBtn').disabled = (stock === 'out');
+  document.getElementById('modalAddBtn').textContent = stock === 'out' ? '📦 Stok Habis' : '🛒 Tambah ke Keranjang';
+  document.getElementById('modalWaBtn').style.display = stock === 'out' ? 'none' : 'flex';
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  currentModalCard = null;
+}
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+function modalAddToCart() {
+  if (!currentModalCard) return;
+  var name = currentModalCard.getAttribute('data-name');
+  var price = parseInt(currentModalCard.getAttribute('data-price'));
+  var img = currentModalCard.getAttribute('data-img');
+  var cat = currentModalCard.getAttribute('data-cat');
+  if (cart[name]) { cart[name].qty += 1; }
+  else { cart[name] = { name: name, price: price, img: img, cat: cat, qty: 1 }; }
+  renderCart();
+  showToast('✅ ' + name.substring(0, 28) + '...');
+  closeModal();
+}
+function modalOrderWA() {
+  if (!currentModalCard) return;
+  var name = currentModalCard.getAttribute('data-name');
+  var price = parseInt(currentModalCard.getAttribute('data-price'));
+  var msg = 'Halo Dimas! Saya tertarik dengan *' + name + '* (Rp ' + price.toLocaleString('id-ID') + ').\nApakah masih tersedia? Terima kasih! 🙏';
+  window.open('https://wa.me/6281334331776?text=' + encodeURIComponent(msg), '_blank');
+}
+
+// ─── SEARCH ───
+var currentCat = 'all';
+function handleSearch(val) {
+  var inp1 = document.getElementById('searchInput');
+  var inp2 = document.getElementById('searchInputMob');
+  if (inp1 && inp1 !== document.activeElement) inp1.value = val;
+  if (inp2 && inp2 !== document.activeElement) inp2.value = val;
+  var clearBtn = document.getElementById('searchClear');
+  if (clearBtn) clearBtn.style.display = val.length > 0 ? 'block' : 'none';
+  var q = val.toLowerCase().trim();
+  var cards = document.querySelectorAll('.prod-card[data-cat]');
+  var count = 0;
+  cards.forEach(function(c) {
+    var name = (c.getAttribute('data-name') || '').toLowerCase();
+    var cat = (c.getAttribute('data-cat') || '').toLowerCase();
+    var catMatch = currentCat === 'all' || cat === currentCat;
+    var srchMatch = q === '' || name.includes(q) || cat.includes(q);
+    if (catMatch && srchMatch) { c.classList.remove('hidden'); count++; }
+    else { c.classList.add('hidden'); }
+  });
+  document.getElementById('noResult').classList.toggle('show', count === 0);
+  var info = document.getElementById('searchInfo');
+  if (q !== '') {
+    info.style.display = 'block';
+    info.textContent = count > 0 ? '🔍 ' + count + ' produk ditemukan untuk "' + val + '"' : '😔 Tidak ada produk untuk "' + val + '"';
+  } else {
+    info.style.display = 'none';
+  }
+}
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  var mob = document.getElementById('searchInputMob');
+  if (mob) mob.value = '';
+  document.getElementById('searchClear').style.display = 'none';
+  document.getElementById('searchInfo').style.display = 'none';
+  handleSearch('');
+}
+
+// ─── FILTER ───
+var judulMap = { all: 'Semua Produk', fashion: 'Koleksi Fashion 👕', aksesoris: 'Koleksi Aksesoris 💎', elektronik: 'Koleksi Elektronik 📱', kuliner: 'Kuliner Medan 🍜' };
+function applyFilter(cat) {
+  currentCat = cat;
+  var q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  var cards = document.querySelectorAll('.prod-card[data-cat]');
+  var count = 0;
+  cards.forEach(function(c) {
+    var name = (c.getAttribute('data-name') || '').toLowerCase();
+    var cardCat = (c.getAttribute('data-cat') || '').toLowerCase();
+    if ((cat === 'all' || cardCat === cat) && (q === '' || name.includes(q) || cardCat.includes(q))) {
+      c.classList.remove('hidden'); count++;
+    } else {
+      c.classList.add('hidden');
+    }
+  });
+  document.getElementById('noResult').classList.toggle('show', count === 0);
+  document.getElementById('produk-judul').textContent = judulMap[cat] || 'Semua Produk';
+  document.querySelectorAll('.ftab').forEach(function(t) {
+    var txt = t.textContent.toLowerCase();
+    t.classList.toggle('active', cat === 'all' ? txt === 'semua' : txt.includes(cat));
+  });
+  ['all', 'fashion', 'aksesoris', 'elektronik', 'kuliner'].forEach(function(c2) {
+    var chip = document.getElementById('chip-' + c2);
+    if (chip) chip.classList.toggle('active', c2 === cat);
+  });
+}
+function filterTab(el, cat) { applyFilter(cat); document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+function filterCategory(cat) { applyFilter(cat); document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+
+// ─── CONTACT FORM ───
+function kirimPesan() {
+  var nama = document.getElementById('f-nama').value.trim();
+  var wa = document.getElementById('f-wa').value.trim();
+  var pesan = document.getElementById('f-pesan').value.trim();
+  document.getElementById('err-nama').classList.toggle('show', !nama);
+  document.getElementById('err-wa').classList.toggle('show', !wa);
+  document.getElementById('err-pesan').classList.toggle('show', !pesan);
+  if (!nama || !wa || !pesan) { showToast('⚠️ Lengkapi field yang wajib'); return; }
+  var produk = document.getElementById('f-produk').value || 'produk';
+  var msg = 'Halo Dimas! Nama saya *' + nama + '*.\nNo WA: ' + wa + '\nSaya tertarik dengan *' + produk + '*.\n\n' + pesan;
+  window.open('https://wa.me/6281334331776?text=' + encodeURIComponent(msg), '_blank');
+  showToast('✅ Pesan dikirim via WhatsApp!');
+}
+
+// ─── PRODUCT CLICK ───
+document.querySelectorAll('.prod-card[data-cat]').forEach(function(card) {
+  card.addEventListener('click', function(e) {
+    if (e.target.classList.contains('prod-add-btn')) return;
+    if (!card.classList.contains('sold-out')) openModal(card);
+  });
+});
+
+// ─── SCROLL ───
+window.addEventListener('scroll', function() {
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 400);
+});
+
+// ─── REVEAL ───
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: .06 });
+document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+
+// ─── KEYBOARD ───
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeModal(); closeCart(); }
+});
+
+// ─── INIT ───
+renderCart();
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+    // KONFIGURASI SUPABASE
     const SUPABASE_URL = 'https://clbcalmyotcbxiocorys.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYmNhbG15b3RjYnhpb2NvcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDgyNTksImV4cCI6MjA5MTEyNDI1OX0.IzEWTUcPCr4t-ZTqvPCqShE2BwRxvBFW1grJvggMhJM';
     const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    async function loadProducts() {
-        const { data } = await _supabase.from('produk_dimastore').select('*').order('id', { ascending: false });
-        const container = document.getElementById('product-container');
-        container.innerHTML = "";
+    // FUNGSI AMBIL DATA PRODUK
+    async function fetchProducts() {
+        const { data, error } = await _supabase
+            .from('produk_dimastore')
+            .select('*')
+            .order('id', { ascending: false });
+
+        if (error) return console.error(error);
+
+        const grid = document.getElementById('product-grid'); // Pastikan ID ini ada di HTML kamu
+        if(!grid) return;
+        
+        grid.innerHTML = ""; // Bersihkan loading
 
         data.forEach(p => {
-            const formatHarga = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(p.harga);
+            const hargaIDR = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(p.harga);
             
-            container.innerHTML += `
-            <div class="product-card bg-white rounded-[2rem] border border-slate-100 overflow-hidden shadow-sm hover:shadow-xl">
-                <div class="h-64 overflow-hidden relative group">
-                    <img src="${p.gambar_url}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-sky-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">${p.kategori}</span>
-                    </div>
+            grid.innerHTML += `
+            <div class="prod-card">
+                <div class="prod-img">
+                    <img src="${p.gambar_url}" alt="${p.nama_produk}">
+                    <span class="prod-tag tag-new">${p.kategori}</span>
                 </div>
-                <div class="p-6 text-center">
-                    <h3 class="font-bold text-slate-800 mb-2 text-lg uppercase tracking-tight">${p.nama_produk}</h3>
-                    <p class="text-2xl font-black text-sky-600 mb-6">${formatHarga}</p>
-                    <a href="${p.link_wa}" target="_blank" class="block w-full py-4 bg-slate-900 hover:bg-sky-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all">
-                        BELI SEKARANG
-                    </a>
+                <div class="prod-info">
+                    <h3 class="prod-name">${p.nama_produk}</h3>
+                    <div class="prod-price-row">
+                        <span class="prod-price">${hargaIDR}</span>
+                    </div>
+                    <div class="prod-meta">
+                        <button class="prod-add-btn" onclick="window.open('${p.link_wa}')">+</button>
+                    </div>
                 </div>
             </div>`;
         });
     }
-    loadProducts();
+
+    // Jalankan saat halaman siap
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchProducts();
+        
+        // Aktifkan Realtime
+        _supabase.channel('custom-all-channel')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'produk_dimastore' }, () => {
+            fetchProducts();
+        }).subscribe();
+    });
 </script>
 </body>
 </html>
