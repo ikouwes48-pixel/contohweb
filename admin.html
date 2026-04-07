@@ -2,63 +2,75 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Admin DIMERLA | Control Panel</title>
+    <title>Admin DIMERLA | Professional Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Outfit', sans-serif; }</style>
+    <style>body { font-family: 'Outfit', sans-serif; background: #f1f5f9; }</style>
 </head>
-<body class="bg-[#f8f9fa] p-4 md:p-10">
+<body class="p-4 md:p-10">
 
-    <div id="login-box" class="max-w-md mx-auto mt-20 bg-white p-8 rounded-[2rem] shadow-xl border border-slate-200">
-        <h2 class="text-2xl font-black mb-6 text-center text-[#0d1b2a]">ADMIN <span class="text-[#0a7c5c]">LOGIN</span></h2>
-        <input type="text" id="user" placeholder="Username" class="w-full p-4 bg-slate-100 rounded-xl mb-3 outline-none">
-        <input type="password" id="pass" placeholder="Password" class="w-full p-4 bg-slate-100 rounded-xl mb-6 outline-none">
-        <button onclick="auth()" class="w-full py-4 bg-[#0a7c5c] text-white font-black rounded-xl">MASUK</button>
+    <div id="login-panel" class="max-w-md mx-auto mt-20 bg-white p-10 rounded-[2.5rem] shadow-2xl border border-white">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-black text-[#0d1b2a]">DIMERLA <span class="text-[#0a7c5c]">ADMIN</span></h2>
+            <p class="text-xs text-slate-400 font-bold uppercase tracking-widest mt-2">Secure Access Only</p>
+        </div>
+        <div class="space-y-4">
+            <input type="text" id="user" placeholder="Username" class="w-full p-4 bg-slate-50 rounded-2xl border-none outline-none focus:ring-2 focus:ring-[#0a7c5c]">
+            <input type="password" id="pass" placeholder="Password" class="w-full p-4 bg-slate-50 rounded-2xl border-none outline-none focus:ring-2 focus:ring-[#0a7c5c]">
+            <button onclick="login()" class="w-full py-4 bg-[#0a7c5c] text-white font-black rounded-2xl shadow-lg shadow-[#0a7c5c]/30 hover:scale-[1.02] transition">MASUK SEKARANG</button>
+        </div>
     </div>
 
-    <div id="admin-dashboard" class="max-w-5xl mx-auto hidden">
-        <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl font-black text-[#0d1b2a]">DIMERLA <span class="text-[#0a7c5c]">DASHBOARD</span></h1>
-            <button onclick="location.reload()" class="bg-red-500 text-white px-4 py-2 rounded-lg text-xs font-bold">LOGOUT</button>
+    <div id="main-panel" class="max-w-6xl mx-auto hidden">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
+            <div>
+                <h1 class="text-3xl font-black text-[#0d1b2a]">INVENTORY <span class="text-[#0a7c5c]">SYSTEM</span></h1>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Update Real-time tanpa refresh</p>
+            </div>
+            <button onclick="location.reload()" class="bg-red-50 text-red-600 px-6 py-2 rounded-full text-xs font-black border border-red-100 uppercase tracking-widest">Logout</button>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-[2rem] border border-slate-200 shadow-sm h-fit">
-                <h3 id="form-title" class="font-black text-sm uppercase mb-4 text-slate-400 tracking-widest">Tambah Produk Baru</h3>
+            <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
+                <h3 id="form-title" class="font-black text-sm text-slate-400 uppercase mb-6 tracking-widest">Tambah Produk</h3>
                 <input type="hidden" id="edit-id">
-                <div class="space-y-3">
-                    <input type="text" id="nama" placeholder="Nama Barang" class="w-full p-3 bg-slate-50 rounded-lg outline-none border border-slate-100">
-                    <input type="number" id="harga" placeholder="Harga (Contoh: 150000)" class="w-full p-3 bg-slate-50 rounded-lg outline-none border border-slate-100">
-                    <input type="number" id="stok" placeholder="Jumlah Stok" class="w-full p-3 bg-slate-50 rounded-lg outline-none border border-slate-100">
-                    <select id="kategori" class="w-full p-3 bg-slate-50 rounded-lg outline-none border border-slate-100 font-bold">
+                <div class="space-y-4">
+                    <input type="text" id="nama" placeholder="Nama Barang" class="w-full p-4 bg-slate-50 rounded-xl outline-none border border-slate-100">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="number" id="harga" placeholder="Harga" class="w-full p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <input type="number" id="stok" placeholder="Stok" class="w-full p-4 bg-slate-50 rounded-xl border border-slate-100 font-bold text-[#0a7c5c]">
+                    </div>
+                    <select id="kategori" class="w-full p-4 bg-slate-50 rounded-xl border border-slate-100 font-bold uppercase text-xs">
                         <option value="FASHION">FASHION</option>
                         <option value="ELEKTRONIK">ELEKTRONIK</option>
                         <option value="AKSESORIS">AKSESORIS</option>
-                        <option value="KULINER">KULINER</option>
+                        <option value="JERSEY">JERSEY</option>
                     </select>
-                    <input type="text" id="gambar" placeholder="URL Link Gambar" class="w-full p-3 bg-slate-50 rounded-lg outline-none border border-slate-100">
-                    <input type="text" id="wa" value="https://wa.me/6281334331776" class="w-full p-3 bg-slate-50 rounded-lg outline-none border border-slate-100 text-xs">
-                    
-                    <button id="btn-save" onclick="saveProduct()" class="w-full py-4 bg-[#0a7c5c] text-white font-black rounded-xl mt-2">SIMPAN KE TOKO</button>
-                    <button id="btn-cancel" onclick="resetForm()" class="w-full py-2 text-slate-400 font-bold text-xs hidden">BATAL EDIT</button>
+                    <input type="text" id="gambar" placeholder="Link Gambar URL" class="w-full p-4 bg-slate-50 rounded-xl border border-slate-100 text-xs">
+                    <button id="btn-save" onclick="save()" class="w-full py-4 bg-[#0d1b2a] text-white font-black rounded-xl hover:bg-[#0a7c5c] transition uppercase text-xs tracking-widest">Simpan Barang</button>
+                    <button id="btn-cancel" onclick="reset()" class="w-full text-[10px] font-black text-slate-300 hidden">BATALKAN EDIT</button>
                 </div>
             </div>
 
-            <div class="lg:col-span-2 bg-white p-6 rounded-[2rem] border border-slate-200 shadow-sm overflow-x-auto">
-                <h3 class="font-black text-sm uppercase mb-4 text-slate-400 tracking-widest">History Produk</h3>
-                <table class="w-full text-left text-sm">
-                    <thead class="border-b border-slate-100">
-                        <tr class="text-slate-400 uppercase text-[10px] font-black">
-                            <th class="pb-4">Produk</th>
-                            <th class="pb-4">Harga</th>
-                            <th class="pb-4 text-center">Stok</th>
-                            <th class="pb-4 text-right">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="history-table">
-                        </tbody>
-                </table>
+            <div class="lg:col-span-2 bg-white rounded-[2rem] shadow-sm border border-slate-200 overflow-hidden">
+                <div class="p-6 border-b border-slate-100 flex justify-between">
+                    <h3 class="font-black text-sm text-slate-400 uppercase tracking-widest">History Update</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-50 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                            <tr>
+                                <th class="p-6">Produk</th>
+                                <th>Kategori</th>
+                                <th>Stok</th>
+                                <th class="text-right p-6">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body" class="divide-y divide-slate-100">
+                            </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -68,106 +80,78 @@
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYmNhbG15b3RjYnhpb2NvcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDgyNTksImV4cCI6MjA5MTEyNDI1OX0.IzEWTUcPCr4t-ZTqvPCqShE2BwRxvBFW1grJvggMhJM';
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // FITUR LOGIN SEDERHANA
-        function auth() {
-            const u = document.getElementById('user').value;
-            const p = document.getElementById('pass').value;
-            if(u === 'admin' && p === 'dimerla2026') {
-                document.getElementById('login-box').classList.add('hidden');
-                document.getElementById('admin-dashboard').classList.remove('hidden');
-                loadHistory();
-            } else { alert("Login Salah!"); }
+        function login() {
+            if(document.getElementById('user').value === 'admin' && document.getElementById('pass').value === 'dimerla2026') {
+                document.getElementById('login-panel').classList.add('hidden');
+                document.getElementById('main-panel').classList.remove('hidden');
+                refreshTable();
+            } else { alert("Akses Ditolak!"); }
         }
 
-        // LOAD HISTORY & REALTIME
-        async function loadHistory() {
+        async function refreshTable() {
             const { data } = await _supabase.from('produk_dimastore').select('*').order('id', { ascending: false });
-            const table = document.getElementById('history-table');
-            table.innerHTML = "";
-
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = "";
             data.forEach(p => {
-                table.innerHTML += `
-                <tr class="border-b border-slate-50 hover:bg-slate-50 transition">
-                    <td class="py-4 flex items-center gap-3">
-                        <img src="${p.gambar_url}" class="w-10 h-10 rounded-lg object-cover bg-slate-100">
-                        <div>
-                            <div class="font-bold text-[#0d1b2a]">${p.nama_produk}</div>
-                            <div class="text-[9px] text-[#0a7c5c] font-black">${p.kategori}</div>
-                        </div>
+                tbody.innerHTML += `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-6 flex items-center gap-4">
+                        <img src="${p.gambar_url}" class="w-12 h-12 rounded-xl object-cover shadow-sm bg-slate-100">
+                        <span class="font-bold text-slate-700 text-sm">${p.nama_produk}</span>
                     </td>
-                    <td class="font-bold">Rp${p.harga.toLocaleString()}</td>
-                    <td class="text-center font-black ${p.stok < 5 ? 'text-red-500' : ''}">${p.stok}</td>
-                    <td class="text-right space-x-2">
-                        <button onclick="prepareEdit('${p.id}', '${p.nama_produk}', ${p.harga}, ${p.stok}, '${p.kategori}', '${p.gambar_url}', '${p.link_wa}')" class="text-blue-500 font-bold text-[10px] hover:underline">EDIT</button>
-                        <button onclick="deleteProduct('${p.id}')" class="text-red-500 font-bold text-[10px] hover:underline">HAPUS</button>
+                    <td class="text-[10px] font-black text-slate-400">${p.kategori}</td>
+                    <td class="font-black text-[#0a7c5c]">${p.stok}</td>
+                    <td class="p-6 text-right space-x-3">
+                        <button onclick="prepareEdit('${p.id}', '${p.nama_produk}', ${p.harga}, ${p.stok}, '${p.kategori}', '${p.gambar_url}')" class="text-blue-500 font-black text-[10px]">EDIT</button>
+                        <button onclick="del('${p.id}')" class="text-red-500 font-black text-[10px]">HAPUS</button>
                     </td>
                 </tr>`;
             });
         }
 
-        // TAMBAH & UPDATE PRODUK
-        async function saveProduct() {
+        async function save() {
             const id = document.getElementById('edit-id').value;
-            const payload = {
+            const obj = {
                 nama_produk: document.getElementById('nama').value,
                 harga: document.getElementById('harga').value,
                 stok: document.getElementById('stok').value,
                 kategori: document.getElementById('kategori').value,
-                gambar_url: document.getElementById('gambar').value,
-                link_wa: document.getElementById('wa').value
+                gambar_url: document.getElementById('gambar').value
             };
 
-            if(id) {
-                // Jika sedang mode edit
-                await _supabase.from('produk_dimastore').update(payload).eq('id', id);
-                alert("Berhasil di-update!");
-            } else {
-                // Jika sedang mode tambah baru
-                await _supabase.from('produk_dimastore').insert([payload]);
-                alert("Berhasil ditambah!");
-            }
-            resetForm();
-        }
-
-        // HAPUS PRODUK
-        async function deleteProduct(id) {
-            if(confirm("Yakin mau hapus barang ini dari DIMERLA?")) {
-                await _supabase.from('produk_dimastore').delete().eq('id', id);
-            }
-        }
-
-        // MODE EDIT
-        function prepareEdit(id, nama, harga, stok, kat, img, wa) {
-            document.getElementById('edit-id').value = id;
-            document.getElementById('nama').value = nama;
-            document.getElementById('harga').value = harga;
-            document.getElementById('stok').value = stok;
-            document.getElementById('kategori').value = kat;
-            document.getElementById('gambar').value = img;
-            document.getElementById('wa').value = wa;
+            if(id) await _supabase.from('produk_dimastore').update(obj).eq('id', id);
+            else await _supabase.from('produk_dimastore').insert([obj]);
             
-            document.getElementById('form-title').innerText = "Edit Produk";
-            document.getElementById('btn-save').innerText = "SIMPAN PERUBAHAN";
+            reset();
+            alert("Data tersimpan secara Real-time!");
+        }
+
+        async function del(id) {
+            if(confirm("Hapus produk ini?")) await _supabase.from('produk_dimastore').delete().eq('id', id);
+        }
+
+        function prepareEdit(id, n, h, s, k, g) {
+            document.getElementById('edit-id').value = id;
+            document.getElementById('nama').value = n;
+            document.getElementById('harga').value = h;
+            document.getElementById('stok').value = s;
+            document.getElementById('kategori').value = k;
+            document.getElementById('gambar').value = g;
+            document.getElementById('form-title').innerText = "Edit Barang";
             document.getElementById('btn-cancel').classList.remove('hidden');
         }
 
-        function resetForm() {
+        function reset() {
             document.getElementById('edit-id').value = "";
             document.getElementById('nama').value = "";
             document.getElementById('harga').value = "";
             document.getElementById('stok').value = "";
             document.getElementById('gambar').value = "";
-            document.getElementById('form-title').innerText = "Tambah Produk Baru";
-            document.getElementById('btn-save').innerText = "SIMPAN KE TOKO";
+            document.getElementById('form-title').innerText = "Tambah Produk";
             document.getElementById('btn-cancel').classList.add('hidden');
         }
 
-        // REALTIME SUBSCRIPTION
-        _supabase.channel('custom-all-channel')
-            .on('postgres_changes', { event: '*', schema: 'public', table: 'produk_dimastore' }, () => {
-                loadHistory(); // Tabel History akan update otomatis tanpa refresh
-            }).subscribe();
-
+        _supabase.channel('inv').on('postgres_changes', { event: '*', schema: 'public', table: 'produk_dimastore' }, refreshTable).subscribe();
     </script>
 </body>
 </html>
