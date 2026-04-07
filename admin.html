@@ -1,45 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Admin Prediksi</title>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Update Jadwal</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        input { display: block; margin: 10px 0; padding: 10px; width: 300px; }
+        button { padding: 10px 20px; background: green; color: white; border: none; cursor: pointer; }
+    </style>
 </head>
 <body>
+    <h2>Input Jadwal Pertandingan</h2>
+    <input type="text" id="liga" placeholder="Nama Liga">
+    <input type="text" id="timA" placeholder="Tim A">
+    <input type="text" id="timB" placeholder="Tim B">
+    <input type="text" id="jam" placeholder="Jam (e.g. 02:00 WIB)">
+    <input type="text" id="prediksi" placeholder="Prediksi Skor">
+    <button onclick="simpanData()">Update Jadwal</button>
 
-<h1>Admin Input Pertandingan</h1>
+    <script>
+        const firebaseConfig = {
+            // PASTE KONFIGURASI FIREBASE ANDA DI SINI (SAMA DENGAN DI ATAS)
+        };
+        firebase.initializeApp(firebaseConfig);
 
-<input id="match" placeholder="Tim A vs Tim B"><br><br>
-<input id="time" placeholder="Jam (contoh: 22:00)"><br><br>
-<input id="prediction" placeholder="Prediksi skor"><br><br>
-
-<button onclick="addMatch()">Simpan</button>
-
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "ISI_API_KEY_KAMU",
-    authDomain: "ISI_DOMAIN_KAMU",
-    projectId: "ISI_PROJECT_ID_KAMU"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  window.addMatch = async function () {
-    const match = document.getElementById("match").value;
-    const time = document.getElementById("time").value;
-    const prediction = document.getElementById("prediction").value;
-
-    await addDoc(collection(db, "matches"), {
-      match,
-      time,
-      prediction
-    });
-
-    alert("Data berhasil disimpan!");
-  }
-</script>
-
+        function simpanData() {
+            const db = firebase.database().ref('matches');
+            const data = {
+                liga: document.getElementById('liga').value,
+                timA: document.getElementById('timA').value,
+                timB: document.getElementById('timB').value,
+                jam: document.getElementById('jam').value,
+                prediksi: document.getElementById('prediksi').value
+            };
+            
+            db.push(data).then(() => {
+                alert("Jadwal Berhasil Diperbarui!");
+                location.reload();
+            });
+        }
+    </script>
 </body>
 </html>
