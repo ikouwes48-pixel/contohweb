@@ -2,36 +2,62 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Prediksi Bola</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body class="bg-slate-100 p-4 md:p-8 font-sans">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-        
-        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-fit">
-            <h2 class="text-xl font-bold mb-6 text-slate-800">Tambah Jadwal</h2>
+<body class="bg-slate-100 min-h-screen font-sans">
+
+    <div id="login-section" class="flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-200">
+            <h2 class="text-2xl font-bold mb-6 text-center text-slate-800 italic">ADMIN LOGIN</h2>
             <div class="space-y-4">
-                <input type="text" id="liga" placeholder="Nama Liga" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none">
-                <div class="grid grid-cols-2 gap-2">
-                    <input type="text" id="timA" placeholder="Tim A" class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                    <input type="text" id="timB" placeholder="Tim B" class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700">User ID</label>
+                    <input type="text" id="userid" class="w-full p-3 mt-1 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
-                <input type="text" id="jam" placeholder="Jam (Contoh: 21:00)" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                <input type="text" id="prediksi" placeholder="Prediksi Skor" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl">
-                <button id="btnSimpan" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-blue-200">Publikasikan</button>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700">Password</label>
+                    <input type="password" id="password" class="w-full p-3 mt-1 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <button id="btnLogin" class="w-full py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl transition-all">MASUK DASHBOARD</button>
             </div>
         </div>
+    </div>
 
-        <div class="md:col-span-2">
-            <h2 class="text-xl font-bold mb-6 text-slate-800 text-center md:text-left">Kelola Jadwal Aktif</h2>
-            <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
-                <table class="w-full text-left bg-white border-collapse">
-                    <thead class="bg-slate-50 text-slate-500 text-sm uppercase">
+    <div id="admin-section" class="hidden p-4 md:p-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center mb-8 bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+            <h1 class="text-xl font-bold text-slate-800">DASHBOARD PENGELOLA</h1>
+            <button onclick="logout()" class="px-4 py-2 bg-red-100 text-red-600 rounded-lg font-medium hover:bg-red-200 transition-all">Keluar Sesi</button>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-fit">
+                <h2 class="text-lg font-bold mb-6 text-slate-800 border-l-4 border-blue-500 pl-3">Tambah Jadwal Baru</h2>
+                <div class="space-y-4">
+                    <input type="text" id="liga" placeholder="Nama Liga (e.g. Serie A)" class="w-full p-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" id="timA" placeholder="Tim Tuan Rumah" class="p-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="text" id="timB" placeholder="Tim Tamu" class="p-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <input type="text" id="jam" placeholder="Waktu (e.g. 02:45 WIB)" class="w-full p-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="prediksi" placeholder="Prediksi Skor (e.g. 3 - 0)" class="w-full p-3 bg-slate-50 border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="btnSimpan" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg transition-all">PUBLIKASIKAN</button>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 overflow-hidden rounded-2xl border border-slate-200 shadow-sm bg-white">
+                <div class="p-4 bg-slate-50 border-b border-slate-200">
+                    <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest text-center md:text-left">Kelola Jadwal Pertandingan</h2>
+                </div>
+                <table class="w-full text-left">
+                    <thead class="bg-slate-50 text-slate-400 text-xs uppercase font-bold">
                         <tr>
                             <th class="p-4">Pertandingan</th>
-                            <th class="p-4">Skor</th>
-                            <th class="p-4 text-center">Aksi</th>
+                            <th class="p-4">Prediksi</th>
+                            <th class="p-4 text-center">Tindakan</th>
                         </tr>
                     </thead>
                     <tbody id="table-body" class="divide-y divide-slate-100">
@@ -39,7 +65,6 @@
                 </table>
             </div>
         </div>
-
     </div>
 
     <script>
@@ -47,27 +72,57 @@
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYmNhbG15b3RjYnhpb2NvcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDgyNTksImV4cCI6MjA5MTEyNDI1OX0.IzEWTUcPCr4t-ZTqvPCqShE2BwRxvBFW1grJvggMhJM';
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // Fungsi Load Data untuk Admin
+        // --- PENGATURAN LOGIN ---
+        const ADMIN_USER = "dimas_admin"; 
+        const ADMIN_PASS = "bola123"; 
+
+        document.getElementById('btnLogin').addEventListener('click', () => {
+            const user = document.getElementById('userid').value;
+            const pass = document.getElementById('password').value;
+
+            if (user === ADMIN_USER && pass === ADMIN_PASS) {
+                sessionStorage.setItem("isLoggedIn", "true");
+                checkSession();
+            } else {
+                alert("User ID atau Password Salah!");
+            }
+        });
+
+        function checkSession() {
+            if (sessionStorage.getItem("isLoggedIn") === "true") {
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('admin-section').classList.remove('hidden');
+                loadAdminData();
+            } else {
+                document.getElementById('login-section').classList.remove('hidden');
+                document.getElementById('admin-section').classList.add('hidden');
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem("isLoggedIn");
+            checkSession();
+        }
+
+        // --- FUNGSI DATA ---
         async function loadAdminData() {
             const { data, error } = await _supabase.from('jadwal_bola').select('*').order('id', { ascending: false });
-            if (error) return;
-
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = data.map(item => `
-                <tr class="hover:bg-slate-50 transition-colors">
-                    <td class="p-4 text-sm font-medium">
-                        <div class="text-blue-600 text-xs font-bold">${item.liga}</div>
-                        ${item.tim_a} vs ${item.tim_b}
+                <tr class="hover:bg-slate-50 transition-all">
+                    <td class="p-4">
+                        <div class="text-blue-600 text-[10px] font-bold uppercase">${item.liga}</div>
+                        <div class="font-bold text-slate-800">${item.tim_a} <span class="text-slate-400 font-normal">vs</span> ${item.tim_b}</div>
+                        <div class="text-xs text-slate-500">${item.jam}</div>
                     </td>
-                    <td class="p-4 font-mono font-bold text-green-600">${item.prediksi}</td>
+                    <td class="p-4 font-mono font-bold text-green-600 bg-green-50/50">${item.prediksi}</td>
                     <td class="p-4 text-center">
-                        <button onclick="hapusData(${item.id})" class="text-red-500 hover:bg-red-50 p-2 rounded-lg transition-all">🗑️ Hapus</button>
+                        <button onclick="hapusData(${item.id})" class="text-red-500 hover:bg-red-50 px-3 py-1 rounded-lg border border-red-100 transition-all text-sm">Hapus</button>
                     </td>
                 </tr>
             `).join('');
         }
 
-        // Fungsi Tambah Data
         document.getElementById('btnSimpan').addEventListener('click', async () => {
             const payload = {
                 liga: document.getElementById('liga').value,
@@ -76,26 +131,23 @@
                 jam: document.getElementById('jam').value,
                 prediksi: document.getElementById('prediksi').value
             };
-
+            
             const { error } = await _supabase.from('jadwal_bola').insert([payload]);
-            if (error) alert(error.message);
+            if (error) alert("Error: " + error.message);
             else {
-                alert("Data Ditambahkan!");
-                document.querySelectorAll('input').forEach(i => i.value = '');
+                document.querySelectorAll('input:not([type="password"])').forEach(i => i.value = '');
                 loadAdminData();
             }
         });
 
-        // Fungsi Hapus Data
         async function hapusData(id) {
             if (confirm('Yakin ingin menghapus jadwal ini?')) {
-                const { error } = await _supabase.from('jadwal_bola').delete().eq('id', id);
-                if (error) alert(error.message);
-                else loadAdminData();
+                await _supabase.from('jadwal_bola').delete().eq('id', id);
+                loadAdminData();
             }
         }
 
-        loadAdminData();
+        checkSession();
     </script>
 </body>
 </html>
