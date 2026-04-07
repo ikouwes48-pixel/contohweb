@@ -3,44 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Panel - Update Jadwal</title>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        body { font-family: sans-serif; padding: 20px; }
-        input { display: block; margin: 10px 0; padding: 10px; width: 300px; }
-        button { padding: 10px 20px; background: green; color: white; border: none; cursor: pointer; }
+        body { font-family: sans-serif; background: #f4f4f9; display: flex; justify-content: center; padding: 50px; }
+        .form-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { text-align: center; color: #333; }
+        label { display: block; margin-top: 10px; font-weight: bold; color: #555; }
+        input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; margin-top: 20px; background: #3ecf8e; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #34b27b; }
     </style>
 </head>
 <body>
-    <h2>Input Jadwal Pertandingan</h2>
-    <input type="text" id="liga" placeholder="Nama Liga">
-    <input type="text" id="timA" placeholder="Tim A">
-    <input type="text" id="timB" placeholder="Tim B">
-    <input type="text" id="jam" placeholder="Jam (e.g. 02:00 WIB)">
-    <input type="text" id="prediksi" placeholder="Prediksi Skor">
-    <button onclick="simpanData()">Update Jadwal</button>
+
+    <div class="form-container">
+        <h2>Input Jadwal Bola</h2>
+        
+        <label>Nama Liga</label>
+        <input type="text" id="liga" placeholder="Contoh: Liga Inggris">
+
+        <label>Tim Tuan Rumah (A)</label>
+        <input type="text" id="timA" placeholder="Contoh: Liverpool">
+
+        <label>Tim Tamu (B)</label>
+        <input type="text" id="timB" placeholder="Contoh: Arsenal">
+
+        <label>Jam Tayang</label>
+        <input type="text" id="jam" placeholder="Contoh: 02:00 WIB">
+
+        <label>Prediksi Skor</label>
+        <input type="text" id="prediksi" placeholder="Contoh: 2 - 1">
+
+        <button id="btnSimpan">Update ke Website</button>
+    </div>
 
     <script>
-        const firebaseConfig = {
-            // PASTE KONFIGURASI FIREBASE ANDA DI SINI (SAMA DENGAN DI ATAS)
-        };
-        firebase.initializeApp(firebaseConfig);
+        const SUPABASE_URL = 'https://clbcalmyotcbxiocorys.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYmNhbG15b3RjYnhpb2NvcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDgyNTksImV4cCI6MjA5MTEyNDI1OX0.IzEWTUcPCr4t-ZTqvPCqShE2BwRxvBFW1grJvggMhJM';
+        
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        function simpanData() {
-            const db = firebase.database().ref('matches');
-            const data = {
+        document.getElementById('btnSimpan').addEventListener('click', async () => {
+            const btn = document.getElementById('btnSimpan');
+            btn.innerText = 'Mengirim...';
+            btn.disabled = true;
+
+            const payload = {
                 liga: document.getElementById('liga').value,
-                timA: document.getElementById('timA').value,
-                timB: document.getElementById('timB').value,
+                tim_a: document.getElementById('timA').value,
+                tim_b: document.getElementById('timB').value,
                 jam: document.getElementById('jam').value,
                 prediksi: document.getElementById('prediksi').value
             };
+
+            const { error } = await _supabase.from('jadwal_bola').insert([payload]);
+
+            if (error) {
+                alert("Gagal: " + error.message);
+            } else {
+                alert("Berhasil! Jadwal sudah muncul di Landing Page.");
+                // Reset form
+                document.querySelectorAll('input').forEach(input => input.value = '');
+            }
             
-            db.push(data).then(() => {
-                alert("Jadwal Berhasil Diperbarui!");
-                location.reload();
-            });
-        }
+            btn.innerText = 'Update ke Website';
+            btn.disabled = false;
+        });
     </script>
 </body>
 </html>
