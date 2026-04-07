@@ -2,55 +2,41 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel - DIMERLA</title>
+    <title>Admin DIMASTORE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body class="bg-slate-950 text-slate-200 p-6 md:p-12">
-    <div class="max-w-3xl mx-auto">
-        <div class="flex justify-between items-center mb-10">
-            <h1 class="text-3xl font-black italic text-sky-500">ADMIN CONTROL</h1>
-            <a href="index.html" target="_blank" class="text-[10px] font-bold border border-slate-700 px-4 py-2 rounded-full hover:bg-slate-800">VIEW WEBSITE</a>
-        </div>
-
-        <div class="bg-slate-900 border border-slate-800 p-8 rounded-[2.5rem] shadow-2xl">
-            <div class="grid grid-cols-2 gap-4 mb-8">
-                <input type="text" id="liga" placeholder="LIGA (Premier League)" class="col-span-2 p-4 bg-slate-800 rounded-2xl outline-none focus:ring-2 focus:ring-sky-500 border border-white/5">
-                <input type="text" id="tim_a" placeholder="HOME TEAM" class="p-4 bg-slate-800 rounded-2xl outline-none border border-white/5">
-                <input type="text" id="tim_b" placeholder="AWAY TEAM" class="p-4 bg-slate-800 rounded-2xl outline-none border border-white/5">
-                <input type="text" id="tanggal" placeholder="TGL (12 Apr)" class="p-4 bg-slate-800 rounded-2xl outline-none border border-white/5">
-                <input type="text" id="jam" placeholder="JAM (02:00)" class="p-4 bg-slate-800 rounded-2xl outline-none border border-white/5">
+<body class="bg-slate-50 text-slate-900 p-6 md:p-12">
+    <div class="max-w-xl mx-auto bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100">
+        <h1 class="text-3xl font-black text-sky-600 mb-8 italic">ADD PRODUCT</h1>
+        
+        <div class="space-y-4">
+            <div>
+                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Nama Barang</label>
+                <input type="text" id="nama" placeholder="Contoh: Jersey Timnas 2024" class="w-full p-4 bg-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-sky-500">
             </div>
-
-            <div class="space-y-6 mb-8">
-                <div class="bg-slate-950/50 p-6 rounded-3xl border border-white/5">
-                    <p class="text-[10px] font-black text-slate-500 mb-4 uppercase tracking-widest">Asian Handicap Markets</p>
-                    <div class="grid grid-cols-3 gap-4">
-                        <input type="text" id="h_home" placeholder="Home Odds" class="p-3 bg-slate-800 rounded-xl text-center">
-                        <input type="text" id="h_val" placeholder="Handicap (0:1/4)" class="p-3 bg-slate-800 rounded-xl text-center border border-sky-500/20 font-bold">
-                        <input type="text" id="h_away" placeholder="Away Odds" class="p-3 bg-slate-800 rounded-xl text-center">
-                    </div>
-                </div>
-
-                <div class="bg-slate-950/50 p-6 rounded-3xl border border-white/5">
-                    <p class="text-[10px] font-black text-slate-500 mb-4 uppercase tracking-widest">Over Under Markets</p>
-                    <div class="grid grid-cols-3 gap-4">
-                        <input type="text" id="ou_o" placeholder="Over Odds" class="p-3 bg-slate-800 rounded-xl text-center">
-                        <input type="text" id="ou_t" placeholder="Total (2.5)" class="p-3 bg-slate-800 rounded-xl text-center border border-amber-500/20 font-bold">
-                        <input type="text" id="ou_u" placeholder="Under Odds" class="p-3 bg-slate-800 rounded-xl text-center">
-                    </div>
-                </div>
+            <div>
+                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Harga (Angka saja)</label>
+                <input type="number" id="harga" placeholder="Contoh: 150000" class="w-full p-4 bg-slate-100 rounded-2xl outline-none">
             </div>
-
-            <div class="flex gap-4 mb-10">
-                <input type="text" id="prediksi" placeholder="Prediksi (2-1)" class="flex-1 p-5 bg-sky-500/10 border-2 border-sky-500 rounded-2xl font-black text-center text-sky-400">
-                <select id="status" class="p-5 bg-slate-800 rounded-2xl font-bold border border-white/5">
-                    <option value="UPCOMING">UPCOMING</option>
-                    <option value="LIVE">LIVE</option>
+            <div>
+                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">URL Foto Produk</label>
+                <input type="text" id="gambar" placeholder="Tempel link foto di sini" class="w-full p-4 bg-slate-100 rounded-2xl outline-none">
+            </div>
+            <div>
+                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Kategori</label>
+                <select id="kategori" class="w-full p-4 bg-slate-100 rounded-2xl outline-none font-bold">
+                    <option value="Jersey">JERSEY</option>
+                    <option value="Sepatu">SEPATU</option>
+                    <option value="Aksesoris">AKSESORIS</option>
                 </select>
             </div>
+            <div>
+                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Link WhatsApp</label>
+                <input type="text" id="wa" placeholder="https://wa.me/62812xxx" class="w-full p-4 bg-slate-100 rounded-2xl outline-none">
+            </div>
 
-            <button onclick="saveMatch()" class="w-full py-5 bg-sky-600 hover:bg-sky-500 text-white font-black rounded-3xl transition-all shadow-xl shadow-sky-900/20 uppercase tracking-widest">Publish Analysis</button>
+            <button onclick="uploadProduk()" class="w-full py-5 bg-sky-600 hover:bg-slate-900 text-white font-black rounded-3xl transition-all shadow-lg shadow-sky-500/20 uppercase mt-4">Simpan ke Toko</button>
         </div>
     </div>
 
@@ -59,25 +45,17 @@
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYmNhbG15b3RjYnhpb2NvcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDgyNTksImV4cCI6MjA5MTEyNDI1OX0.IzEWTUcPCr4t-ZTqvPCqShE2BwRxvBFW1grJvggMhJM';
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        async function saveMatch() {
+        async function uploadProduk() {
             const payload = {
-                liga: document.getElementById('liga').value,
-                tim_a: document.getElementById('tim_a').value,
-                tim_b: document.getElementById('tim_b').value,
-                tanggal: document.getElementById('tanggal').value,
-                jam: document.getElementById('jam').value,
-                hdp_home: document.getElementById('h_home').value,
-                hdp_value: document.getElementById('h_val').value,
-                hdp_away: document.getElementById('h_away').value,
-                ou_over: document.getElementById('ou_o').value,
-                ou_total: document.getElementById('ou_t').value,
-                ou_under: document.getElementById('ou_u').value,
-                prediksi: document.getElementById('prediksi').value,
-                status: document.getElementById('status').value
+                nama_produk: document.getElementById('nama').value,
+                harga: document.getElementById('harga').value,
+                gambar_url: document.getElementById('gambar').value,
+                kategori: document.getElementById('kategori').value,
+                link_wa: document.getElementById('wa').value
             };
 
-            const { error } = await _supabase.from('jadwal_bola').insert([payload]);
-            if(!error) { alert("Match Published!"); location.reload(); }
+            const { error } = await _supabase.from('produk_dimastore').insert([payload]);
+            if(!error) { alert("Produk Berhasil Ditambahkan!"); location.reload(); }
             else { alert("Error: " + error.message); }
         }
     </script>
