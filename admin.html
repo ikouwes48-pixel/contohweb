@@ -7,49 +7,63 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="bg-slate-900 text-slate-200 p-6">
-    <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-black mb-8 text-yellow-500">DIMERLA ADMIN PANEL</h1>
+
+    <div id="login-form" class="max-w-md mx-auto mt-20 bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-2xl">
+        <h2 class="text-2xl font-black text-yellow-500 mb-6 text-center italic">ADMIN ACCESS</h2>
+        <div class="space-y-4">
+            <input type="text" id="username" placeholder="User ID" class="w-full p-4 bg-slate-700 rounded-2xl outline-none focus:ring-2 focus:ring-yellow-500">
+            <input type="password" id="pass" placeholder="Password" class="w-full p-4 bg-slate-700 rounded-2xl outline-none focus:ring-2 focus:ring-yellow-500">
+            <button onclick="prosesLogin()" class="w-full py-4 bg-yellow-500 text-black font-black rounded-2xl hover:bg-yellow-400 transition-all">LOGIN SEKARANG</button>
+        </div>
+    </div>
+
+    <div id="admin-dashboard" class="hidden max-w-4xl mx-auto">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-black text-yellow-500">DIMERLA ADMIN PANEL</h1>
+            <button onclick="logout()" class="px-4 py-2 bg-red-600/20 text-red-500 border border-red-600 rounded-xl font-bold text-xs">LOGOUT</button>
+        </div>
         
         <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700 mb-10">
             <input type="hidden" id="edit-id">
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs font-bold mb-2">TIPE TAMPILAN</label>
-                    <select id="tipe_kartu" class="w-full p-3 bg-slate-700 rounded-xl outline-none border border-slate-600 focus:border-yellow-500">
+                    <label class="block text-[10px] font-bold mb-2 text-slate-400">TIPE TAMPILAN</label>
+                    <select id="tipe_kartu" class="w-full p-3 bg-slate-700 rounded-xl outline-none border border-slate-600">
                         <option value="PREDIKSI">PREDIKSI SKOR (Besar)</option>
                         <option value="ODDS">JADWAL & ODDS (Kotak Kecil)</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold mb-2">LIGA</label>
-                    <input type="text" id="liga" placeholder="Contoh: Premier League" class="w-full p-3 bg-slate-700 rounded-xl outline-none">
+                    <label class="block text-[10px] font-bold mb-2 text-slate-400">LIGA</label>
+                    <input type="text" id="liga" placeholder="Premier League" class="w-full p-3 bg-slate-700 rounded-xl outline-none">
                 </div>
                 <input type="text" id="tim_a" placeholder="Tim Home" class="p-3 bg-slate-700 rounded-xl outline-none">
                 <input type="text" id="tim_b" placeholder="Tim Away" class="p-3 bg-slate-700 rounded-xl outline-none">
-                <input type="text" id="logo_a" placeholder="URL Logo Home" class="p-3 bg-slate-700 rounded-xl outline-none text-xs">
-                <input type="text" id="logo_b" placeholder="URL Logo Away" class="p-3 bg-slate-700 rounded-xl outline-none text-xs">
+                <input type="text" id="logo_a" placeholder="URL Logo Home" class="p-3 bg-slate-700 rounded-xl outline-none text-[10px]">
+                <input type="text" id="logo_b" placeholder="URL Logo Away" class="p-3 bg-slate-700 rounded-xl outline-none text-[10px]">
                 <input type="text" id="tanggal" placeholder="Tanggal (Contoh: 12 April)" class="p-3 bg-slate-700 rounded-xl outline-none">
                 <input type="text" id="jam" placeholder="Jam (Contoh: 02:00)" class="p-3 bg-slate-700 rounded-xl outline-none">
             </div>
 
             <div class="grid grid-cols-3 gap-4 mt-4 p-4 bg-slate-900/50 rounded-2xl">
-                <input type="text" id="odds_home" placeholder="Odds Home" class="p-2 bg-slate-700 rounded-lg text-center">
-                <input type="text" id="odds_draw" placeholder="Odds Draw" class="p-2 bg-slate-700 rounded-lg text-center">
-                <input type="text" id="odds_away" placeholder="Odds Away" class="p-2 bg-slate-700 rounded-lg text-center">
+                <input type="text" id="odds_home" placeholder="H Odds" class="p-2 bg-slate-700 rounded-lg text-center font-bold">
+                <input type="text" id="odds_draw" placeholder="D Odds" class="p-2 bg-slate-700 rounded-lg text-center font-bold">
+                <input type="text" id="odds_away" placeholder="A Odds" class="p-2 bg-slate-700 rounded-lg text-center font-bold">
             </div>
 
             <div class="grid grid-cols-2 gap-4 mt-4">
-                <input type="text" id="prediksi" placeholder="Prediksi Skor (Contoh: 2-1)" class="p-3 bg-slate-900 rounded-xl outline-none border border-yellow-500 text-yellow-500 font-bold text-center">
-                <select id="status" class="p-3 bg-slate-700 rounded-xl outline-none">
+                <input type="text" id="prediksi" placeholder="Skor (2-1)" class="p-3 bg-slate-900 rounded-xl outline-none border border-yellow-500 text-yellow-500 font-bold text-center">
+                <select id="status" class="p-3 bg-slate-700 rounded-xl outline-none font-bold">
                     <option value="UPCOMING">UPCOMING</option>
                     <option value="LIVE">LIVE NOW</option>
                     <option value="FINISHED">FINISHED</option>
                 </select>
             </div>
 
-            <button onclick="simpanData()" class="w-full mt-6 py-4 bg-yellow-500 text-black font-black rounded-2xl hover:bg-yellow-400 transition-all uppercase">Simpan Pertandingan</button>
+            <button onclick="simpanData()" class="w-full mt-6 py-4 bg-yellow-500 text-black font-black rounded-2xl hover:bg-yellow-400 transition-all uppercase shadow-lg shadow-yellow-500/20">Simpan Pertandingan</button>
         </div>
 
+        <h3 class="text-xl font-bold mb-4 italic text-slate-400">Match List</h3>
         <div id="list-data" class="space-y-4"></div>
     </div>
 
@@ -58,6 +72,34 @@
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYmNhbG15b3RjYnhpb2NvcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDgyNTksImV4cCI6MjA5MTEyNDI1OX0.IzEWTUcPCr4t-ZTqvPCqShE2BwRxvBFW1grJvggMhJM';
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+        // --- FUNGSI LOGIN ---
+        function prosesLogin() {
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('pass').value;
+
+            // Silakan ganti sesuai keinginanmu
+            if(u === "dimas_admin" && p === "bola123") {
+                localStorage.setItem("admin_login", "true");
+                cekStatusLogin();
+            } else {
+                alert("User ID atau Password Salah!");
+            }
+        }
+
+        function cekStatusLogin() {
+            if(localStorage.getItem("admin_login") === "true") {
+                document.getElementById('login-form').classList.add('hidden');
+                document.getElementById('admin-dashboard').classList.remove('hidden');
+                loadData();
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem("admin_login");
+            location.reload();
+        }
+
+        // --- FUNGSI DATABASE ---
         async function simpanData() {
             const id = document.getElementById('edit-id').value;
             const payload = {
@@ -88,14 +130,15 @@
             const { data } = await _supabase.from('jadwal_bola').select('*').order('id', {ascending: false});
             const container = document.getElementById('list-data');
             container.innerHTML = data.map(m => `
-                <div class="bg-slate-800 p-4 rounded-2xl flex justify-between items-center border border-slate-700">
+                <div class="bg-slate-800 p-4 rounded-2xl flex justify-between items-center border border-slate-700 hover:border-yellow-500/50 transition-all">
                     <div>
-                        <div class="text-xs text-yellow-500 font-bold">${m.liga}</div>
-                        <div class="font-bold">${m.tim_a} vs ${m.tim_b} (${m.tipe_kartu})</div>
+                        <div class="text-[10px] text-yellow-500 font-bold uppercase tracking-widest">${m.liga}</div>
+                        <div class="font-bold text-sm uppercase">${m.tim_a} vs ${m.tim_b}</div>
+                        <div class="text-[10px] text-slate-500 uppercase font-black">Tipe: ${m.tipe_kartu}</div>
                     </div>
                     <div class="flex gap-2">
-                        <button onclick="editMatch(${JSON.stringify(m).replace(/"/g, '&quot;')})" class="bg-blue-600 px-4 py-2 rounded-lg text-xs font-bold">EDIT</button>
-                        <button onclick="hapusMatch(${m.id})" class="bg-red-600 px-4 py-2 rounded-lg text-xs font-bold">HAPUS</button>
+                        <button onclick='editMatch(${JSON.stringify(m)})' class="bg-blue-600 px-3 py-2 rounded-lg text-[10px] font-black">EDIT</button>
+                        <button onclick="hapusMatch(${m.id})" class="bg-red-600/20 text-red-500 px-3 py-2 rounded-lg text-[10px] font-black">HAPUS</button>
                     </div>
                 </div>
             `).join('');
@@ -116,17 +159,18 @@
             document.getElementById('odds_home').value = m.odds_home || '';
             document.getElementById('odds_draw').value = m.odds_draw || '';
             document.getElementById('odds_away').value = m.odds_away || '';
-            window.scrollTo(0,0);
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
         async function hapusMatch(id) {
-            if(confirm('Yakin hapus?')) {
+            if(confirm('Yakin ingin menghapus pertandingan ini?')) {
                 await _supabase.from('jadwal_bola').delete().eq('id', id);
                 location.reload();
             }
         }
 
-        loadData();
+        // Jalankan cek status saat halaman dibuka
+        cekStatusLogin();
     </script>
 </body>
 </html>
