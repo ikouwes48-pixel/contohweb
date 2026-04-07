@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Prediksi</title>
+</head>
+<body>
+
+<h1>Admin Input Pertandingan</h1>
+
+<input id="match" placeholder="Tim A vs Tim B"><br><br>
+<input id="time" placeholder="Jam (contoh: 22:00)"><br><br>
+<input id="prediction" placeholder="Prediksi skor"><br><br>
+
+<button onclick="addMatch()">Simpan</button>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "ISI_API_KEY_KAMU",
+    authDomain: "ISI_DOMAIN_KAMU",
+    projectId: "ISI_PROJECT_ID_KAMU"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.addMatch = async function () {
+    const match = document.getElementById("match").value;
+    const time = document.getElementById("time").value;
+    const prediction = document.getElementById("prediction").value;
+
+    await addDoc(collection(db, "matches"), {
+      match,
+      time,
+      prediction
+    });
+
+    alert("Data berhasil disimpan!");
+  }
+</script>
+
+</body>
+</html>
