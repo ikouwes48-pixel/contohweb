@@ -2,91 +2,55 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel - Match Control</title>
+    <title>DIMERLA Admin - Control Panel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body class="bg-slate-50 min-h-screen font-sans p-4 md:p-10">
-
-    <div id="login-section" class="flex items-center justify-center min-h-[80vh]">
-        <div class="bg-white p-10 rounded-[3rem] shadow-2xl w-full max-w-md text-center border">
-            <h2 class="text-3xl font-black mb-8 italic tracking-tighter">SECURE ACCESS</h2>
-            <input type="text" id="userid" placeholder="Admin ID" class="w-full p-4 mb-4 bg-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold">
-            <input type="password" id="password" placeholder="Password" class="w-full p-4 mb-8 bg-slate-100 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 font-bold">
-            <button id="btnLogin" class="w-full py-5 bg-slate-900 text-white font-black rounded-2xl shadow-xl hover:bg-black transition-all">UNLOOCK DASHBOARD</button>
-        </div>
-    </div>
-
-    <div id="admin-section" class="hidden max-w-7xl mx-auto">
-        <div class="flex justify-between items-center mb-10">
-            <h1 class="text-3xl font-black italic uppercase tracking-tighter text-slate-800">Match Manager</h1>
-            <button onclick="logout()" class="px-6 py-2 bg-red-50 text-red-500 font-bold rounded-xl border border-red-100">LOGOUT</button>
-        </div>
-
-        <div class="grid lg:grid-cols-12 gap-10">
-            <div class="lg:col-span-4 bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-100">
-                <h2 id="form-title" class="text-xl font-black mb-8 text-blue-600 uppercase tracking-tight">Configuration</h2>
-                <input type="hidden" id="edit-id">
-                
-                <div class="space-y-4">
-                    <div>
-                        <label class="text-[10px] font-black text-slate-400 mb-1 block">TIPE KARTU</label>
-                        <select id="tipe_kartu" onchange="toggleOddsForm()" class="w-full p-4 bg-blue-600 text-white font-bold rounded-2xl outline-none cursor-pointer">
-                            <option value="PREDIKSI">KARTU PREDIKSI SKOR</option>
-                            <option value="ODDS">KARTU JADWAL & ODDS</option>
-                        </select>
-                    </div>
-
-                    <input type="text" id="liga" placeholder="Nama Liga" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none">
-                    
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="text" id="timA" placeholder="Home Team" class="p-4 bg-slate-50 border rounded-2xl outline-none">
-                        <input type="text" id="timB" placeholder="Away Team" class="p-4 bg-slate-50 border rounded-2xl outline-none">
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-2 text-[9px]">
-                        <input type="text" id="logo_a" placeholder="URL Logo Home" class="p-3 bg-slate-50 border rounded-xl outline-none">
-                        <input type="text" id="logo_b" placeholder="URL Logo Away" class="p-3 bg-slate-50 border rounded-xl outline-none">
-                    </div>
-
-                    <div id="odds-group" class="hidden grid grid-cols-3 gap-2 p-4 bg-slate-100 rounded-2xl">
-                        <input type="text" id="odds_home" placeholder="H Odds" class="p-2 rounded-lg text-center font-bold">
-                        <input type="text" id="odds_draw" placeholder="D Odds" class="p-2 rounded-lg text-center font-bold">
-                        <input type="text" id="odds_away" placeholder="A Odds" class="p-2 rounded-lg text-center font-bold">
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-2">
-                        <input type="text" id="tanggal" placeholder="Tanggal" class="p-4 bg-slate-50 border rounded-2xl outline-none">
-                        <input type="text" id="jam" placeholder="Waktu/Jam" class="p-4 bg-slate-50 border rounded-2xl outline-none">
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-2">
-                        <select id="status" class="p-4 bg-slate-50 border rounded-2xl outline-none font-bold">
-                            <option value="UPCOMING">UPCOMING</option>
-                            <option value="LIVE">LIVE</option>
-                            <option value="FINISHED">FINISHED</option>
-                        </select>
-                        <input type="text" id="prediksi" placeholder="Skor" class="p-4 bg-slate-900 text-green-400 font-mono text-center rounded-2xl outline-none font-bold">
-                    </div>
-
-                    <button id="btnSimpan" class="w-full py-5 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl shadow-lg transition-all active:scale-95">SAVE MATCH DATA</button>
-                    <button id="btnBatal" onclick="resetForm()" class="hidden w-full py-2 text-slate-400 font-bold uppercase text-[10px]">Cancel Edit</button>
+<body class="bg-slate-900 text-slate-200 p-6">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-black mb-8 text-yellow-500">DIMERLA ADMIN PANEL</h1>
+        
+        <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700 mb-10">
+            <input type="hidden" id="edit-id">
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold mb-2">TIPE TAMPILAN</label>
+                    <select id="tipe_kartu" class="w-full p-3 bg-slate-700 rounded-xl outline-none border border-slate-600 focus:border-yellow-500">
+                        <option value="PREDIKSI">PREDIKSI SKOR (Besar)</option>
+                        <option value="ODDS">JADWAL & ODDS (Kotak Kecil)</option>
+                    </select>
                 </div>
+                <div>
+                    <label class="block text-xs font-bold mb-2">LIGA</label>
+                    <input type="text" id="liga" placeholder="Contoh: Premier League" class="w-full p-3 bg-slate-700 rounded-xl outline-none">
+                </div>
+                <input type="text" id="tim_a" placeholder="Tim Home" class="p-3 bg-slate-700 rounded-xl outline-none">
+                <input type="text" id="tim_b" placeholder="Tim Away" class="p-3 bg-slate-700 rounded-xl outline-none">
+                <input type="text" id="logo_a" placeholder="URL Logo Home" class="p-3 bg-slate-700 rounded-xl outline-none text-xs">
+                <input type="text" id="logo_b" placeholder="URL Logo Away" class="p-3 bg-slate-700 rounded-xl outline-none text-xs">
+                <input type="text" id="tanggal" placeholder="Tanggal (Contoh: 12 April)" class="p-3 bg-slate-700 rounded-xl outline-none">
+                <input type="text" id="jam" placeholder="Jam (Contoh: 02:00)" class="p-3 bg-slate-700 rounded-xl outline-none">
             </div>
 
-            <div class="lg:col-span-8 bg-white rounded-[2.5rem] shadow-xl border border-slate-100 overflow-hidden">
-                <table class="w-full text-left">
-                    <thead class="bg-slate-50 border-b">
-                        <tr class="text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                            <th class="p-6">Match</th>
-                            <th class="p-6 text-center">Type</th>
-                            <th class="p-6 text-center">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body" class="divide-y divide-slate-100"></tbody>
-                </table>
+            <div class="grid grid-cols-3 gap-4 mt-4 p-4 bg-slate-900/50 rounded-2xl">
+                <input type="text" id="odds_home" placeholder="Odds Home" class="p-2 bg-slate-700 rounded-lg text-center">
+                <input type="text" id="odds_draw" placeholder="Odds Draw" class="p-2 bg-slate-700 rounded-lg text-center">
+                <input type="text" id="odds_away" placeholder="Odds Away" class="p-2 bg-slate-700 rounded-lg text-center">
             </div>
+
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <input type="text" id="prediksi" placeholder="Prediksi Skor (Contoh: 2-1)" class="p-3 bg-slate-900 rounded-xl outline-none border border-yellow-500 text-yellow-500 font-bold text-center">
+                <select id="status" class="p-3 bg-slate-700 rounded-xl outline-none">
+                    <option value="UPCOMING">UPCOMING</option>
+                    <option value="LIVE">LIVE NOW</option>
+                    <option value="FINISHED">FINISHED</option>
+                </select>
+            </div>
+
+            <button onclick="simpanData()" class="w-full mt-6 py-4 bg-yellow-500 text-black font-black rounded-2xl hover:bg-yellow-400 transition-all uppercase">Simpan Pertandingan</button>
         </div>
+
+        <div id="list-data" class="space-y-4"></div>
     </div>
 
     <script>
@@ -94,94 +58,75 @@
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYmNhbG15b3RjYnhpb2NvcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDgyNTksImV4cCI6MjA5MTEyNDI1OX0.IzEWTUcPCr4t-ZTqvPCqShE2BwRxvBFW1grJvggMhJM';
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        document.getElementById('btnLogin').addEventListener('click', () => {
-            if(document.getElementById('userid').value === "dimas_admin" && document.getElementById('password').value === "bola123") {
-                sessionStorage.setItem("isLoggedIn", "true"); checkSession();
-            } else { alert("Error!"); }
-        });
-
-        function checkSession() {
-            if(sessionStorage.getItem("isLoggedIn") === "true") {
-                document.getElementById('login-section').classList.add('hidden');
-                document.getElementById('admin-section').classList.remove('hidden');
-                loadAdminData();
-            }
-        }
-
-        function toggleOddsForm() {
-            const type = document.getElementById('tipe_kartu').value;
-            document.getElementById('odds-group').classList.toggle('hidden', type !== 'ODDS');
-        }
-
-        async function loadAdminData() {
-            const { data } = await _supabase.from('jadwal_bola').select('*').order('id', { ascending: false });
-            document.getElementById('table-body').innerHTML = data.map(item => `
-                <tr class="hover:bg-slate-50">
-                    <td class="p-6">
-                        <div class="text-[9px] font-black text-blue-600 mb-1">${item.liga}</div>
-                        <div class="font-black text-slate-800 uppercase tracking-tighter">${item.tim_a} vs ${item.tim_b}</div>
-                        <div class="text-[10px] text-slate-400 font-bold">${item.tanggal} | ${item.jam}</div>
-                    </td>
-                    <td class="p-6 text-center">
-                        <span class="px-3 py-1 rounded-full text-[8px] font-black ${item.tipe_kartu === 'ODDS' ? 'bg-orange-100 text-orange-600' : 'bg-green-100 text-green-600'}">${item.tipe_kartu}</span>
-                    </td>
-                    <td class="p-6 text-center">
-                        <button onclick='isiFormEdit(${JSON.stringify(item)})' class="text-blue-500 font-bold text-xs px-3">EDIT</button>
-                        <button onclick="hapusData(${item.id})" class="text-red-500 font-bold text-xs px-3">DEL</button>
-                    </td>
-                </tr>`).join('');
-        }
-
-        document.getElementById('btnSimpan').addEventListener('click', async () => {
+        async function simpanData() {
+            const id = document.getElementById('edit-id').value;
             const payload = {
                 liga: document.getElementById('liga').value,
-                tim_a: document.getElementById('timA').value,
-                tim_b: document.getElementById('timB').value,
+                tim_a: document.getElementById('tim_a').value,
+                tim_b: document.getElementById('tim_b').value,
                 logo_a: document.getElementById('logo_a').value,
                 logo_b: document.getElementById('logo_b').value,
                 tanggal: document.getElementById('tanggal').value,
                 jam: document.getElementById('jam').value,
-                status: document.getElementById('status').value,
                 prediksi: document.getElementById('prediksi').value,
+                status: document.getElementById('status').value,
                 tipe_kartu: document.getElementById('tipe_kartu').value,
                 odds_home: document.getElementById('odds_home').value,
                 odds_draw: document.getElementById('odds_draw').value,
                 odds_away: document.getElementById('odds_away').value
             };
-            const id = document.getElementById('edit-id').value;
-            const res = id ? await _supabase.from('jadwal_bola').update(payload).eq('id', id) : await _supabase.from('jadwal_bola').insert([payload]);
-            if(res.error) alert(res.error.message); else { resetForm(); loadAdminData(); }
-        });
 
-        function isiFormEdit(item) {
-            document.getElementById('edit-id').value = item.id;
-            document.getElementById('liga').value = item.liga;
-            document.getElementById('timA').value = item.tim_a;
-            document.getElementById('timB').value = item.tim_b;
-            document.getElementById('logo_a').value = item.logo_a;
-            document.getElementById('logo_b').value = item.logo_b;
-            document.getElementById('tanggal').value = item.tanggal;
-            document.getElementById('jam').value = item.jam;
-            document.getElementById('status').value = item.status;
-            document.getElementById('prediksi').value = item.prediksi;
-            document.getElementById('tipe_kartu').value = item.tipe_kartu;
-            document.getElementById('odds_home').value = item.odds_home || '';
-            document.getElementById('odds_draw').value = item.odds_draw || '';
-            document.getElementById('odds_away').value = item.odds_away || '';
-            toggleOddsForm();
-            document.getElementById('btnBatal').classList.remove('hidden');
-            window.scrollTo({top:0, behavior:'smooth'});
+            if(id) {
+                await _supabase.from('jadwal_bola').update(payload).eq('id', id);
+            } else {
+                await _supabase.from('jadwal_bola').insert([payload]);
+            }
+            location.reload();
         }
 
-        function resetForm() {
-            document.getElementById('edit-id').value = '';
-            document.querySelectorAll('input').forEach(i => i.value = '');
-            document.getElementById('btnBatal').classList.add('hidden');
+        async function loadData() {
+            const { data } = await _supabase.from('jadwal_bola').select('*').order('id', {ascending: false});
+            const container = document.getElementById('list-data');
+            container.innerHTML = data.map(m => `
+                <div class="bg-slate-800 p-4 rounded-2xl flex justify-between items-center border border-slate-700">
+                    <div>
+                        <div class="text-xs text-yellow-500 font-bold">${m.liga}</div>
+                        <div class="font-bold">${m.tim_a} vs ${m.tim_b} (${m.tipe_kartu})</div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="editMatch(${JSON.stringify(m).replace(/"/g, '&quot;')})" class="bg-blue-600 px-4 py-2 rounded-lg text-xs font-bold">EDIT</button>
+                        <button onclick="hapusMatch(${m.id})" class="bg-red-600 px-4 py-2 rounded-lg text-xs font-bold">HAPUS</button>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        async function hapusData(id) { if(confirm('Hapus?')) { await _supabase.from('jadwal_bola').delete().eq('id', id); loadAdminData(); } }
-        function logout() { sessionStorage.removeItem("isLoggedIn"); location.reload(); }
-        checkSession();
+        function editMatch(m) {
+            document.getElementById('edit-id').value = m.id;
+            document.getElementById('liga').value = m.liga;
+            document.getElementById('tim_a').value = m.tim_a;
+            document.getElementById('tim_b').value = m.tim_b;
+            document.getElementById('logo_a').value = m.logo_a;
+            document.getElementById('logo_b').value = m.logo_b;
+            document.getElementById('tanggal').value = m.tanggal;
+            document.getElementById('jam').value = m.jam;
+            document.getElementById('prediksi').value = m.prediksi;
+            document.getElementById('status').value = m.status;
+            document.getElementById('tipe_kartu').value = m.tipe_kartu;
+            document.getElementById('odds_home').value = m.odds_home || '';
+            document.getElementById('odds_draw').value = m.odds_draw || '';
+            document.getElementById('odds_away').value = m.odds_away || '';
+            window.scrollTo(0,0);
+        }
+
+        async function hapusMatch(id) {
+            if(confirm('Yakin hapus?')) {
+                await _supabase.from('jadwal_bola').delete().eq('id', id);
+                location.reload();
+            }
+        }
+
+        loadData();
     </script>
 </body>
 </html>
