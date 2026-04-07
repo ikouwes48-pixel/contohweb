@@ -3,58 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIMERLA | Premium Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <title>DIMERLA | International Premium Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        body { font-family: 'Outfit', sans-serif; background: #f8f9fa; }
-        .slider-container { height: 400px; overflow: hidden; position: relative; border-radius: 2rem; }
-        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; }
-        .slide.active { opacity: 1; }
-        .prod-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .prod-card:hover { transform: translateY(-10px); }
-        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fafafa; color: #1a1a1a; }
+        .hero-gradient { background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%); }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .product-card { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .product-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .slide { display: none; animation: fade 1.5s; }
+        .active-slide { display: block; }
+        @keyframes fade { from { opacity: 0.4 } to { opacity: 1 } }
     </style>
 </head>
 <body>
 
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b px-6 py-4">
+    <nav class="fixed w-full z-50 glass px-8 py-5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-black italic">DIMERLA<span class="text-[#0a7c5c]">.</span></div>
-            <div class="flex gap-4">
-                <a href="admin.html" class="text-[10px] font-bold bg-slate-100 px-4 py-2 rounded-full uppercase tracking-widest">Admin Panel</a>
+            <div class="text-2xl font-extrabold tracking-tighter">DIMERLA<span class="text-[#0a7c5c]">.</span></div>
+            <div class="flex gap-8 items-center">
+                <a href="#collection" class="text-xs font-bold uppercase tracking-widest hover:text-[#0a7c5c] transition">Collections</a>
+                <a href="admin.html" class="bg-black text-white px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-tighter">Merchant Access</a>
             </div>
         </div>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-6 py-8">
-        <div class="slider-container shadow-2xl">
-            <div class="slide active">
-                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 flex flex-col justify-center px-12 text-white">
-                    <h2 class="text-5xl font-black mb-2">NEW SEASON</h2>
-                    <p class="opacity-80">Koleksi fashion premium terbaru untukmu.</p>
+    <header class="pt-28 px-6 max-w-7xl mx-auto">
+        <div class="hero-gradient rounded-[3rem] h-[500px] overflow-hidden relative">
+            <div id="slider">
+                <div class="slide active-slide h-[500px] relative">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
+                        <h1 class="text-6xl font-extrabold mb-4">ELEVATE STYLE</h1>
+                        <p class="text-lg opacity-80 max-w-xl">Experience the pinnacle of curated premium collections tailored for the modern individual.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 flex flex-col justify-center px-12 text-white">
-                    <h2 class="text-5xl font-black mb-2">TECH GADGET</h2>
-                    <p class="opacity-80">Upgrade perlengkapanmu sekarang.</p>
+                <div class="slide h-[500px] relative">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1600" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
+                        <h1 class="text-6xl font-extrabold mb-4">ELITE TECH</h1>
+                        <p class="text-lg opacity-80 max-w-xl">Discover next-generation electronics and accessories for your digital lifestyle.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 pb-20">
-        <div class="flex items-center gap-4 mb-10">
-            <div class="h-[2px] flex-grow bg-slate-200"></div>
-            <h2 class="text-xl font-black uppercase tracking-[0.2em]">Katalog Produk</h2>
-            <div class="h-[2px] flex-grow bg-slate-200"></div>
+    <main id="collection" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="flex justify-between items-end mb-16">
+            <div>
+                <h2 class="text-4xl font-extrabold tracking-tight">Featured Items</h2>
+                <p class="text-slate-400 mt-2 font-medium">Handpicked quality for Dimas's premium circle.</p>
+            </div>
         </div>
 
-        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             </div>
     </main>
 
@@ -63,50 +68,42 @@
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYmNhbG15b3RjYnhpb2NvcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDgyNTksImV4cCI6MjA5MTEyNDI1OX0.IzEWTUcPCr4t-ZTqvPCqShE2BwRxvBFW1grJvggMhJM';
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // SLIDER LOGIC
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 5000);
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) slides[i].classList.remove("active-slide");
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].classList.add("active-slide");
+            setTimeout(showSlides, 5000);
+        }
+        showSlides();
 
-        async function loadProducts() {
+        async function load() {
             const { data } = await _supabase.from('produk_dimastore').select('*').order('id', { ascending: false });
-            const grid = document.getElementById('product-grid');
+            const grid = document.getElementById('grid');
             grid.innerHTML = "";
-
-            if (!data || data.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-20 text-slate-400 font-bold uppercase italic">Produk Kosong</div>`;
-                return;
-            }
-
             data.forEach(p => {
-                const harga = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(p.harga);
-                const isOut = p.stok <= 0;
+                const price = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(p.harga);
                 grid.innerHTML += `
-                <div class="prod-card bg-white rounded-[1.5rem] overflow-hidden border border-slate-100 shadow-sm relative">
-                    <div class="aspect-square bg-slate-50 relative">
-                        <img src="${p.gambar_url}" class="w-full h-full object-cover">
-                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest">${p.kategori}</span>
+                <div class="product-card group cursor-pointer">
+                    <div class="rounded-[2rem] overflow-hidden aspect-[4/5] bg-slate-200 mb-6 relative">
+                        <img src="${p.gambar_url}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        ${p.stok <= 0 ? '<div class="absolute inset-0 bg-white/60 backdrop-blur-sm flex items-center justify-center font-black text-xs tracking-widest">SOLD OUT</div>' : ''}
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-sm line-clamp-2 mb-2 h-10">${p.nama_produk}</h3>
-                        <div class="flex justify-between items-end">
-                            <div>
-                                <p class="text-red-600 font-black text-base">${harga}</p>
-                                <p class="text-[10px] text-slate-400 font-bold">Stok: ${p.stok}</p>
-                            </div>
-                            <button onclick="window.open('${p.link_wa}')" class="w-10 h-10 bg-[#0a7c5c] text-white rounded-xl flex items-center justify-center font-bold" ${isOut ? 'disabled opacity-30' : ''}>${isOut ? 'X' : '+'}</button>
+                    <div class="px-2">
+                        <p class="text-[10px] font-bold text-[#0a7c5c] uppercase tracking-widest mb-1">${p.kategori}</p>
+                        <h3 class="text-lg font-bold mb-2">${p.nama_produk}</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-extrabold">${price}</span>
+                            <button onclick="window.open('${p.link_wa}')" class="bg-black text-white px-5 py-2 rounded-full text-[10px] font-bold hover:bg-[#0a7c5c] transition">INQUIRE</button>
                         </div>
                     </div>
                 </div>`;
             });
         }
-
-        loadProducts();
-        _supabase.channel('any').on('postgres_changes', { event: '*', schema: 'public', table: 'produk_dimastore' }, loadProducts).subscribe();
+        load();
+        _supabase.channel('any').on('postgres_changes', { event: '*', schema: 'public', table: 'produk_dimastore' }, load).subscribe();
     </script>
 </body>
 </html>
