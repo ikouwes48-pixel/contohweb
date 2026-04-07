@@ -16,7 +16,7 @@
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-10">
             <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2 italic">FOOTBALL PREDICTION</h1>
-            <p class="text-slate-400 font-medium">Update Otomatis & Analisis Skor Terkini</p>
+            <p class="text-slate-400 font-medium font-mono uppercase tracking-[0.2em] text-[10px]">Global Match Analysis</p>
         </header>
 
         <div id="match-list" class="grid gap-6">
@@ -34,48 +34,52 @@
 
             const container = document.getElementById('match-list');
             if (data.length === 0) {
-                container.innerHTML = '<div class="text-center p-10 bg-slate-800/30 rounded-2xl border border-dashed border-slate-700 text-slate-500">Belum ada jadwal pertandingan.</div>';
+                container.innerHTML = '<div class="text-center p-10 bg-slate-800/30 rounded-2xl border border-dashed border-slate-700 text-slate-500 font-mono">NO ACTIVE MATCHES</div>';
                 return;
             }
 
             container.innerHTML = data.map(item => {
-                const statusColor = item.status === 'LIVE' ? 'bg-red-500 text-white animate-pulse-fast' : 'bg-cyan-500/10 text-cyan-400';
-                const imgA = item.logo_a || 'https://via.placeholder.com/100?text=TIM+A';
-                const imgB = item.logo_b || 'https://via.placeholder.com/100?text=TIM+B';
+                const statusColor = item.status === 'LIVE' ? 'bg-red-500 text-white animate-pulse-fast' : 'bg-slate-700 text-slate-300';
+                const imgA = item.logo_a || 'https://via.placeholder.com/100?text=?';
+                const imgB = item.logo_b || 'https://via.placeholder.com/100?text=?';
 
                 return `
-                <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-2xl backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300 shadow-xl">
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="px-4 py-1 ${statusColor} text-[10px] font-bold rounded-full uppercase tracking-widest">${item.status || 'UPCOMING'}</span>
+                <div class="bg-slate-800/40 border border-slate-700/50 p-6 rounded-3xl backdrop-blur-md hover:border-blue-500/50 transition-all duration-500">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="px-4 py-1.5 ${statusColor} text-[9px] font-black rounded-full uppercase tracking-widest shadow-lg">${item.status || 'UPCOMING'}</span>
                         <div class="text-right">
-                            <div class="text-cyan-500 text-[10px] font-bold uppercase tracking-tighter">${item.liga}</div>
-                            <div class="text-slate-500 text-xs italic">🕒 ${item.jam}</div>
+                            <div class="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-1">${item.liga}</div>
+                            <div class="text-slate-400 text-[11px] font-bold"><span class="text-slate-600">📅</span> ${item.tanggal || '-'} | <span class="text-slate-600">🕒</span> ${item.jam}</div>
                         </div>
                     </div>
                     
-                    <div class="flex items-center justify-between text-center gap-2 md:gap-8">
-                        <div class="flex-1 group">
-                            <img src="${imgA}" class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 rounded-full border-2 border-slate-700 p-1 bg-slate-900 shadow-lg group-hover:scale-110 transition-transform">
-                            <div class="font-bold text-sm md:text-lg uppercase tracking-tight">${item.tim_a}</div>
+                    <div class="flex items-center justify-between text-center gap-2">
+                        <div class="flex-1">
+                            <div class="relative inline-block mb-3">
+                                <img src="${imgA}" class="w-16 h-16 md:w-20 md:h-20 mx-auto rounded-full border-2 border-slate-700 p-1 bg-slate-900 shadow-2xl transition-transform hover:scale-110">
+                            </div>
+                            <div class="font-black text-xs md:text-sm uppercase tracking-tight text-slate-100">${item.tim_a}</div>
                         </div>
                         
                         <div class="flex flex-col items-center">
-                            <div class="text-3xl md:text-4xl font-black text-cyan-500 italic drop-shadow-lg">VS</div>
+                            <div class="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-600 italic">VS</div>
                         </div>
 
-                        <div class="flex-1 group">
-                            <img src="${imgB}" class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 rounded-full border-2 border-slate-700 p-1 bg-slate-900 shadow-lg group-hover:scale-110 transition-transform">
-                            <div class="font-bold text-sm md:text-lg uppercase tracking-tight">${item.tim_b}</div>
+                        <div class="flex-1">
+                            <div class="relative inline-block mb-3">
+                                <img src="${imgB}" class="w-16 h-16 md:w-20 md:h-20 mx-auto rounded-full border-2 border-slate-700 p-1 bg-slate-900 shadow-2xl transition-transform hover:scale-110">
+                            </div>
+                            <div class="font-black text-xs md:text-sm uppercase tracking-tight text-slate-100">${item.tim_b}</div>
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-5 border-t border-slate-700/50 flex justify-between items-center">
-                        <button onclick="copyText('${item.tim_a} vs ${item.tim_b} | Prediksi: ${item.prediksi}')" class="text-[10px] bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-slate-300 transition-all active:scale-95 flex items-center gap-1">
-                            <span>📋</span> SALIN PREDIKSI
+                    <div class="mt-8 pt-5 border-t border-slate-700/30 flex justify-between items-center">
+                        <button onclick="copyText('${item.tim_a} vs ${item.tim_b} | Prediksi: ${item.prediksi}')" class="group relative px-4 py-2 bg-slate-700/50 hover:bg-slate-600 rounded-xl text-[10px] font-bold text-slate-300 transition-all active:scale-95">
+                           📋 COPY
                         </button>
-                        <div class="flex flex-col items-end">
-                            <span class="text-[9px] text-slate-500 font-bold uppercase mb-1">Prediksi Skor</span>
-                            <span class="text-2xl font-mono font-black text-green-400 bg-green-400/10 px-5 py-1 rounded-xl border border-green-400/20 shadow-inner">${item.prediksi}</span>
+                        <div class="text-right">
+                            <div class="text-[9px] text-slate-500 font-black uppercase mb-1">Expert Prediction</div>
+                            <div class="text-2xl font-mono font-black text-green-400 tracking-tighter">${item.prediksi}</div>
                         </div>
                     </div>
                 </div>`;
@@ -84,11 +88,11 @@
 
         function copyText(txt) {
             navigator.clipboard.writeText(txt);
-            alert("✅ Prediksi berhasil disalin ke clipboard!");
+            alert("Prediksi Berhasil Disalin!");
         }
 
         tampilkanData();
-        _supabase.channel('public:jadwal_bola').on('postgres_changes', { event: '*', schema: 'public', table: 'jadwal_bola' }, () => tampilkanData()).subscribe();
+        _supabase.channel('any').on('postgres_changes', { event: '*', schema: 'public', table: 'jadwal_bola' }, () => tampilkanData()).subscribe();
     </script>
 </body>
 </html>
