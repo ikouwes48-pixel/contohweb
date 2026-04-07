@@ -2,41 +2,72 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Prediksi Bola Hari Ini</title>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Bola - Live Update</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        body { font-family: Arial; background: #1a1a1a; color: white; text-align: center; }
-        .match-card { background: #333; margin: 10px auto; padding: 20px; width: 80%; border-radius: 8px; border-left: 5px solid #ffd700; }
-        .vs { font-weight: bold; color: #ffd700; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; padding: 20px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155; transition: 0.3s; }
+        .card:hover { border-color: #38bdf8; }
+        .vs { color: #38bdf8; font-weight: bold; font-size: 1.2rem; }
+        .liga { color: #94a3b8; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .prediksi-box { background: #334155; padding: 10px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #3ecf8e; }
     </style>
 </head>
 <body>
-    <h1>Jadwal & Prediksi Pertandingan</h1>
-    <div id="match-container">Memuat jadwal...</div>
+    <h1>⚽ Jadwal & Prediksi Pertandingan</h1>
+    <p>Data diperbarui secara real-time dari database.</p>
+    
+    <div id="match-list" class="grid">Memuat jadwal tanding...</div>
 
     <script>
-        const firebaseConfig = {
-            // PASTE KONFIGURASI FIREBASE ANDA DI SINI
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.database().ref('matches');
+        // KONFIGURASI KAMU
+        const SUPABASE_URL = 'https://clbcalmyotcbxiocorys.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNsYmNhbG15b3RjYnhpb2NvcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NDgyNTksImV4cCI6MjA5MTEyNDI1OX0.IzEWTUcPCr4t-ZTqvPCqShE2BwRxvBFW1grJvggMhJM';
+        
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        db.on('value', (snapshot) => {
-            const container = document.getElementById('match-container');
-            container.innerHTML = '';
-            snapshot.forEach((childSnapshot) => {
-                const data = childSnapshot.val();
-                container.innerHTML += `
-                    <div class="match-card">
-                        <h3>${data.liga}</h3>
-                        <p>${data.timA} <span class="vs">VS</span> ${data.timB}</p>
-                        <p>Waktu: ${data.jam}</p>
-                        <p>Prediksi Skor: <strong>${data.prediksi}</strong></p>
+        async function tampilkanData() {
+            const { data, error } = await _supabase
+                .from('jadwal_bola')
+                .select('*')
+                .order('id', { ascending: false });
+
+            if (error) {
+                console.error('Error:', error);
+                return;
+            }
+
+            const container = document.getElementById('match-list');
+            if (data.length === 0) {
+                container.innerHTML = '<p>Belum ada jadwal pertandingan.</p>';
+                return;
+            }
+
+            container.innerHTML = data.map(item => `
+                <div class="card">
+                    <div class="liga">${item.liga}</div>
+                    <h3>${item.tim_a} <span class="vs">VS</span> ${item.tim_b}</h3>
+                    <p>🕒 Kick Off: ${item.jam}</p>
+                    <div class="prediksi-box">
+                        <small>PREDIKSI SKOR</small><br>
+                        <strong>${item.prediksi}</strong>
                     </div>
-                `;
-            });
-        });
+                </div>
+            `).join('');
+        }
+
+        // Jalankan fungsi saat web dibuka
+        tampilkanData();
+
+        // Fitur Realtime: Update otomatis jika ada perubahan di database
+        _supabase
+            .channel('custom-all-channel')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'jadwal_bola' }, () => {
+                tampilkanData();
+            })
+            .subscribe();
     </script>
 </body>
 </html>
