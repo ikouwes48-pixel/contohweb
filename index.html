@@ -12,14 +12,15 @@
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
     </style>
 </head>
-<body class="text-slate-200 p-4 md:p-8">
+<body class="text-slate-200 p-4 md:p-8 font-sans">
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-10">
-            <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2">FOOTBALL PREDICTION</h1>
+            <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-2 italic">FOOTBALL PREDICTION</h1>
             <p class="text-slate-400 font-medium">Update Otomatis & Analisis Skor Terkini</p>
         </header>
 
-        <div id="match-list" class="grid gap-6"></div>
+        <div id="match-list" class="grid gap-6">
+            </div>
     </div>
 
     <script>
@@ -28,33 +29,54 @@
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         async function tampilkanData() {
-            const { data } = await _supabase.from('jadwal_bola').select('*').order('id', { ascending: false });
+            const { data, error } = await _supabase.from('jadwal_bola').select('*').order('id', { ascending: false });
+            if (error) return;
+
             const container = document.getElementById('match-list');
-            
+            if (data.length === 0) {
+                container.innerHTML = '<div class="text-center p-10 bg-slate-800/30 rounded-2xl border border-dashed border-slate-700 text-slate-500">Belum ada jadwal pertandingan.</div>';
+                return;
+            }
+
             container.innerHTML = data.map(item => {
                 const statusColor = item.status === 'LIVE' ? 'bg-red-500 text-white animate-pulse-fast' : 'bg-cyan-500/10 text-cyan-400';
-                const logo = item.logo_url || 'https://via.placeholder.com/50?text=FC'; // Default logo jika kosong
+                const imgA = item.logo_a || 'https://via.placeholder.com/100?text=TIM+A';
+                const imgB = item.logo_b || 'https://via.placeholder.com/100?text=TIM+B';
 
                 return `
-                <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-2xl backdrop-blur-sm hover:border-cyan-500/50 transition-all">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="px-3 py-1 ${statusColor} text-[10px] font-bold rounded-full uppercase">${item.status || 'UPCOMING'}</span>
-                        <span class="text-slate-500 text-sm italic">🕒 ${item.jam}</span>
-                    </div>
-                    <div class="flex items-center justify-around text-center gap-4">
-                        <div class="flex-1">
-                            <img src="${logo}" class="w-12 h-12 mx-auto mb-2 rounded-full border border-slate-600 p-1 bg-white/5 shadow-lg">
-                            <div class="font-bold text-lg">${item.tim_a}</div>
-                        </div>
-                        <div class="font-black text-2xl text-cyan-500 italic">VS</div>
-                        <div class="flex-1">
-                            <img src="${logo}" class="w-12 h-12 mx-auto mb-2 rounded-full border border-slate-600 p-1 bg-white/5 shadow-lg">
-                            <div class="font-bold text-lg">${item.tim_b}</div>
+                <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-2xl backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300 shadow-xl">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="px-4 py-1 ${statusColor} text-[10px] font-bold rounded-full uppercase tracking-widest">${item.status || 'UPCOMING'}</span>
+                        <div class="text-right">
+                            <div class="text-cyan-500 text-[10px] font-bold uppercase tracking-tighter">${item.liga}</div>
+                            <div class="text-slate-500 text-xs italic">🕒 ${item.jam}</div>
                         </div>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-700/50 flex justify-between items-center">
-                        <button onclick="copyText('${item.tim_a} vs ${item.tim_b} - Prediksi: ${item.prediksi}')" class="text-[10px] bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-slate-300 transition-all">📋 Salin Prediksi</button>
-                        <span class="text-xl font-mono font-bold text-green-400 bg-green-400/10 px-4 py-1 rounded-lg">${item.prediksi}</span>
+                    
+                    <div class="flex items-center justify-between text-center gap-2 md:gap-8">
+                        <div class="flex-1 group">
+                            <img src="${imgA}" class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 rounded-full border-2 border-slate-700 p-1 bg-slate-900 shadow-lg group-hover:scale-110 transition-transform">
+                            <div class="font-bold text-sm md:text-lg uppercase tracking-tight">${item.tim_a}</div>
+                        </div>
+                        
+                        <div class="flex flex-col items-center">
+                            <div class="text-3xl md:text-4xl font-black text-cyan-500 italic drop-shadow-lg">VS</div>
+                        </div>
+
+                        <div class="flex-1 group">
+                            <img src="${imgB}" class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-3 rounded-full border-2 border-slate-700 p-1 bg-slate-900 shadow-lg group-hover:scale-110 transition-transform">
+                            <div class="font-bold text-sm md:text-lg uppercase tracking-tight">${item.tim_b}</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-5 border-t border-slate-700/50 flex justify-between items-center">
+                        <button onclick="copyText('${item.tim_a} vs ${item.tim_b} | Prediksi: ${item.prediksi}')" class="text-[10px] bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-slate-300 transition-all active:scale-95 flex items-center gap-1">
+                            <span>📋</span> SALIN PREDIKSI
+                        </button>
+                        <div class="flex flex-col items-end">
+                            <span class="text-[9px] text-slate-500 font-bold uppercase mb-1">Prediksi Skor</span>
+                            <span class="text-2xl font-mono font-black text-green-400 bg-green-400/10 px-5 py-1 rounded-xl border border-green-400/20 shadow-inner">${item.prediksi}</span>
+                        </div>
                     </div>
                 </div>`;
             }).join('');
@@ -62,11 +84,11 @@
 
         function copyText(txt) {
             navigator.clipboard.writeText(txt);
-            alert("Prediksi berhasil disalin!");
+            alert("✅ Prediksi berhasil disalin ke clipboard!");
         }
 
         tampilkanData();
-        _supabase.channel('any').on('postgres_changes', { event: '*', schema: 'public', table: 'jadwal_bola' }, () => tampilkanData()).subscribe();
+        _supabase.channel('public:jadwal_bola').on('postgres_changes', { event: '*', schema: 'public', table: 'jadwal_bola' }, () => tampilkanData()).subscribe();
     </script>
 </body>
 </html>
